@@ -6,8 +6,7 @@
 package org.ecn.serse.exceptions;
 
 /**
- * Codes de retour des requêtes
- * 
+ * Codes de retour des requêtes (erreurs ou succès)
  * @author Audrey
  */
 public enum ResultCode {

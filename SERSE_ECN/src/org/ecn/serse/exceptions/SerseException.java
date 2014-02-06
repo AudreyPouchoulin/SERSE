@@ -1,9 +1,13 @@
+/**
+ * Project: SERSE_ECN
+ * Creation date: 30 janv. 2014
+ * Author: Audrey
+ */
 package org.ecn.serse.exceptions;
 
 /**
  * Classe générale pour les exceptions de l'application
- * 
- * @author Remi
+ * @author Audrey
  */
 public class SerseException extends Exception {
 

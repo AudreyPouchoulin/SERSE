@@ -13,7 +13,6 @@ import java.util.Properties;
 /**
  * Classe de gestion des paramètres de l'application (adresse des serveurs distants, etc.)
  * @author Audrey
- *
  */
 public class ConfigurationController {
 	

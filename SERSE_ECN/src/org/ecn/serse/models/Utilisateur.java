@@ -6,8 +6,7 @@
 package org.ecn.serse.models;
 
 /**
- * Classe modèle d'un utiliateur
- * 
+ * Classe modèle d'un utilisateur
  * @author Audrey
  */
 public class Utilisateur {
@@ -21,26 +20,34 @@ public class Utilisateur {
 	/** Email de l'utilisateur */
 	private String email;
 
-	/** Type d'utilisateur */
-	private String type; // étudiant, administrateur, DRI, visiteur
+	/** Catégorie d'utilisateur */
+	private Categorie categorie; // étudiant, administrateur, DRI, DRI_admin
 	
 	/** Préférences */
 	private boolean notificationNouveauRapport;
 	private boolean notificationNouvelleAssignation;
 	private boolean notificationNouvelleOption;
 	
+	/** Token de connexion */
+	private String token;
+	
+	/** Identifiant de l'utilisateur dans la base de données SERSE*/
+	private Integer id;
+	
 	/**
 	 * Constructeur utilisant les paramètres indispensables
 	 * @param nom Nom de l'utilisateur
 	 * @param prenom Prénom de l'utilisateur
 	 * @param email Email de l'utilisateur
-	 * @param type Type de l'utilisateur (étudiant, administrateur, DRI, visiteur
+	 * @param categorie Type de l'utilisateur (étudiant, administrateur, DRI, visiteur
 	 */
-	public Utilisateur(String nom, String prenom, String email, String type) {
+	public Utilisateur(Integer id, String nom, String prenom, String email, Categorie categorie, String token) {
+		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.email = email;
-		this.setType(type);
+		this.categorie = categorie;
+		this.token = token;
 	}
 	
 	public String getNom() {
@@ -111,17 +118,52 @@ public class Utilisateur {
 	}
 
 	/**
-	 * @return the type
+	 * @return the categorie
 	 */
-	public String getType() {
-		return type;
+	public Categorie getCategorie() {
+		return categorie;
 	}
 
 	/**
-	 * @param type the type to set
+	 * @param categorie the categorie to set
 	 */
-	public void setType(String type) {
-		this.type = type;
+	public void setCategorie(Categorie categorie) {
+		this.categorie = categorie;
 	}
 
+	/**
+	 * @return the token
+	 */
+	public String getToken() {
+		return token;
+	}
+
+	/**
+	 * @param token the token to set
+	 */
+	public void setToken(String token) {
+		this.token = token;
+	}
+
+	/**
+	 * @return the id
+	 */
+	public Integer getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	/**
+	 * Définit les différentes catégories d'utilisateurs: étudiant, administrateur, dri, dri et administrateur, visiteur
+	 * @author Audrey
+	 */
+	public static enum Categorie {
+		ETUDIANT, DRI, ADMINISTRATEUR, DRI_ADMIN, VISITEUR
+	}
 }

@@ -7,7 +7,6 @@ package org.ecn.serse.exceptions;
 
 /**
  * Exception des méthodes accédant à la base de données
- * 
  * @author Audrey
  */
 public class DatabaseException extends SerseException {
