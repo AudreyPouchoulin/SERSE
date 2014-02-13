@@ -2,12 +2,12 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>Résultat de la servlet de connexion</title>
+		<title>SERSE</title>
 	</head>
 
 	<body>
 		<p>
-			<% String attribut = (String) request.getAttribute("erreur");
+			<% String attribut = (String) request.getAttribute("type_connexion");
 				out.println( attribut );
 			%>
 		</p>

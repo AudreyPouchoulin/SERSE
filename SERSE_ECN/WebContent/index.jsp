@@ -2,13 +2,16 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
-		<title>SERSE</title>
+		<link rel="stylesheet" type="text/css" href="serse_main.css" />
+		<title>SERSE</title>				<!-- titre de la page web-->
 	</head>
 	
 	<body>
+		<!-- en-tête-->
 		<p> Connexion à SERSE </p>
 		<p> Application de Soumission Electronique de Rapports de Séjours à l'Etranger </p>
 
+		<!-- formulaire: identifiant +  mot de passe + bouton connxeion-->
 		<div id="formulaire_connexion">
 					<form method="post" action="login">
 							<table id="table_connexion">
@@ -21,9 +24,17 @@
 									<td><input type="password" id="txt_password" name="password" size="30" placeholder="Votre mot de passe" /></td>
 								</tr>
 							</table>
-							<input type="submit" value="Connexion" id="buton_connexion" class="button" />
+							<input type="submit" onclick='verifIdPassword();' value="Connexion" id="buton_connexion" class="button" />
 					</form>
 		</div>
+		
+		<p>
+			<% String attribut = (String) request.getAttribute("erreur_information");
+				if (attribut!=null){
+					out.println( attribut );
+				}
+			%>
+		</p>
 
 	</body>
 </html>

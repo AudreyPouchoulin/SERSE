@@ -25,7 +25,7 @@ import org.ecn.serse.models.Utilisateur;
  * 
  * @author Audrey
  */
-public class ConnexionServlet extends HttpServlet {
+public class ConnexionServlet extends HttpServlet{
 
 	private static final long serialVersionUID = -4108350698688202053L;
 	
@@ -47,26 +47,19 @@ public class ConnexionServlet extends HttpServlet {
 		
 		//Réponse
 			String message = "";
-			
 		
 		// Paramètres incomplets
-		if(username.isEmpty() && password.isEmpty()) { 
-			message = "Nom d'utilisateur et mot de passe manquants";
-			request.setAttribute( "erreur", message );
-			// ResultCode.WRONG_PARAMETERS_FOR_REQUEST
-		} else if (username.isEmpty()){
-			message = "Nom d'utilisateur manquant";
-			request.setAttribute( "erreur", message );
-			// ResultCode.WRONG_PARAMETERS_FOR_REQUEST
-		} else if (password.isEmpty()){
-			message = "Mot de passe manquant";
-			request.setAttribute( "erreur", message );
-			// ResultCode.WRONG_PARAMETERS_FOR_REQUEST
+		if(username.isEmpty() || password.isEmpty()) { 
+			message = "Identifiant et/ou mot de passe manquant";
+			request.setAttribute( "erreur_information", message );
+			// Affichage de l'erreur sur la page de login
+			try {
+				this.getServletContext().getRequestDispatcher( "/index.jsp").forward( request, response );
+			} catch (ServletException e) {
+				e.printStackTrace();
+			}
 		}
 		else {
-			
-			ResultCode result;
-			
 			try {
 				// Connexion à la base de données de SERSE
 				BddController bddController = new BddController();
@@ -74,32 +67,32 @@ public class ConnexionServlet extends HttpServlet {
 				// Connexion d'un utilisateur sous LDAP et récupération d'informations
 				UtilisateurController utilisateurController = new UtilisateurController(bddController);
 				Utilisateur utilisateur = utilisateurController.seConnecter(username, password);
-				result = ResultCode.SUCCESS;
-				message = "Connexion reussie, bienvenue " + utilisateur.getPrenom() + " " + utilisateur.getNom();
-				request.setAttribute( "erreur", message );
+				
+				//Connexion réussie
+				message = "Vous êtes connecté en tant que " + utilisateur.getCategorie();
+				request.setAttribute( "type_connexion", message );
 				
 				bddController.close();
+				
+				// Affichage de la page suivante
+				try {
+					this.getServletContext().getRequestDispatcher( "/WEB-INF/accueil.jsp").forward( request, response );
+				} catch (ServletException e) {
+					e.printStackTrace();
+				}
 			} catch (DatabaseException e) {
-				message = "Erreur lors de la connexion à la base de données de SERSE : veuillez contacter votre administrateur de service.";
-				request.setAttribute( "erreur", message );
+				/*message = "Erreur lors de la connexion à la base de données de SERSE : veuillez contacter votre administrateur de service.";
+				request.setAttribute( "erreur", message );*/
 				String logError = e.getResultCode() + " " + e.getMessage();
 				System.out.println(logError);
 				e.printStackTrace();
 			} catch(IdentificationException e) {
-				message = "Erreur lors de l'identification.";
-				request.setAttribute( "erreur", message );
+				/*message = "Erreur lors de l'identification.";
+				request.setAttribute( "erreur", message );*/
 				String logError = e.getResultCode() + " " + e.getMessage();
 				System.out.println(logError);
 				e.printStackTrace();
 			}
-		}
-		
-		// Génération de la page suivante
-		try {
-			this.getServletContext().getRequestDispatcher( "/WEB-INF/accueil.jsp").forward( request, response );
-		} catch (ServletException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 	}
 }
