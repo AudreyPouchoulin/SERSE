@@ -101,7 +101,7 @@ public class UtilisateurController {
 				}
 
 				String token = genererToken(uidNumber);
-				Integer id = getUtilisateurIdFromUidLDAP(login);
+				Integer id = getUtilisateurIdFromLDAPInformation(nom, prenom);
 			
 			//Connexion à la base de données
 				bdd.startTransaction();
@@ -273,18 +273,23 @@ public class UtilisateurController {
 	}
 	
 	/**
-	 * Récupération de l'id d'un utilisateur connu dans la base de données depuis son uiD LDAP.
+	 * Récupération de l'id d'un utilisateur connu dans la base de données depuis son nom et prénom issus de LDAP.
 	 * (L'utilisateur doit déjà avoir été enregistré sur le système emploi du temps pour que le résultat soit non nul)
-	 * @param uid LDAP de l'utilisateur
+	 * @param nom de l'utilisateur
+	 * @param prénom de l'utilisateur
 	 * @return id de l'utilisateur dans la base de données SERSE, ou null si il n'est pas présent dans la base
 	 * @throws DatabaseException
 	 */
-	private Integer getUtilisateurIdFromUidLDAP(String uidLDAP) throws DatabaseException {
+	private Integer getUtilisateurIdFromLDAPInformation(String nom, String prenom) throws DatabaseException {
 		
 		try {
-			String request = "SELECT utilisateur_id FROM serse.utilisateur WHERE utilisateur_login=?";
+			String request = "SELECT utilisateur_id "
+					+ "FROM serse.utilisateur "
+					+ "WHERE utilisateur_nom=? "
+					+ "AND utilisateur_prenom=?";
 			PreparedStatement statement = bdd.getConnection().prepareStatement(request);
-			statement.setString(1, uidLDAP);
+			statement.setString(1, nom);
+			statement.setString(2, prenom);
 			
 			ResultSet results = statement.executeQuery();	
 			Integer id = null;

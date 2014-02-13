@@ -35,12 +35,13 @@ public class BddController {
 		try {
 			// Chargement du driver
 			Class.forName("org.postgresql.Driver");
-
-			// Création de l'url de connexion
+			
+			// Obtention des configurations pour la connexion
 			String url = ConfigurationController.getConfiguration(SerseConfiguration.PGSQL_JDBC_URL);
 			String user = ConfigurationController.getConfiguration(SerseConfiguration.PGSQL_USER);
 			String passwd = ConfigurationController.getConfiguration(SerseConfiguration.PGSQL_PASS);
-
+			System.out.println(url + " " + user + " " + passwd);
+				
 			// Connexion à la base de données
 			connection = DriverManager.getConnection(url, user, passwd);
 		} catch (Exception e) {
@@ -48,7 +49,6 @@ public class BddController {
 		}
 		return connection;
 	}
-	
 	
 	/**
 	 * Constructeur principale. Effectue une connection à la base de données

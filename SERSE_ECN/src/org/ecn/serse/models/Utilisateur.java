@@ -14,7 +14,7 @@ public class Utilisateur {
 	/** Nom de l'utilisateur */
 	private String nom;
 
-	/** Préom de l'utilisateur */
+	/** Prénom de l'utilisateur */
 	private String prenom;
 
 	/** Email de l'utilisateur */

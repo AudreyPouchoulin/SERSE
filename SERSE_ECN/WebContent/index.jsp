@@ -1,7 +1,7 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <html>
 	<head>
-		<meta charset="UTF-8">
+		<meta charset="utf-8" />
 		<title>SERSE</title>
 	</head>
 	
@@ -10,10 +10,7 @@
 		<p> Application de Soumission Electronique de Rapports de Séjours à l'Etranger </p>
 
 		<div id="formulaire_connexion">
-				<!-- IFrame recevant le résultat du formulaire pour pouvoir faire un submit -> le navigateur propose de mémoriser les identifiants -->
-				<iframe name="dummy_iframe" id="dummy_iframe" style="display: none"></iframe>
-					
-					<form method="post" action="templates/blank.html" target="dummy_iframe" id="form_connexion">
+					<form method="post" action="login">
 							<table id="table_connexion">
 								<tr>
 									<td><label for="txt_identifiant">Identifiant</label></td>
@@ -24,11 +21,6 @@
 									<td><input type="password" id="txt_password" name="password" size="30" placeholder="Votre mot de passe" /></td>
 								</tr>
 							</table>
-							
-							<div class="message_alerte" id="msg_erreur" style="display: none">Identifiants invalides</div>
-							
-							<div id="msg_connexion" style="display: none"><img class="img_baseline" src="img/spinner_chargement_outer_small.gif" alt="chargement" />Connexion...</div>
-							
 							<input type="submit" value="Connexion" id="buton_connexion" class="button" />
 					</form>
 		</div>
