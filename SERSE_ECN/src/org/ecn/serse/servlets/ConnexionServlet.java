@@ -26,7 +26,8 @@ import org.ecn.serse.models.Utilisateur;
  * @author Audrey
  */
 public class ConnexionServlet extends HttpServlet {
-
+	
+	// Test
 	private static final long serialVersionUID = -4108350698688202053L;
 	
 	/**
