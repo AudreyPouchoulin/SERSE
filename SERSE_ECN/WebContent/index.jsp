@@ -24,7 +24,7 @@
 									<td><input type="password" id="txt_password" name="password" size="30" placeholder="Votre mot de passe" /></td>
 								</tr>
 							</table>
-							<input type="submit" onclick='verifIdPassword();' value="Connexion" id="buton_connexion" class="button" />
+							<input type="submit" value="Connexion" id="buton_connexion" class="button" />
 					</form>
 		</div>
 		

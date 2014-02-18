@@ -45,13 +45,10 @@ public class ConnexionServlet extends HttpServlet {
 		// Identifiants passés en paramètre
 			String username = request.getParameter("username");
 			String password = request.getParameter("password");
-		
-		//Réponse
-			String message = "";
-		
+
 		// Paramètres incomplets
 		if(username.isEmpty() || password.isEmpty()) { 
-			message = "Identifiant et/ou mot de passe manquant";
+			String message = "Identifiant et/ou mot de passe manquant";
 			request.setAttribute( "erreur_information", message );
 			// Affichage de l'erreur sur la page de login
 			try {
@@ -70,8 +67,10 @@ public class ConnexionServlet extends HttpServlet {
 				Utilisateur utilisateur = utilisateurController.seConnecter(username, password);
 				
 				//Connexion réussie
-				message = "Vous êtes connecté en tant que " + utilisateur.getCategorie();
-				request.setAttribute( "type_connexion", message );
+				String prenomNom = utilisateur.getPrenom() + " " + utilisateur.getNom();
+				String role = utilisateur.getCategorie().toString();
+				request.setAttribute( "personne_connectee", prenomNom);
+				request.setAttribute( "type_connexion", role);
 				
 				bddController.close();
 				

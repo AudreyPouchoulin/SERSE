@@ -164,6 +164,20 @@ public class Utilisateur {
 	 * @author Audrey
 	 */
 	public static enum Categorie {
-		ETUDIANT, DRI, ADMINISTRATEUR, DRI_ADMIN, VISITEUR
+		ETUDIANT, DRI, ADMINISTRATEUR, DRI_ADMIN, VISITEUR;
+		
+		public String toString(){
+			if (this.equals(ETUDIANT)) {
+				return "étudiant";
+			} else if (this.equals(DRI)) {
+				return "membre des Relations Internationales";
+			} else if (this.equals(ADMINISTRATEUR)) {
+				return "administrateur";
+			} else if (this.equals(DRI_ADMIN)) {
+				return "administrateur et membre des Relations Internationales";
+			} else {
+				return "Categorie non définie";
+			}
+		}
 	}
 }

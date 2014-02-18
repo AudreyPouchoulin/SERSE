@@ -28,7 +28,16 @@ public class ContinentServlet extends HttpServlet {
 		try {
 			bddController = new BddController();
 			OptionsController optionsController = new OptionsController(bddController);
-			ArrayList<String> continents = optionsController.getContinents();
+			ArrayList<String> continents = optionsController.getContinents();	
+			request.setAttribute( "continents", continents);
+			
+			// Affichage du résultat dans la page
+			try {
+				this.getServletContext().getRequestDispatcher( "/WEB-INF/accueil.jsp").forward( request, response );
+			} catch (ServletException e) {
+				e.printStackTrace();
+			}
+			
 		} catch (DatabaseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
