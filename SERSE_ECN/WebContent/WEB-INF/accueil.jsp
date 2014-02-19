@@ -7,9 +7,22 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>SERSE</title>
 	</head>
-	
-	<script type="text/javascript" src="scripts/XMLHttpRequest.js"></script>
-	<script type="text/javascript" src="scripts/recherche.js"></script>
+
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script src="scripts/recherche.js"></script>
+	<script>
+	$(document).ready(function() { 
+        $.post('ContinentServlet',null,function(responseJson) {  
+	            var $select = $('#continent'); 
+	            $select.find('option').remove();
+	            $select.find('option').remove(); 
+	            $select.append('<option value="'+ 0 +'">'+ 'Choose a continent' +'</option>');
+            	$.each(responseJson, function(key, value) {               
+                	$('<option>').val(key).text(value).appendTo($select); 
+             });
+        });
+ });
+	</script>
 
 	<body>
 		<p>
@@ -21,18 +34,9 @@
 		</p>
 			
 			
-			<select name="Continent" id="continent" onclick="getContinents();">
-				<option value="Choose a continent" selected="selected">Choose a continent with javascript ajax</option>
+			<select name="Continent" id="continent"">
+				<!-- options are filled by AJAX -->
 			</select>	
 			
-			<% 
-					ArrayList<String> listeContinents =  new ArrayList<String>();
-					listeContinents = (ArrayList<String>) request.getAttribute("continents");
-					if (listeContinents!=null){
-						for (int i=0; i<listeContinents.size(); i++){
-							out.println(listeContinents.get(i));
-						}
-					}
-				%>		
 	</body>
 </html>

@@ -7,7 +7,8 @@ package org.ecn.serse.controllers;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 import org.ecn.serse.exceptions.DatabaseException;
 
@@ -34,16 +35,17 @@ public class OptionsController {
 	 * @throws DatabaseException
 	 * @throws SQLException
 	 */
-	public ArrayList<String> getContinents() throws DatabaseException, SQLException{
-		ArrayList<String> listeContinents = new ArrayList<String>();
+	public Map<String, String> getContinents() throws DatabaseException, SQLException{
+		Map<String, String> listeContinents = new LinkedHashMap<String, String>();
 		
 		ResultSet resultSet = bdd.executeRequest(
 				"SELECT continent_nom "
-				+ "FROM serse.continent;");
-		
-		int i = 0;
+				+ "FROM serse.continent "
+				+ "ORDER BY continent_nom;");
+	
+		int i = 1;
 		while(resultSet.next()){
-			listeContinents.add(resultSet.getString(i));
+			listeContinents.put(Integer.toString(i), resultSet.getString(1));
 			i++;
 		}
 		

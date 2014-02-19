@@ -2,7 +2,7 @@ package org.ecn.serse.servlets;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.ecn.serse.controllers.BddController;
 import org.ecn.serse.controllers.OptionsController;
 import org.ecn.serse.exceptions.DatabaseException;
+
+import com.google.gson.Gson;
 
 /**
  * Servlet implementation class ContinentServlet
@@ -28,16 +30,11 @@ public class ContinentServlet extends HttpServlet {
 		try {
 			bddController = new BddController();
 			OptionsController optionsController = new OptionsController(bddController);
-			ArrayList<String> continents = optionsController.getContinents();	
-			request.setAttribute( "continents", continents);
-			
-			// Affichage du résultat dans la page
-			try {
-				this.getServletContext().getRequestDispatcher( "/WEB-INF/accueil.jsp").forward( request, response );
-			} catch (ServletException e) {
-				e.printStackTrace();
-			}
-			
+			Map<String, String> continents = optionsController.getContinents();	
+			String jsonResponse = new Gson().toJson(continents);
+			response.setContentType("application/json");
+		    response.setCharacterEncoding("UTF-8");
+		    response.getWriter().write(jsonResponse);
 		} catch (DatabaseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
