@@ -51,15 +51,21 @@ public class OptionsServlet extends HttpServlet {
 					sendOptions(universites, response);
 					break;
 				case "domaine d'activité":
-					ArrayList<String> domainesActivite = optionsController.getDomaines();
+					ArrayList<String> domainesActivite = optionsController.getDomainesActivite();
 					sendOptions(domainesActivite, response);
 					break;
 				case "langue":
 					ArrayList<String> langues = optionsController.getLangues();
 					sendOptions(langues, response);
 					break;
-				case "annee":
 				default:
+					Map<String, String> erreur = new LinkedHashMap<String, String>();
+					erreur.put(Integer.toString(1), "Problem when calling for filling the lists");
+					String jsonResponse = new Gson().toJson(erreur);
+					response.setContentType("application/json");
+				    response.setCharacterEncoding("UTF-8");
+				    response.getWriter().write(jsonResponse);
+					
 			}
 		} catch (DatabaseException e) {
 			// TODO Auto-generated catch block

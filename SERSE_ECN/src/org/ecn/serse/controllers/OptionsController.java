@@ -69,5 +69,89 @@ public class OptionsController {
 		
 		return listePays;
 	}
+	
+	/**
+	 * Permet d'obtenir l'ensemble des pays possibles
+	 * @return liste de pays en base de données
+	 * @throws DatabaseException
+	 * @throws SQLException
+	 */
+	public ArrayList<String> getVilles() throws DatabaseException, SQLException{
+		ArrayList<String> listePays = new ArrayList<String>();
+		
+		ResultSet resultSet = bdd.executeRequest(
+				"SELECT pays_nom "
+				+ "FROM serse.pays "
+				+ "ORDER BY pays_nom;");
+	
+		while(resultSet.next()){
+			listePays.add(resultSet.getString(1));
+		}
+		
+		return listePays;
+	}
+	
+	/**
+	 * Permet d'obtenir l'ensemble des pays possibles
+	 * @return liste de pays en base de données
+	 * @throws DatabaseException
+	 * @throws SQLException
+	 */
+	public ArrayList<String> getUniversites() throws DatabaseException, SQLException{
+		ArrayList<String> listePays = new ArrayList<String>();
+		
+		ResultSet resultSet = bdd.executeRequest(
+				"SELECT pays_nom "
+				+ "FROM serse.pays "
+				+ "ORDER BY pays_nom;");
+	
+		while(resultSet.next()){
+			listePays.add(resultSet.getString(1));
+		}
+		
+		return listePays;
+	}
+	
+	/**
+	 * Permet d'obtenir l'ensemble des pays possibles
+	 * @return liste de pays en base de données
+	 * @throws DatabaseException
+	 * @throws SQLException
+	 */
+	public ArrayList<String> getDomainesActivite() throws DatabaseException, SQLException{
+		ArrayList<String> listePays = new ArrayList<String>();
+		
+		ResultSet resultSet = bdd.executeRequest(
+				"SELECT pays_nom "
+				+ "FROM serse.pays "
+				+ "ORDER BY pays_nom;");
+	
+		while(resultSet.next()){
+			listePays.add(resultSet.getString(1));
+		}
+		
+		return listePays;
+	}
+	
+	/**
+	 * Permet d'obtenir l'ensemble des pays possibles
+	 * @return liste de pays en base de données
+	 * @throws DatabaseException
+	 * @throws SQLException
+	 */
+	public ArrayList<String> getLangues() throws DatabaseException, SQLException{
+		ArrayList<String> listePays = new ArrayList<String>();
+		
+		ResultSet resultSet = bdd.executeRequest(
+				"SELECT pays_nom "
+				+ "FROM serse.pays "
+				+ "ORDER BY pays_nom;");
+	
+		while(resultSet.next()){
+			listePays.add(resultSet.getString(1));
+		}
+		
+		return listePays;
+	}
 
 }
