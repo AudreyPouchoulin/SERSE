@@ -36,7 +36,6 @@ public class OptionsController {
 	 */
 	public ArrayList<String> getContinents() throws DatabaseException, SQLException{
 		ArrayList<String> listeContinents = new ArrayList<String>();
-		
 		ResultSet resultSet = bdd.executeRequest(
 				"SELECT continent_nom "
 				+ "FROM serse.continent "
@@ -44,8 +43,7 @@ public class OptionsController {
 	
 		while(resultSet.next()){
 			listeContinents.add(resultSet.getString(1));
-		}
-		
+		}	
 		return listeContinents;
 	}
 	
@@ -57,101 +55,86 @@ public class OptionsController {
 	 */
 	public ArrayList<String> getPays() throws DatabaseException, SQLException{
 		ArrayList<String> listePays = new ArrayList<String>();
-		
 		ResultSet resultSet = bdd.executeRequest(
 				"SELECT pays_nom "
 				+ "FROM serse.pays "
 				+ "ORDER BY pays_nom;");
-	
 		while(resultSet.next()){
 			listePays.add(resultSet.getString(1));
 		}
-		
 		return listePays;
 	}
 	
 	/**
-	 * Permet d'obtenir l'ensemble des pays possibles
-	 * @return liste de pays en base de données
+	 * Permet d'obtenir l'ensemble des villes possibles
+	 * @return liste de villes en base de données
 	 * @throws DatabaseException
 	 * @throws SQLException
 	 */
 	public ArrayList<String> getVilles() throws DatabaseException, SQLException{
-		ArrayList<String> listePays = new ArrayList<String>();
-		
+		ArrayList<String> listeVilles = new ArrayList<String>();
 		ResultSet resultSet = bdd.executeRequest(
-				"SELECT pays_nom "
-				+ "FROM serse.pays "
-				+ "ORDER BY pays_nom;");
-	
+				"SELECT ville_nom "
+				+ "FROM serse.ville "
+				+ "ORDER BY ville_nom;");
 		while(resultSet.next()){
-			listePays.add(resultSet.getString(1));
+			listeVilles.add(resultSet.getString(1));
 		}
-		
-		return listePays;
+		return listeVilles;
 	}
 	
 	/**
-	 * Permet d'obtenir l'ensemble des pays possibles
-	 * @return liste de pays en base de données
+	 * Permet d'obtenir l'ensemble des universites possibles
+	 * @return liste d'universités en base de données
 	 * @throws DatabaseException
 	 * @throws SQLException
 	 */
 	public ArrayList<String> getUniversites() throws DatabaseException, SQLException{
-		ArrayList<String> listePays = new ArrayList<String>();
-		
+		ArrayList<String> listeUniversites = new ArrayList<String>();
 		ResultSet resultSet = bdd.executeRequest(
-				"SELECT pays_nom "
-				+ "FROM serse.pays "
-				+ "ORDER BY pays_nom;");
-	
+				"SELECT universite_nom "
+				+ "FROM serse.universite "
+				+ "ORDER BY universite_nom;");
 		while(resultSet.next()){
-			listePays.add(resultSet.getString(1));
+			listeUniversites.add(resultSet.getString(1));
 		}
-		
-		return listePays;
+		return listeUniversites;
 	}
 	
 	/**
-	 * Permet d'obtenir l'ensemble des pays possibles
-	 * @return liste de pays en base de données
+	 * Permet d'obtenir l'ensemble des domaines d'activité possibles
+	 * @return liste de domaines d'activité en base de données
 	 * @throws DatabaseException
 	 * @throws SQLException
 	 */
 	public ArrayList<String> getDomainesActivite() throws DatabaseException, SQLException{
-		ArrayList<String> listePays = new ArrayList<String>();
-		
+		ArrayList<String> listeDomainesActivite = new ArrayList<String>();
 		ResultSet resultSet = bdd.executeRequest(
-				"SELECT pays_nom "
-				+ "FROM serse.pays "
-				+ "ORDER BY pays_nom;");
-	
+				"SELECT domaineactivite_libelle "
+				+ "FROM serse.domaineactivite "
+				+ "ORDER BY domaineactivite_libelle;");
 		while(resultSet.next()){
-			listePays.add(resultSet.getString(1));
+			listeDomainesActivite.add(resultSet.getString(1));
 		}
-		
-		return listePays;
+		return listeDomainesActivite;
 	}
 	
 	/**
-	 * Permet d'obtenir l'ensemble des pays possibles
-	 * @return liste de pays en base de données
+	 * Permet d'obtenir l'ensemble des langues possibles
+	 * @return liste de langues en base de données
 	 * @throws DatabaseException
 	 * @throws SQLException
 	 */
 	public ArrayList<String> getLangues() throws DatabaseException, SQLException{
-		ArrayList<String> listePays = new ArrayList<String>();
-		
+		ArrayList<String> listeLangues = new ArrayList<String>();
 		ResultSet resultSet = bdd.executeRequest(
-				"SELECT pays_nom "
-				+ "FROM serse.pays "
-				+ "ORDER BY pays_nom;");
-	
+				"SELECT langue_nom "
+				+ "FROM serse.langue "
+				+ "ORDER BY langue_nom;");
 		while(resultSet.next()){
-			listePays.add(resultSet.getString(1));
+			listeLangues.add(resultSet.getString(1));
 		}
-		
-		return listePays;
+		return listeLangues;
 	}
 
 }
