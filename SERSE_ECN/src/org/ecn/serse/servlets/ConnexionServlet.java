@@ -17,7 +17,6 @@ import org.ecn.serse.controllers.BddController;
 import org.ecn.serse.controllers.UtilisateurController;
 import org.ecn.serse.exceptions.DatabaseException;
 import org.ecn.serse.exceptions.IdentificationException;
-import org.ecn.serse.exceptions.ResultCode;
 import org.ecn.serse.models.Utilisateur;
 
 /**

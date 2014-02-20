@@ -7,8 +7,7 @@ package org.ecn.serse.controllers;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.ArrayList;
 
 import org.ecn.serse.exceptions.DatabaseException;
 
@@ -35,22 +34,40 @@ public class OptionsController {
 	 * @throws DatabaseException
 	 * @throws SQLException
 	 */
-	public Map<String, String> getContinents() throws DatabaseException, SQLException{
-		Map<String, String> listeContinents = new LinkedHashMap<String, String>();
+	public ArrayList<String> getContinents() throws DatabaseException, SQLException{
+		ArrayList<String> listeContinents = new ArrayList<String>();
 		
 		ResultSet resultSet = bdd.executeRequest(
 				"SELECT continent_nom "
 				+ "FROM serse.continent "
 				+ "ORDER BY continent_nom;");
 	
-		int i = 1;
 		while(resultSet.next()){
-			listeContinents.put(Integer.toString(i), resultSet.getString(1));
-			i++;
+			listeContinents.add(resultSet.getString(1));
 		}
 		
 		return listeContinents;
+	}
+	
+	/**
+	 * Permet d'obtenir l'ensemble des pays possibles
+	 * @return liste de pays en base de données
+	 * @throws DatabaseException
+	 * @throws SQLException
+	 */
+	public ArrayList<String> getPays() throws DatabaseException, SQLException{
+		ArrayList<String> listePays = new ArrayList<String>();
 		
+		ResultSet resultSet = bdd.executeRequest(
+				"SELECT pays_nom "
+				+ "FROM serse.pays "
+				+ "ORDER BY pays_nom;");
+	
+		while(resultSet.next()){
+			listePays.add(resultSet.getString(1));
+		}
+		
+		return listePays;
 	}
 
 }

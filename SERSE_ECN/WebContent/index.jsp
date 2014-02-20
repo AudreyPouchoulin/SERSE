@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<link rel="stylesheet" type="text/css" href="serse_main.css" />
-		<title>SERSE</title>				<!-- titre de la page web-->
+		<title>SERSE</title>
 	</head>
 	
 	<body>
@@ -13,7 +13,7 @@
 
 		<!-- formulaire: identifiant +  mot de passe + bouton connxeion-->
 		<div id="formulaire_connexion">
-					<form method="post" action="login">
+					<form method="post" action="ConnexionServlet">
 							<table id="table_connexion">
 								<tr>
 									<td><label for="txt_identifiant">Identifiant</label></td>

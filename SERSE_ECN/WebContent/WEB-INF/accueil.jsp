@@ -12,7 +12,7 @@
 	<script src="scripts/recherche.js"></script>
 	<script>
 	$(document).ready(function() { 
-        $.post('ContinentServlet',null,function(responseJson) {  
+        $.post('OptionsServlet',{nom_liste:'continent'},function(responseJson) {  
 	            var $select = $('#continent'); 
 	            $select.find('option').remove();
 	            $select.find('option').remove(); 

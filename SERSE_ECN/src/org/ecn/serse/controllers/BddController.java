@@ -41,7 +41,6 @@ public class BddController {
 			String url = ConfigurationController.getConfiguration(SerseConfiguration.PGSQL_JDBC_URL);
 			String user = ConfigurationController.getConfiguration(SerseConfiguration.PGSQL_USER);
 			String passwd = ConfigurationController.getConfiguration(SerseConfiguration.PGSQL_PASS);
-			System.out.println(url + " " + user + " " + passwd);
 				
 			// Connexion à la base de données
 			connection = DriverManager.getConnection(url, user, passwd);

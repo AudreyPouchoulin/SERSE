@@ -5,12 +5,12 @@
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
   <servlet>
-    <servlet-name>Connexion</servlet-name>
+    <servlet-name>ConnexionServlet</servlet-name>
     <servlet-class>org.ecn.serse.servlets.ConnexionServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>Connexion</servlet-name>
-    <url-pattern>/login</url-pattern>
+    <servlet-name>ConnexionServlet</servlet-name>
+    <url-pattern>/ConnexionServlet</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -24,12 +24,12 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>ContinentServlet</display-name>
-    <servlet-name>ContinentServlet</servlet-name>
-    <servlet-class>org.ecn.serse.servlets.ContinentServlet</servlet-class>
+    <display-name>OptionsServlet</display-name>
+    <servlet-name>OptionsServlet</servlet-name>
+    <servlet-class>org.ecn.serse.servlets.OptionsServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ContinentServlet</servlet-name>
-    <url-pattern>/ContinentServlet</url-pattern>
+    <servlet-name>OptionsServlet</servlet-name>
+    <url-pattern>/OptionsServlet</url-pattern>
   </servlet-mapping>
 </web-app>
