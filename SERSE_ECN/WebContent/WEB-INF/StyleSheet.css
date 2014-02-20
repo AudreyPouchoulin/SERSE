@@ -1,0 +1,79 @@
+
+
+body { 
+color : #081038; 
+font-family : Arial, Helvetica, sans-serif; 
+font-size : 12px; 
+scrollbar-3d-light-color : #000000; 
+scrollbar-arrow-color : #000000; 
+scrollbar-base-color : #888888; 
+scrollbar-dark-shadow-color : #000000; 
+scrollbar-face-color : #787878; 
+scrollbar-highlight-color : #000000; 
+scrollbar-shadow-color : #ffffff; 
+} 
+
+fieldset{
+-moz-border-radius:8px;
+-webkit-border-radius:8px;	
+border-radius:8px;
+}
+
+
+h1{
+	color : #081038;
+}
+
+
+table, tr, td, th{
+	border-collapse: collapse;
+	border: 1px solid #778899;
+}
+
+#invisibleTable
+{
+	border: #000000;
+}
+
+#menu
+{
+        border-bottom : 1px solid #9EA0A1;
+        padding-bottom : 25px;
+}
+
+#onglets
+{
+    position : absolute;
+    border : 1px solid transparent;
+    padding : 0;
+    font : 15px Helvetica, sans-serif;
+    list-style-type : none;
+    left : 5px;
+    margin-top : 0;
+	margin-left : 0;
+    width : 1200px;
+		
+}
+
+#onglets li
+{
+    float : left;
+    height : 20px; 
+    background-color: #DCDCDC;
+    margin : 2px 2px 0 2px !important;  /* Pour les navigateurs autre que IE */
+    margin : 1px 2px 0 2px;  /* Pour IE  */
+    border : 1px solid #9EA0A1;
+	width: 130px;
+	text-align: center;
+}
+
+#onglets li.active
+{
+    border-bottom: 1px solid #fff;
+    background-color : #FFFFFF;
+}
+
+#onglets a:hover
+{
+    background : #fff;
+}
