@@ -13,7 +13,7 @@
 
 		<!-- formulaire: identifiant +  mot de passe + bouton connxeion-->
 		<div id="formulaire_connexion">
-					<form method="post" action="ConnexionServlet">
+					<form method="post" action="Accueil">
 							<table id="table_connexion">
 								<tr>
 									<td><label for="txt_identifiant">Identifiant</label></td>

@@ -36,27 +36,29 @@ public class OptionsServlet extends HttpServlet {
 			switch (nomListe){
 				case "continent":
 					ArrayList<String> continents = optionsController.getContinents();
-					sendOptions(continents, response);
+					sendOptions(continents, "Tous les continents", response);
 					break;
 				case "pays":
 					ArrayList<String> pays = optionsController.getPays();
-					sendOptions(pays, response);
+					sendOptions(pays, "Tous les pays", response);
 					break;
 				case "ville":
 					ArrayList<String> villes = optionsController.getVilles();
-					sendOptions(villes, response);
+					sendOptions(villes, "Toutes les villes", response);
 					break;
-				case "université":
+				case "université et entreprise":
 					ArrayList<String> universites = optionsController.getUniversites();
-					sendOptions(universites, response);
+					ArrayList<String> entreprises = optionsController.getEntreprises();
+					//TODO: ajouter les entreprises à la liste
+					sendOptions(universites, "Toutes les universités et entreprises", response);
 					break;
-				case "domaine d'activité":
+				case "domaine":
 					ArrayList<String> domainesActivite = optionsController.getDomainesActivite();
-					sendOptions(domainesActivite, response);
+					sendOptions(domainesActivite, "Tous les domaines d'activité", response);
 					break;
 				case "langue":
 					ArrayList<String> langues = optionsController.getLangues();
-					sendOptions(langues, response);
+					sendOptions(langues, "Toutes les langues", response);
 					break;
 				default:
 					Map<String, String> erreur = new LinkedHashMap<String, String>();
@@ -77,8 +79,9 @@ public class OptionsServlet extends HttpServlet {
 		
 	}
 	
-	private void sendOptions(ArrayList<String> listeObjets, HttpServletResponse response) throws IOException  {
+	private void sendOptions(ArrayList<String> listeObjets, String messageDefaut, HttpServletResponse response) throws IOException  {
 		Map<String, String> listeOptions = new LinkedHashMap<>();
+		listeOptions.put(Integer.toString(0), messageDefaut);
 		for (int i=0; i<listeObjets.size(); i++){
 			listeOptions.put(Integer.toString(i+1), listeObjets.get(i));
 		}

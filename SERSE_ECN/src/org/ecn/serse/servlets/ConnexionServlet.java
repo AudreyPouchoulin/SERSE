@@ -68,14 +68,25 @@ public class ConnexionServlet extends HttpServlet {
 				//Connexion réussie
 				String prenomNom = utilisateur.getPrenom() + " " + utilisateur.getNom();
 				String role = utilisateur.getCategorie().toString();
-				request.setAttribute( "personne_connectee", prenomNom);
-				request.setAttribute( "type_connexion", role);
+				String message = "Bienvenue " + prenomNom + ", vous êtes connecté comme " + role + ".";
+				request.setAttribute( "message_bienvenue", message);
 				
 				bddController.close();
 				
 				// Affichage de la page suivante
 				try {
-					this.getServletContext().getRequestDispatcher( "/WEB-INF/accueil.jsp").forward( request, response );
+					switch (utilisateur.getCategorie()){
+					case ETUDIANT:
+						this.getServletContext().getRequestDispatcher( "/WEB-INF/AccueilEtudiants.jsp").forward( request, response );
+						break;
+					case DRI:
+						this.getServletContext().getRequestDispatcher( "/WEB-INF/AccueilDri.jsp").forward( request, response );
+						break;
+					default:
+						this.getServletContext().getRequestDispatcher( "/WEB-INF/AccueilAdmin.jsp").forward( request, response );
+						break;
+					}
+					
 				} catch (ServletException e) {
 					e.printStackTrace();
 				}
@@ -92,6 +103,39 @@ public class ConnexionServlet extends HttpServlet {
 				System.out.println(logError);
 				e.printStackTrace();
 			}
+		}
+	}
+	
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		try {
+			String token = request.getParameter("token_connexion");
+			String categorieUtilisateur = request.getParameter("utilisateur");
+			if (categorieUtilisateur==null){
+				//TODO: erreur
+				this.getServletContext().getRequestDispatcher( "/WEB-INF/AccueilEtudiants.jsp").forward( request, response );
+			} else {
+				switch (categorieUtilisateur){
+					case "étudiant":
+						this.getServletContext().getRequestDispatcher( "/WEB-INF/AccueilEtudiants.jsp").forward( request, response );
+						break;
+					case "admin":
+						this.getServletContext().getRequestDispatcher( "/WEB-INF/AccueilAdmin.jsp").forward( request, response );
+						break;
+					case "dri":
+						this.getServletContext().getRequestDispatcher( "/WEB-INF/AccueilDri.jsp").forward( request, response );
+						break;
+					case "admin_dri":
+						this.getServletContext().getRequestDispatcher( "/WEB-INF/AccueilAdminDri.jsp").forward( request, response );
+						break;
+					default:
+						//TODO: erreur
+				}
+			}
+		} catch (ServletException e) {
+			e.printStackTrace();
 		}
 	}
 }

@@ -102,6 +102,24 @@ public class OptionsController {
 	}
 	
 	/**
+	 * Permet d'obtenir l'ensemble des entreprises possibles
+	 * @return liste des entreprises en base de données
+	 * @throws DatabaseException
+	 * @throws SQLException
+	 */
+	public ArrayList<String> getEntreprises() throws DatabaseException, SQLException{
+		ArrayList<String> listeEntreprises = new ArrayList<String>();
+		ResultSet resultSet = bdd.executeRequest(
+				"SELECT entreprise_nom "
+				+ "FROM serse.entreprise "
+				+ "ORDER BY entreprise_nom;");
+		while(resultSet.next()){
+			listeEntreprises.add(resultSet.getString(1));
+		}
+		return listeEntreprises;
+	}
+	
+	/**
 	 * Permet d'obtenir l'ensemble des domaines d'activité possibles
 	 * @return liste de domaines d'activité en base de données
 	 * @throws DatabaseException

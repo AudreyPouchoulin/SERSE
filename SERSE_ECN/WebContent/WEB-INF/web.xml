@@ -10,7 +10,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>ConnexionServlet</servlet-name>
-    <url-pattern>/ConnexionServlet</url-pattern>
+    <url-pattern>/Accueil</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -31,5 +31,35 @@
   <servlet-mapping>
     <servlet-name>OptionsServlet</servlet-name>
     <url-pattern>/OptionsServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AccesRapportServlet</display-name>
+    <servlet-name>AccesRapportServlet</servlet-name>
+    <servlet-class>org.ecn.serse.servlets.AccesRapportServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AccesRapportServlet</servlet-name>
+    <url-pattern>/Recherche</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MesRapportsServlet</display-name>
+    <servlet-name>MesRapportsServlet</servlet-name>
+    <servlet-class>org.ecn.serse.servlets.MesRapportsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MesRapportsServlet</servlet-name>
+    <url-pattern>/MesRapports</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AccueilServlet</display-name>
+    <servlet-name>AccueilServlet</servlet-name>
+    <servlet-class>org.ecn.serse.servlets.AccueilServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AccueilServlet</servlet-name>
+    <url-pattern>/AccueilServlet</url-pattern>
   </servlet-mapping>
 </web-app>

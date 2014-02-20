@@ -1,9 +1,13 @@
 ﻿<!-- 
  Utilisateurs : Etudiants
  Page : Recherche de Rapports
- Date cr�ation : 14/02/2014
+ Date création : 14/02/2014
 -->
 
+<%@ page language="java" 
+	contentType="text/html; charset=UTF-8" 
+	pageEncoding="UTF-8"%>
+	
 <html>
 	<head>
 		<meta charset="utf-8" />
@@ -11,24 +15,84 @@
 		<LINK type="text/css/html" rel="stylesheet" media="all" title="CSS" href="StyleSheet.css" />
 	</head>
 
-	<body>
-	
-		<h1><center>SERSE</center></h1>
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script>
+		$(document).ready(function() { 
+			// remplissage de la liste déroulante de continents
+	        $.post('OptionsServlet',{nom_liste:'continent'},function(responseJson) {  
+		            var $select = $('#continent'); 
+		            $select.find('option').remove();
+	            	$.each(responseJson, function(key, value) {               
+	                	$('<option>').val(key).text(value).appendTo($select); 
+	             });
+	        });
+			
+	     	// remplissage de la liste déroulante de pays
+	        $.post('OptionsServlet',{nom_liste:'pays'},function(responseJson) {  
+		            var $select = $('#pays'); 
+		            $select.find('option').remove();
+	            	$.each(responseJson, function(key, value) {               
+	                	$('<option>').val(key).text(value).appendTo($select); 
+	             });
+	        });
+	     	
+	     // remplissage de la liste déroulante de villes
+	        $.post('OptionsServlet',{nom_liste:'ville'},function(responseJson) {  
+		            var $select = $('#ville'); 
+		            $select.find('option').remove();
+	            	$.each(responseJson, function(key, value) {               
+	                	$('<option>').val(key).text(value).appendTo($select); 
+	             });
+	        });
+	     
+	     // remplissage de la liste déroulante d'universités et entreprises
+	        $.post('OptionsServlet',{nom_liste:'université et entreprise'},function(responseJson) {  
+		            var $select = $('#universite_entreprise'); 
+		            $select.find('option').remove();
+	            	$.each(responseJson, function(key, value) {               
+	                	$('<option>').val(key).text(value).appendTo($select); 
+	             });
+	        });
+	     
+	     // remplissage de la liste déroulante des domaines d'activité
+	        $.post('OptionsServlet',{nom_liste:'domaine'},function(responseJson) {  
+		            var $select = $('#domaine'); 
+		            $select.find('option').remove();
+	            	$.each(responseJson, function(key, value) {               
+	                	$('<option>').val(key).text(value).appendTo($select); 
+	             });
+	        });
+	     
+	     // remplissage de la liste déroulante des langues
+	        $.post('OptionsServlet',{nom_liste:'langue'},function(responseJson) {  
+		            var $select = $('#langue'); 
+		            $select.find('option').remove();
+	            	$.each(responseJson, function(key, value) {               
+	                	$('<option>').val(key).text(value).appendTo($select); 
+	             });
+	        });
+	 });
+	</script>
 
-		<!-- Onglets du menu de navigation -->
-		<div id="menu">
-		  <ul id="onglets">
-			<li><a href="AccueilEtudiants.html"> Accueil </a></li>
-		   <!-- Liens a completer au fur et a mesure -->
-			<li class="active"><a href="AccesRapportsEtudiants.html"> Acces aux rapports </a></li>
-			<li><a href="MesRapportsEtudiants.html"> Mes Rapports </a></li>
-		  </ul>
-		</div>
+	<body>
+		<p>
+			<% 
+				String message = (String) request.getAttribute("message_bienvenue");
+				out.println(message);
+			%>
+		</p>
+	
+		<h1>SERSE</h1>
 		
-		
 		<!-- Onglets du menu de navigation -->
-		<!-- Nom de la methode a changer -->
-		<form method="post" action="traitement.php" name='form1' >
+			<div id="menu">
+				 <ul id="onglets">
+					 <!-- Liens a completer au fur et a mesure -->
+					<li ><a href="Accueil"> Accueil </a></li>
+					<li class="active"><a href="Recherche"> Acces aux rapports </a></li>
+					<li><a href="MesRapports" href="#"> Mes Rapports </a></li>
+				 </ul>
+			</div>
 
 		<!-- paragraphe "Criteres de recherche"-->
 		<p>
@@ -44,47 +108,32 @@
 			<h3> <legend>Continent Pays, Ville</legend> <Criteres de recherche> </h3>
 				<!-- "Continent"-->
 						<p>
-						<select name="continent" id="continent" onChange="viewOthers()" />
-							
-							<option value="Choisissez un continent" selected="selected">Choisissez un continent</option>
-			 
-							<option value="Afrique">Afrique</option>
-							<option value="Amerique">Amerique</option>
-							<option value="Amerique">Asie</option>
-							<option value="Europe">Europe</option>
-							<option value="Oceanie">Oceanie</option>
-												
+						<select name="continent" id="continent"/>
+							<option value="Tous les continents" selected="selected">Tous les continents</option>
+							<!-- options are filled by AJAJ -->						
 						</select>
 						</p>
 						
 				<!-- "Pays"-->
 						<p>
-						<select name="pays" id="pays" onChange="viewOthers()" />
-							<option value="Choississez un pays" selected="selected">Choississez un pays</option>
-							<option value="Belgique">Belgique</option> 
-							<option value="France ">France</option>
-							<option value="Royaume-Unie ">Royaume-Uni</option>
-							<option value="Ukraine">Ukraine</option> 
-
+						<select name="pays" id="pays" />
+							<option value="Tous les pays" selected="selected">Tous les pays</option>
+							<!-- options are filled by AJAJ -->	
 						</select>
 						</p>
 
 				<!-- "Ville"-->
 						<p>
-						<select name="ville" id="ville" onChange="viewOthers()" />
-							<option value="Choississez une ville" selected="selected">Choississez une ville</option>
-							<option value="Paris ">Londres</option>
-							<option value="Kiev">Bristol</option> 
-							<option value="Bamako">Durham</option> 
-							<option value="New York">Manchester</option> 
-							<option value="Toronto">Nothingham</option> 
+						<select name="ville" id="ville"/>
+							<option value="Toutes les villes" selected="selected">Toutes les villes</option>
+								<!-- options are filled by AJAJ -->
 						</select>
 						</p>
 			</fieldset>
 			</p>
 			
 			
-			<!-- Sous-paragraphe S�jour"-->
+			<!-- Sous-paragraphe Séjour"-->
 			<p>
 			<fieldset>
 				<h2> <legend>Sejour</legend> <Sejour> </h2>
@@ -141,55 +190,33 @@
 				<h2> <legend>Autres</legend> <Cadre de mobilite> </h2>
 				<p>
 				<!-- Universites/Entreprises -->
-				<select name="universite" id="universite" onChange="viewOthers()" />
-							
-					<option value="Toutes les universites/entreprises" selected="selected">Toutes les universites/entreprises</option>
-			 
-					<option value="Columbia">King's College</option>
-					<option value="London School of Economics">London School of Economics</option>
-					<option value="University of Toronto">University College London</option>
-					<option value="Universite de Kiev">Imperial College London</option>
-					<option value="Universite de Kiev">UCASS</option>
-												
+				<select name="universite" id="universite_entreprise"/>
+					<option value="Toutes les universités et entreprises" selected="selected">Toutes les universités et entreprises</option>
+					<!-- options are filled by AJAJ -->						
 				</select>
 				</p>
 				
 				<!-- Langues -->
-				<select name="langue" id="langue" onChange="viewOthers()" />
-							
+				<select name="langue" id="langue"/>
 					<option value="Toutes les langues" selected="selected">Toutes les langues</option>
-			 
-					<option value="anglais">Anglais</option>
-					<option value="francais">Francais</option>
-					<option value="russe">Russe</option>
-					<option value="Espagnol">Espagnol</option>
-												
+						<!-- options are filled by AJAJ -->							
 				</select>
 								
 				<!-- Domaine d activites -->
 				<p>
-				<select name="domaine" id="domaine" onChange="viewOthers()" />
-							
-					<option value="Tous les domaines" selected="selected">Tous les domaines</option>
-			 
-					<option value="Genie Civil">Genie Civil</option>
-					<option value="Aeronautique">Aeronautique</option>
-					<option value="Finance">Finance</option>
-					<option value="Finance">Management</option>
-					<option value="Informatique">Informatique</option>
-												
+				<select name="domaine" id="domaine" />	
+					<option value="Tous les domaines d'activités" selected="selected">Tous les domaines d'activité</option>
+					<!-- options are filled by AJAJ -->	
 				</select>
 				</p>
 				
 				<!-- Tous les rapports -->
 				<p>
-				<select name="annee" id="rapport" onChange="viewOthers()" />
-							
+				<select name="annee" id="annee"/>
 					<option value="Tous les rapports" selected="selected">Tous les rapports</option>
-			 
 					<option value="2013-2014">2013-2014</option>
 					<option value="2011-2012">2011-2012</option>	
-					<option value="2009-2010">2009-2010</option>	
+					<option value="2009-2010">2009-2010</option>		
 				</select>
 				</p>
 			</fieldset>
@@ -207,11 +234,11 @@
 							
 			<option value="Resutalts par page" selected="selected">Resultats pas page</option>
 			 
-			<option value="10resultats">10 R�sultats</option>
-			<option value="20resultats">20 R�sultats</option>
-			<option value="30resultats">30 R�sultats</option>
-			<option value="40resultats">40 R�sultats</option>
-			<option value="50resultats">50 R�sultats</option>
+			<option value="10resultats">10 R�sultats</option>
+			<option value="20resultats">20 R�sultats</option>
+			<option value="30resultats">30 R�sultats</option>
+			<option value="40resultats">40 R�sultats</option>
+			<option value="50resultats">50 R�sultats</option>
 
 		</select>
 		</p>

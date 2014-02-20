@@ -1,24 +1,36 @@
 <!-- 
  Utilisateurs : Etudiants
- Page : Soumission de rapport
+ Page : Accueil
  Date création : 19/02/2014
 -->
 
+<%@ page language="java" 
+	contentType="text/html; charset=UTF-8" 
+	pageEncoding="UTF-8"%>
+
 <html>
 	<head>
-		<meta charset="utf-8" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>SERSE Soumission de Rapports</title>
 		<LINK type="text/css/html" rel="stylesheet" media="all" title="CSS" href="StyleSheet1.css" />
 	</head>
 
 	<body>
+	
+		<p>
+			<% 
+				String message = (String) request.getAttribute("message_bienvenue");
+				out.println(message);
+			%>
+		</p>
+		
 		<!-- Onglets du menu de navigation -->
 			<div id="menu">
 				 <ul id="onglets">
-				<li class="active"><a href="AccueilEtudiants.html"> Accueil </a></li>
-				<!-- Liens a completer au fur et a mesure -->
-				<li><a href="AccesRapportsEtudiants.html"> Acces aux rapports </a></li>
-				<li><a href="MesRapportsEtudiants.html"> Mes Rapports </a></li>
+					 <!-- Liens a completer au fur et a mesure -->
+					<li class="active"><a href="Accueil"> Accueil </a></li>
+					<li><a href="Recherche"> Acces aux rapports </a></li>
+					<li><a href="MesRapports" href="#"> Mes Rapports </a></li>
 				 </ul>
 			</div>
 			

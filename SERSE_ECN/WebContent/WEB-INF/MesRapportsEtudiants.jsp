@@ -1,9 +1,13 @@
 <!-- 
  Utilisateurs : Etudiants
- Page : Mes Rqpports
+ Page : Mes Rapports
  Date création : 19/02/2014
 -->
 
+<%@ page language="java" 
+	contentType="text/html; charset=UTF-8" 
+	pageEncoding="UTF-8"%>
+	
 <html>
 	<head>
 		<meta charset="utf-8" />
@@ -12,6 +16,12 @@
 	</head>
 
 	<body>
+		<p>
+			<% 
+				String message = (String) request.getAttribute("message_bienvenue");
+				out.println(message);
+			%>
+		</p>
 		<!-- Onglets du menu de navigation -->
 			<div id="menu">
 				 <ul id="onglets">
