@@ -17,6 +17,7 @@ public class AccesRapportServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//TODO: add vérification connexion
 		try {
 			this.getServletContext().getRequestDispatcher( "/WEB-INF/AccesRapport.jsp").forward( request, response );
 		} catch (ServletException e) {
