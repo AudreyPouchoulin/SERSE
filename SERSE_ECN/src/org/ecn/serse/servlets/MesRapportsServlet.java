@@ -17,7 +17,7 @@ public class MesRapportsServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			this.getServletContext().getRequestDispatcher( "/WEB-INF/MesRapportsEtudiants.jsp").forward( request, response );
+			this.getServletContext().getRequestDispatcher( "/WEB-INF/MesRapports.jsp").forward( request, response );
 		} catch (ServletException e) {
 			e.printStackTrace();
 		}

@@ -1,9 +1,13 @@
 <!-- 
  Utilisateurs : Etudiants
  Page : Soumission de rapport
- Date création : 19/02/2014
+ Date crÃ©ation : 19/02/2014
 -->
 
+<%@ page language="java" 
+	contentType="text/html; charset=UTF-8" 
+	pageEncoding="UTF-8"%>
+	
 <html>
 	<head>
 		<meta charset="utf-8" />
@@ -12,16 +16,9 @@
 	</head>
 
 	<body>
-		<!-- Onglets du menu de navigation -->
-			<div id="menu">
-				 <ul id="onglets">
-				<li><a href="AccueilEtudiants.html"> Accueil </a></li>
-				<!-- Liens a completer au fur et a mesure -->
-				<li><a href="AccesRapportsEtudiants.html"> Acces aux rapports </a></li>
-				<li class="active"><a href="MesRapportsEtudiants.html"> Mes Rapports </a></li>
-				 </ul>
-			</div>
-		
+		<!-- Onglets du menu de navigation et en-tête de page-->
+			<p><%@include file="menu.jsp" %></p>
+			
 		<!-- Champs de saisie des informations  -->
 		<p>
 		<fieldset>
@@ -156,7 +153,7 @@
 						<option value="Espagnol">Espagnol</option>
 												
 						</select>
-						<img src="iconeInformation.jpg" height="12%" width="5%" align="center" class="imageflottante">
+						<img src="Images/iconeInformation.jpg" height="12%" width="5%" align="center" class="imageflottante">
 					</td>
 					
 					
@@ -173,7 +170,7 @@
 							<option value="Finance">Management</option>
 							<option value="Informatique">Informatique</option>													
 						</select>
-						<img src="iconeInformation.jpg" height="12%" width="5%" align="center" class="imageflottante">
+						<img src="Images/iconeInformation.jpg" height="12%" width="5%" align="center" class="imageflottante">
 					</td>
 				</tr>
 				

@@ -17,22 +17,8 @@
 
 	<body>
 	
-		<p>
-			<% 
-				String message = (String) request.getAttribute("message_bienvenue");
-				out.println(message);
-			%>
-		</p>
-		
-		<!-- Onglets du menu de navigation -->
-			<div id="menu">
-				 <ul id="onglets">
-					 <!-- Liens a completer au fur et a mesure -->
-					<li class="active"><a href="Accueil"> Accueil </a></li>
-					<li><a href="Recherche"> Acces aux rapports </a></li>
-					<li><a href="MesRapports" href="#"> Mes Rapports </a></li>
-				 </ul>
-			</div>
+		<!-- Onglets du menu de navigation et en-tête de page-->
+			<p><%@include file="menu.jsp" %></p>
 			
 			<br/>
 			<br/>

@@ -62,4 +62,14 @@
     <servlet-name>AccueilServlet</servlet-name>
     <url-pattern>/AccueilServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SoumissionRapportServlet</display-name>
+    <servlet-name>SoumissionRapportServlet</servlet-name>
+    <servlet-class>org.ecn.serse.servlets.SoumissionRapportServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SoumissionRapportServlet</servlet-name>
+    <url-pattern>/Soumission</url-pattern>
+  </servlet-mapping>
 </web-app>
