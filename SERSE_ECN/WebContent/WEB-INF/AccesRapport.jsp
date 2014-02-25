@@ -1,4 +1,4 @@
-﻿<!-- 
+﻿"<!-- 
  Utilisateurs : Etudiants
  Page : Recherche de Rapports
  Date création : 14/02/2014
@@ -11,91 +11,11 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
-		<title>SERSE Recherches de Rapports </title>
-		<link rel="stylesheet" type="text/css" href="StyleSheet.css" />
+		<title>SERSE Recherche de Rapports </title>
+		<link rel="stylesheet" type="text/css" href="styles/StyleSheet1.css"/>
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<script type="text/javascript" src="scripts/OptionsRecherche.js"></script>
 	</head>
-
-	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-	<script>
-		$(document).ready(function() { 
-			// remplissage de la liste déroulante de continents
-	        $.post('OptionsServlet',{nom_liste:'continent'},function(responseJson) {  
-		            var $select = $('#continent'); 
-		            $select.find('option').remove();
-	            	$.each(responseJson, function(key, value) {               
-	                	$('<option>').val(key).text(value).appendTo($select); 
-	             });
-	        });
-			
-	     	// remplissage de la liste déroulante de pays
-	        $.post('OptionsServlet',{nom_liste:'pays'},function(responseJson) {  
-		            var $select = $('#pays'); 
-		            $select.find('option').remove();
-	            	$.each(responseJson, function(key, value) {               
-	                	$('<option>').val(key).text(value).appendTo($select); 
-	             });
-	        });
-	     	
-	     // remplissage de la liste déroulante de villes
-	        $.post('OptionsServlet',{nom_liste:'ville'},function(responseJson) {  
-		            var $select = $('#ville'); 
-		            $select.find('option').remove();
-	            	$.each(responseJson, function(key, value) {               
-	                	$('<option>').val(key).text(value).appendTo($select); 
-	             });
-	        });
-	     
-	     // remplissage de la liste déroulante d'universités et entreprises
-	        $.post('OptionsServlet',{nom_liste:'université et entreprise'},function(responseJson) {  
-		            var $select = $('#universite_entreprise'); 
-		            $select.find('option').remove();
-	            	$.each(responseJson, function(key, value) {               
-	                	$('<option>').val(key).text(value).appendTo($select); 
-	             });
-	        });
-	     
-	     // remplissage de la liste déroulante des domaines d'activité
-	        $.post('OptionsServlet',{nom_liste:'domaine'},function(responseJson) {  
-		            var $select = $('#domaine'); 
-		            $select.find('option').remove();
-	            	$.each(responseJson, function(key, value) {               
-	                	$('<option>').val(key).text(value).appendTo($select); 
-	             });
-	        });
-	     
-	     // remplissage de la liste déroulante des langues
-	        $.post('OptionsServlet',{nom_liste:'langue'},function(responseJson) {  
-		            var $select = $('#langue'); 
-		            $select.find('option').remove();
-	            	$.each(responseJson, function(key, value) {               
-	                	$('<option>').val(key).text(value).appendTo($select); 
-	             });
-	        });
-	     
-	     // cochage/décochage de la case Professionnel
-	      $('#cadreProfessionnel').click(function() {
-	    	  var cases = $("#casesCadreProfessionnel").find(':checkbox'); 
-	    	  if(this.checked){
-	    		  cases.prop('checked', true);
-	    	  }else{
-	    		  cases.prop('checked', false);
-	    	  };         
-	      });
-	     
-	     // cochage/décochage de la case Académique
-	      $('#cadreAcademique').click(function() {
-	    	  var cases = $("#casesCadreAcademique").find(':checkbox'); 
-	    	  if(this.checked){
-	    		  cases.prop('checked', true);
-	    	  }else{
-	    		  cases.prop('checked', false);
-	    	  };         
-	      });
-	     
-	     // TODO: si décochage de toutes les sous-cases, décochage de Académique
-	     // TODO: si décochage de toutes les sous-cases, décochage de Professionnel
-	 });
-	</script>
 
 	<body>
 		<!-- Onglets du menu de navigation et en-tête de page-->
@@ -111,7 +31,7 @@
 			<!-- Sous-paragraphe "Continent, Pays, Ville"-->
 			<p>
 			<fieldset>
-			<img src="Images/iconeInformation.jpg" height="7%" width="3%" align="right" class="imageflottante">
+			<img src="images/iconeInformation.jpg" height="7%" width="3%" align="right" class="imageflottante">
 			<h3> Continent Pays, Ville</h3>
 				<!-- "Continent"-->
 						<p>
@@ -248,14 +168,14 @@
 		<table id="tableau">
 			<thead>
 				<tr>
-					<th height="10" id="tableau">Rapport<img src="Images/iconeCroissantDecroissant.png" class="imageflottante"></th>
-					<th id="tableau">Dates<img src="Images/iconeCroissantDecroissant.png" class="imageflottante"></th>
-					<th id="tableau">Pays<img src="Images/iconeCroissantDecroissant.png" class="imageflottante"></th>
-					<th id="tableau">Ville<img src="Images/iconeCroissantDecroissant.png"  class="imageflottante"></th>
-					<th id="tableau">Lieux<img src="Images/iconeCroissantDecroissant.png" class="imageflottante"></th>
-					<th id="tableau">Domaine<img src="Images/iconeCroissantDecroissant.png" class="imageflottante"></th>
-					<th id="tableau">Mobilite<img src="Images/iconeCroissantDecroissant.png" class="imageflottante"></th>
-					<th id="tableau">Langue<img src="Images/iconeCroissantDecroissant.png" class="imageflottante"></th>
+					<th height="10" id="tableau">Rapport<img src="images/iconeCroissantDecroissant.png" class="imageflottante"></th>
+					<th id="tableau">Dates<img src="images/iconeCroissantDecroissant.png" class="imageflottante"></th>
+					<th id="tableau">Pays<img src="images/iconeCroissantDecroissant.png" class="imageflottante"></th>
+					<th id="tableau">Ville<img src="images/iconeCroissantDecroissant.png"  class="imageflottante"></th>
+					<th id="tableau">Lieux<img src="images/iconeCroissantDecroissant.png" class="imageflottante"></th>
+					<th id="tableau">Domaine<img src="images/iconeCroissantDecroissant.png" class="imageflottante"></th>
+					<th id="tableau">Mobilite<img src="images/iconeCroissantDecroissant.png" class="imageflottante"></th>
+					<th id="tableau">Langue<img src="images/iconeCroissantDecroissant.png" class="imageflottante"></th>
 				</tr>
 			</thead>
 			

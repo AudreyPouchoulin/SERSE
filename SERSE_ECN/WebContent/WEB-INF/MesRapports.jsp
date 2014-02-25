@@ -12,7 +12,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<title>SERSE Soumission de Rapports</title>
-		<LINK type="text/css/html" rel="stylesheet" media="all" title="CSS" href="StyleSheet.css" />
+		<link rel="stylesheet" type="text/css" href="styles/StyleSheet1.css"/>
 	</head>
 
 	<body>
@@ -35,17 +35,17 @@
 			<table id="tableau">
 				<thead>
 					<tr>
-						<th width="10px">Rapport<img src="Images/iconeCroissantDecroissant.png" align="center" class="imageflottante"></th>
-						<th>Date de soumission<img src="Images/iconeCroissantDecroissant.png" align="center" class="imageflottante"></th>
-						<th>Etat<img src="Images/iconeCroissantDecroissant.png" align="center" class="imageflottante"></th>
-						<th>Date du dernier changement d'etat<img src="Images/iconeCroissantDecroissant.png" align="center" class="imageflottante"></th>
-						<th>Commentaire<img src="Images/iconeCroissantDecroissant.png" align="center" class="imageflottante"></th>
+						<th width="10px">Rapport<img src="images/iconeCroissantDecroissant.png" align="center" class="imageflottante"></th>
+						<th>Date de soumission<img src="images/iconeCroissantDecroissant.png" align="center" class="imageflottante"></th>
+						<th>Etat<img src="images/iconeCroissantDecroissant.png" align="center" class="imageflottante"></th>
+						<th>Date du dernier changement d'etat<img src="images/iconeCroissantDecroissant.png" align="center" class="imageflottante"></th>
+						<th>Commentaire<img src="images/iconeCroissantDecroissant.png" align="center" class="imageflottante"></th>
 					</tr>
 				</thead>
 				
 				<tbody>
 					<tr>
-						<td><div align="center">UK_Semestre_Informatique<img src="Images/iconeTelechargemet.jpg" height="7%" width="5%" align="center"></div></td>
+						<td><div align="center">UK_Semestre_Informatique<img src="images/iconeTelechargemet.jpg" height="7%" width="5%" align="center"></div></td>
 						<td>01/09/2013</td>
 						<td>En attente de validation</td>
 						<td>12/12/2013</td>

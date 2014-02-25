@@ -12,7 +12,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<title>SERSE Soumission de Rapports</title>
-		<LINK type="text/css/html" rel="stylesheet" media="all" title="CSS" href="StyleSheet1.css" />
+		<link rel="stylesheet" type="text/css" href="styles/StyleSheet1.css"/>
 	</head>
 
 	<body>
@@ -40,12 +40,12 @@
 				
 				<tr>
 					<td>Date de debut de sejour</td>
-					<td><input type="text" name="dateDebut" placeholder="jj/mm/aaaa"><image src="iconeCalendrier.png" width="10%" height="20%" align="center"/></td>
+					<td><input type="text" name="dateDebut" placeholder="jj/mm/aaaa"><image src="images/iconeCalendrier.png" width="10%" height="20%" align="center"/></td>
 				</tr>
 				
 				<tr>
 					<td>Date de fin de sejour</td>
-					<td><input type="text" name="dateDebut" placeholder="jj/mm/aaaa"><image src="iconeCalendrier.png" width="10%" height="20%" align="center"/></td>
+					<td><input type="text" name="dateDebut" placeholder="jj/mm/aaaa"><image src="images/iconeCalendrier.png" width="10%" height="20%" align="center"/></td>
 				</tr>
 				
 				<tr>
@@ -153,7 +153,7 @@
 						<option value="Espagnol">Espagnol</option>
 												
 						</select>
-						<img src="Images/iconeInformation.jpg" height="12%" width="5%" align="center" class="imageflottante">
+						<img src="images/iconeInformation.jpg" height="12%" width="5%" align="center" class="imageflottante">
 					</td>
 					
 					
@@ -170,7 +170,7 @@
 							<option value="Finance">Management</option>
 							<option value="Informatique">Informatique</option>													
 						</select>
-						<img src="Images/iconeInformation.jpg" height="12%" width="5%" align="center" class="imageflottante">
+						<img src="images/iconeInformation.jpg" height="12%" width="5%" align="center" class="imageflottante">
 					</td>
 				</tr>
 				

@@ -12,7 +12,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>SERSE Soumission de Rapports</title>
-		<LINK type="text/css/html" rel="stylesheet" media="all" title="CSS" href="StyleSheet1.css" />
+		<link rel="stylesheet" type="text/css" href="styles/StyleSheet1.css"/>
 	</head>
 
 	<body>

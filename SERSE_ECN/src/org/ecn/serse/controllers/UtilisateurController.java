@@ -256,15 +256,18 @@ public class UtilisateurController {
 
 		try {
 		
-			PreparedStatement req = bdd.getConnection().prepareStatement("SELECT utilisateur_id FROM edt.utilisateur WHERE utilisateur_token=? AND utilisateur_token_expire > now()");
+			PreparedStatement req = bdd.getConnection().prepareStatement(
+					"SELECT utilisateur_id "
+					+ "FROM serse.utilisateur "
+					+ "WHERE utilisateur_token=? "
+					+ "AND utilisateur_token_expire > now()");
 			req.setString(1, token);
 			
 			int id = bdd.recupererId(req, "utilisateur_id");
 		
 			if(id != -1) {
 				return id;
-			}
-			else {
+			} else {
 				throw new IdentificationException(ResultCode.IDENTIFICATION_ERROR, "Token invalide ou expiré");
 			}
 		} catch (SQLException e) {
