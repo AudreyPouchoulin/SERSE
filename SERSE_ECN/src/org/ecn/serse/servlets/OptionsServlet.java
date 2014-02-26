@@ -46,11 +46,13 @@ public class OptionsServlet extends HttpServlet {
 					ArrayList<String> villes = optionsController.getVilles();
 					sendOptions(villes, "Toutes les villes", response);
 					break;
-				case "université et entreprise":
+				case "université":
 					ArrayList<String> universites = optionsController.getUniversites();
+					sendOptions(universites, null, response);
+					break;
+				case "entreprise":
 					ArrayList<String> entreprises = optionsController.getEntreprises();
-					//TODO: ajouter les entreprises à la liste
-					sendOptions(universites, "Toutes les universités et entreprises", response);
+					sendOptions(entreprises, null, response);
 					break;
 				case "domaine":
 					ArrayList<String> domainesActivite = optionsController.getDomainesActivite();
@@ -81,9 +83,15 @@ public class OptionsServlet extends HttpServlet {
 	
 	private void sendOptions(ArrayList<String> listeObjets, String messageDefaut, HttpServletResponse response) throws IOException  {
 		Map<String, String> listeOptions = new LinkedHashMap<>();
-		listeOptions.put(Integer.toString(0), messageDefaut);
-		for (int i=0; i<listeObjets.size(); i++){
-			listeOptions.put(Integer.toString(i+1), listeObjets.get(i));
+		if (messageDefaut==null){
+			for (int i=0; i<listeObjets.size(); i++){
+				listeOptions.put(Integer.toString(i), listeObjets.get(i));
+			}
+		} else {
+			listeOptions.put(Integer.toString(0), messageDefaut);
+			for (int i=0; i<listeObjets.size(); i++){
+				listeOptions.put(Integer.toString(i+1), listeObjets.get(i));
+			}
 		}
 		
 		String jsonResponse = new Gson().toJson(listeOptions);

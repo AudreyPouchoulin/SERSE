@@ -35,13 +35,20 @@
 	        });
 	     
 /** remplissage de la liste déroulante d'universités et entreprises */
-	        $.post('OptionsServlet',{nom_liste:'université et entreprise'},function(responseJson) {  
-		            var $select = $('#universite_entreprise'); 
+	        $.post('OptionsServlet',{nom_liste:'université'},function(responseJson) {  
+		            var $select = $('#universiteGroup'); 
 		            $select.find('option').remove();
 	            	$.each(responseJson, function(key, value) {               
 	                	$('<option>').val(key).text(value).appendTo($select); 
 	             });
 	        });
+	        $.post('OptionsServlet',{nom_liste:'entreprise'},function(responseJson) {  
+	            var $select = $('#entrepriseGroup'); 
+	            $select.find('option').remove();
+            	$.each(responseJson, function(key, value) {               
+                	$('<option>').val(key).text(value).appendTo($select); 
+             });
+        });
 	     
 /** remplissage de la liste déroulante des domaines d'activité*/
 	        $.post('OptionsServlet',{nom_liste:'domaine'},function(responseJson) {  

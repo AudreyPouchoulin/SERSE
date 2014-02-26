@@ -63,19 +63,15 @@
 			
 			
 			<!-- Sous-paragraphe Séjour"-->
-			<p>
 			<fieldset>
 				<h2> Sejour </h2>
-				<p>
 				<table id="invisibleTable">
 				<tr id="invisibleTable">
 				<td id="invisibleTable"><input type="checkbox" name="sejourUniversite" id="sejourUniversite" /> <label for="sejourUniversite">Universite</label></td>
 				<td id="invisibleTable"><input type="checkbox" name="sejourEntreprise" id="sejourEntreprise" /> <label for="sejourEntreprise">Entreprise</label></td>
 				</tr>
-				</table>
-				</p>		
+				</table>		
 			</fieldset>
-			</p>
 
 			<!-- Sous paragraphe Cadre de mobilite"-->
 			<p>
@@ -111,12 +107,15 @@
 			<!-- Sous paragraphe Autres-->
 			<p>
 				<fieldset>
-				<h2> <legend>Autres</legend> <Cadre de mobilite> </h2>
+				<h2>Autres</h2>
 				<p>
 				<!-- Universites/Entreprises -->
 				<select name="universite" id="universite_entreprise">
 					<option value="Toutes les universités et entreprises" selected="selected">Toutes les universités et entreprises</option>
-					<!-- options are filled by AJAJ -->						
+					<optgroup id="universiteGroup" label="Universite">Université</optgroup>
+						<!-- options are filled by AJAJ -->	
+					<optgroup id="entrepriseGroup" label="Entreprise">Entreprise</optgroup>
+						<!-- options are filled by AJAJ -->						
 				</select>
 				</p>
 				
