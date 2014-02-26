@@ -14,7 +14,10 @@
 		<title>SERSE Recherche de Rapports </title>
 		<link rel="stylesheet" type="text/css" href="styles/StyleSheet1.css"/>
 		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-		<script type="text/javascript" src="scripts/OptionsRecherche.js"></script>
+		<script type="text/javascript" src="scripts/OptionsRemplissage.js"></script>
+		<script type="text/javascript" src="scripts/MobilityManager.js"></script>
+		<script type="text/javascript" src="scripts/GeographyManager.js"></script>
+		<script type="text/javascript" src="scripts/RechercheManager.js"></script>
 	</head>
 
 	<body>
@@ -97,8 +100,7 @@
 						    <li><input type='checkbox' id='aSemestre'/>Semestre</li>
 						    <li><input type='checkbox' id='aAnnee'/>Annee</li>
 						    <li><input type='checkbox' id='aDoubleDiplome'/>Double Diplome</li>
-						    <li><input type='checkbox' id='Cesure'/>Césure</li>
-						    <li><input type='checkbox' id='Semestre'/>Semestre</li>	    
+						    <li><input type='checkbox' id='aCesure'/>Césure</li>	    
 						</ul>
 					</td>
 				</tr>		

@@ -1,6 +1,10 @@
 /**
- * 
+ * Project: SERSE_ECN
+ * Creation date: 26 fev. 2014
+ * Author: Audrey
+ * Gestion du remplissage des options de filtres pour la recherche de rapport ou la soumission d'un nouveau rapport
  */
+
 	$(document).ready(function() { 
 		
 /** remplissage de la liste déroulante de continents*/
@@ -21,7 +25,7 @@
 	             });
 	        });
 	     	
-	     // remplissage de la liste déroulante de villes
+/** remplissage de la liste déroulante de villes */
 	        $.post('OptionsServlet',{nom_liste:'ville'},function(responseJson) {  
 		            var $select = $('#ville'); 
 		            $select.find('option').remove();
@@ -30,7 +34,7 @@
 	             });
 	        });
 	     
-	     // remplissage de la liste déroulante d'universités et entreprises
+/** remplissage de la liste déroulante d'universités et entreprises */
 	        $.post('OptionsServlet',{nom_liste:'université et entreprise'},function(responseJson) {  
 		            var $select = $('#universite_entreprise'); 
 		            $select.find('option').remove();
@@ -39,7 +43,7 @@
 	             });
 	        });
 	     
-	     // remplissage de la liste déroulante des domaines d'activité
+/** remplissage de la liste déroulante des domaines d'activité*/
 	        $.post('OptionsServlet',{nom_liste:'domaine'},function(responseJson) {  
 		            var $select = $('#domaine'); 
 		            $select.find('option').remove();
@@ -48,7 +52,7 @@
 	             });
 	        });
 	     
-	     // remplissage de la liste déroulante des langues
+/** remplissage de la liste déroulante des langues */
 	        $.post('OptionsServlet',{nom_liste:'langue'},function(responseJson) {  
 		            var $select = $('#langue'); 
 		            $select.find('option').remove();
@@ -56,27 +60,4 @@
 	                	$('<option>').val(key).text(value).appendTo($select); 
 	             });
 	        });
-	     
-	     // cochage/décochage de la case Professionnel
-	      $('#cadreProfessionnel').click(function() {
-	    	  var cases = $("#casesCadreProfessionnel").find(':checkbox'); 
-	    	  if(this.checked){
-	    		  cases.prop('checked', true);
-	    	  }else{
-	    		  cases.prop('checked', false);
-	    	  };         
-	      });
-	     
-	     // cochage/décochage de la case Académique
-	      $('#cadreAcademique').click(function() {
-	    	  var cases = $("#casesCadreAcademique").find(':checkbox'); 
-	    	  if(this.checked){
-	    		  cases.prop('checked', true);
-	    	  }else{
-	    		  cases.prop('checked', false);
-	    	  };         
-	      });
-	     
-	     // TODO: si décochage de toutes les sous-cases, décochage de Académique
-	     // TODO: si décochage de toutes les sous-cases, décochage de Professionnel
 	 });
