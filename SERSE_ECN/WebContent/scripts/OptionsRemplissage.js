@@ -10,61 +10,47 @@
 /** remplissage de la liste déroulante de continents*/
 	        $.post('OptionsServlet',{nom_liste:'continent'},function(responseJson) {  
 		            var $select = $('#continent'); 
-		            $select.find('option').remove();
-	            	$.each(responseJson, function(key, value) {               
-	                	$('<option>').val(key).text(value).appendTo($select); 
-	             });
+		            fillOptions($select, responseJson);
 	        });
 			
 /** remplissage de la liste déroulante de pays*/
 	        $.post('OptionsServlet',{nom_liste:'pays'},function(responseJson) {  
 		            var $select = $('#pays'); 
-		            $select.find('option').remove();
-	            	$.each(responseJson, function(key, value) {               
-	                	$('<option>').val(key).text(value).appendTo($select); 
-	             });
+		            fillOptions($select, responseJson);
 	        });
 	     	
 /** remplissage de la liste déroulante de villes */
 	        $.post('OptionsServlet',{nom_liste:'ville'},function(responseJson) {  
 		            var $select = $('#ville'); 
-		            $select.find('option').remove();
-	            	$.each(responseJson, function(key, value) {               
-	                	$('<option>').val(key).text(value).appendTo($select); 
-	             });
+		            fillOptions($select, responseJson);
 	        });
 	     
 /** remplissage de la liste déroulante d'universités et entreprises */
 	        $.post('OptionsServlet',{nom_liste:'université'},function(responseJson) {  
 		            var $select = $('#universiteGroup'); 
-		            $select.find('option').remove();
-	            	$.each(responseJson, function(key, value) {               
-	                	$('<option>').val(key).text(value).appendTo($select); 
-	             });
+		            fillOptions($select, responseJson);
 	        });
 	        $.post('OptionsServlet',{nom_liste:'entreprise'},function(responseJson) {  
 	            var $select = $('#entrepriseGroup'); 
-	            $select.find('option').remove();
-            	$.each(responseJson, function(key, value) {               
-                	$('<option>').val(key).text(value).appendTo($select); 
-             });
-        });
+	            fillOptions($select, responseJson);
+	        });
 	     
 /** remplissage de la liste déroulante des domaines d'activité*/
 	        $.post('OptionsServlet',{nom_liste:'domaine'},function(responseJson) {  
 		            var $select = $('#domaine'); 
-		            $select.find('option').remove();
-	            	$.each(responseJson, function(key, value) {               
-	                	$('<option>').val(key).text(value).appendTo($select); 
-	             });
+		            fillOptions($select, responseJson);
 	        });
 	     
 /** remplissage de la liste déroulante des langues */
 	        $.post('OptionsServlet',{nom_liste:'langue'},function(responseJson) {  
 		            var $select = $('#langue'); 
-		            $select.find('option').remove();
-	            	$.each(responseJson, function(key, value) {               
-	                	$('<option>').val(key).text(value).appendTo($select); 
-	             });
+		            fillOptions($select, responseJson);
 	        });
 	 });
+	
+	function fillOptions($select, responseJson){
+		$select.find('option').remove();
+     	$.each(responseJson, function(key, value) {               
+         	$('<option>').val(key).text(value).appendTo($select); 
+      });
+	}
