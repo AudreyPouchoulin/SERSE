@@ -13,198 +13,184 @@
 		<meta charset="utf-8" />
 		<title>SERSE Soumission de Rapports</title>
 		<link rel="stylesheet" type="text/css" href="styles/StyleSheet1.css"/>
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<!--  alternative quand pas d'accès internet-->
+		<script type="text/javascript" src="scripts/jquery-1.10.2.min.js"></script>
+		
+		<script type="text/javascript" src="scripts/OptionsRemplissage.js"></script>
+		<script type="text/javascript" src="scripts/RemplissageChampsVerification.js"></script>
+		<script type="text/javascript" src="scripts/ChampsAutre.js"></script>
 	</head>
 
 	<body>
-		<!-- Onglets du menu de navigation et en-tête de page-->
+<!--Onglets du menu de navigation et en-tête de page-->
 			<p><%@include file="menu.jsp" %></p>
 			
-		<!-- Champs de saisie des informations  -->
+<!--Champs de saisie des informations -->
 		<p>
-		<fieldset>
-			<table>
-				<tr>
-					<td>Nom</td>
-					<td>Pouchoulin</td>
-				</tr>
-				
-				<tr>
-					<td>Prenom</td>
-					<td>Audrey</td>
-				</tr>
-				
-				<tr>
-					<td>Sexe</td>
-					<td>F</td>
-				</tr>
-				
-				<tr>
-					<td>Date de debut de sejour</td>
-					<td><input type="text" name="dateDebut" placeholder="jj/mm/aaaa"><image src="images/iconeCalendrier.png" width="10%" height="20%" align="center"/></td>
-				</tr>
-				
-				<tr>
-					<td>Date de fin de sejour</td>
-					<td><input type="text" name="dateDebut" placeholder="jj/mm/aaaa"><image src="images/iconeCalendrier.png" width="10%" height="20%" align="center"/></td>
-				</tr>
-				
-				<tr>
-					<td>Continent</td>
-					<td><!-- "Continent"-->
-						<p>
-						<select name="continent" id="continent" onChange="viewOthers()" />
-							
-							<option value="Choisissez un continent" selected="selected">Choisissez un continent</option>
-			 
-							<option value="Afrique">Afrique</option>
-							<option value="Amerique">Amerique</option>
-							<option value="Amerique">Asie</option>
-							<option value="Europe">Europe</option>
-							<option value="Oceanie">Oceanie</option>
-												
-						</select>
-						</p></td>
-				</tr>
-				
-				<tr>
-					<td>Pays</td>
-					<td>
-					<select name="pays" id="pays" onChange="viewOthers()" />
-							<option value="Choississez un pays" selected="selected">Choississez un pays</option>
-							<option value="Belgique">Belgique</option> 
-							<option value="France ">France</option>
-							<option value="Royaume-Unie ">Royaume-Uni</option>
-							<option value="Ukraine">Ukraine</option> 
-
-					</select>
-					</td>
-				</tr>
-
-				<tr>
-					<td>Ville</td>
-					<td>
-							<select name="ville" id="ville" onChange="viewOthers()" />
-							<option value="Choississez une ville" selected="selected">Choississez une ville</option>
-							<option value="Paris ">Londres</option>
-							<option value="Kiev">Bristol</option> 
-							<option value="Bamako">Durham</option> 
-							<option value="New York">Manchester</option> 
-							<option value="Toronto">Nothingham</option> 
-						</select>
-					</td>
-				</tr>
-				
-				<tr>
-					<td>Type de sejour</td>
-					<td>
-							<select name="typeSejour" onChange="viewOthers()" />
-							<option value="Choisir le type de sejour" selected="selected">Choisir le type de sejour</option>
-							<option value="Universite ">Universite</option>
-							<option value="Entreprise">Entreprise</option> 
-					</td>
-				</tr>		
-
-				<tr>
-					<td>Type de mobilite</td>
-					<td>
-							<select name="cadreMobilite" onChange="viewOthers()" />
-							<option value="cadreMobilite" selected="selected">Choisir le type de la mobilite</option>
-							<option value="Universite ">Double Diplome</option>
-							<option value="Entreprise">Semestre</option> 
-					</td>
-				</tr>
-
-				<tr>
-					<td>Type Experience</td>
-					<td>
-							<select name="cadreMobilite" onChange="viewOthers()" />
-							<option value="cadreMobilite" selected="selected">Choisir le type d'experience</option>
-							<option value="Academique">Academique</option>
-							<option value="Professionnel">Professionnel</option> 
-					</td>
-				</tr>
-
-				<tr>
-					<td>Universite/Entreprise</td>
-					<td>
-					<select name="universite" id="universite" onChange="viewOthers()" />
-							
-						<option value="Toutes les universites/entreprises" selected="selected">Toutes les universites/entreprises</option>
-				 
-						<option value="Columbia">King's College</option>
-						<option value="London School of Economics">London School of Economics</option>
-						<option value="University of Toronto">University College London</option>
-						<option value="Universite de Kiev">Imperial College London</option>
-						<option value="Universite de Kiev">UCASS</option>
-												
-					</select>					
-					</td>
-				</tr>
-				
-				<tr>
-					<td>Langues parlees</td>
-					<td>
-						<select name="langue" id="langue" onChange="viewOthers()"/>
-							
-						<option value="Toutes les langues" selected="selected">Toutes les langues</option>
-			 			<option value="anglais">Anglais</option>
-						<option value="francais">Francais</option>
-						<option value="russe">Russe</option>
-						<option value="Espagnol">Espagnol</option>
-												
-						</select>
-						<img src="images/iconeInformation.jpg" height="12%" width="5%" align="center" class="imageflottante">
-					</td>
+			<fieldset>
+				<table>
+					<tr>
+						<td>Nom</td>
+						<td>Pouchoulin</td>
+					</tr>
 					
+					<tr>
+						<td>Prenom</td>
+						<td>Audrey</td>
+					</tr>
 					
-				</tr>
-				
-				<tr>
-					<td>Domaine d'activites</td>
-					<td>
-						<select name="domaine" id="domaine" onChange="viewOthers()" />
-							<option value="Tous les domaines" selected="selected">Tous les domaines</option>					 
-							<option value="Genie Civil">Genie Civil</option>
-							<option value="Aeronautique">Aeronautique</option>
-							<option value="Finance">Finance</option>
-							<option value="Finance">Management</option>
-							<option value="Informatique">Informatique</option>													
-						</select>
-						<img src="images/iconeInformation.jpg" height="12%" width="5%" align="center" class="imageflottante">
-					</td>
-				</tr>
-				
-				<tr>
-					<td>Adresse du lieu de sejour</td>
-					<td><input type="text" name="firstname" placeholder="Entrer l'adresse du lieu de sejour" size="27"></td>
-					<td><INPUT class="envoiFormulaire" TYPE="button" VALUE="Recherche des coordonnees GPS "></td>
-				</tr>
+					<tr>
+						<td>Sexe</td>
+						<td>F</td>
+					</tr>
+					
+					<tr>
+						<td>Date de debut de séjour</td>
+						<td><input type="text" name="dateDebut" placeholder="jj/mm/aaaa"><img src="images/iconeCalendrier.png" width="10%" height="20%"/></td>
+					</tr>
+					
+					<tr>
+						<td>Date de fin de séjour</td>
+						<td><input type="text" name="dateDebut" placeholder="jj/mm/aaaa"><img src="images/iconeCalendrier.png" width="10%" height="20%"/></td>
+					</tr>
+<!--Continent-->					
+					<tr>
+						<td>Continent</td>
+						<td>
+							<select name="continent" id="continent">
+								<option value="Choisissez un continent" selected="selected">Choisissez un continent</option>
+								<!-- available options are filled by AJAJ -->					
+							</select>
+						</td>
+					</tr>
 
-				<tr>
-					<td>Coordonnees GPS</td>
-					<td>Lancer la recherche apres avoir saisi l'adresse <td></td></td>
-				</tr>
+<!--Pays-->						
+					<tr>
+						<td>Pays</td>
+						<td>
+							<select name="pays" id="pays">
+								<option value="Choisissez un pays" selected="selected">Choisissez un pays</option>
+								<!-- available options are filled by AJAJ + champs Autre-->
+							</select>
+						</td>
+						<td id='autrePays' style="display: none">
+							<input id="valueAutrePays" type="text" placeholder="Nom du pays ?"/>
+						</td>
+					</tr>
 
-				<tr>
-					<td>Rapport</td>
-					<td><input type="text" name="firstname" placeholder="Chemin du fichier"></td>
-					<td><INPUT class="envoiFormulaire" TYPE="button" VALUE="Parcourir"></td>
-				</tr>
-				
+<!--Ville-->	
+					<tr>
+						<td>Ville</td>
+						<td>
+							<select name="ville" id="ville" onChange="viewOthers()">
+								<option value="Choisissez une ville" selected="selected">Choisissez une ville</option>
+								<!-- available options are filled by AJAJ -->
+							</select>
+						</td>
+					</tr>
 
-				<tr>
-					<td><INPUT class="envoiFormulaire" TYPE="reset" VALUE=" Reset "></td>
-					<td><INPUT class="envoiFormulaire" TYPE="submit" VALUE=" Envoyer "></td>
-				</tr>
-			</table>
-		<br/>
-		<br/>
-		<br/>
-		<br/>
-	
-				
-		</fieldset>
-		</p>
+<!--Type de séjour-->				
+					<tr>
+						<td>Type de séjour</td>
+						<td>
+							<select name="typeSejour">
+								<option value="Choisissez un type de séjour" selected="selected">Choisissez un type de séjour</option>
+								<!-- available options are filled by AJAJ -->
+							</select>	
+						</td>
+					</tr>		
+
+<!--Type de mobilité-->
+					<tr>
+						<td>Type de mobilité</td>
+						<td>
+							<select name="typeMobilite">
+								<option value="Choisissez un type de mobilité" selected="selected">Choisissez un type de mobilité</option>
+								<!-- available options are filled by AJAJ -->
+							</select>		
+						</td>
+					</tr>
+
+<!--Type d'expérience-->
+					<tr>
+						<td>Type Expérience</td>
+						<td>
+							<select name="typeExperience">
+								<option value="Choisissez un type d'expérience" selected="selected">Choisissez un type d'expérience</option>
+								<!-- available options are filled by AJAJ -->
+							</select>
+						</td>
+					</tr>
+
+<!--Nom de l'université ou de l'entreprise-->
+					<tr>
+						<td>Universite/Entreprise</td>
+						<td>
+							<select name="universite" id="universite_entreprise" onChange="viewOthers()">
+								<option value="Choisissez une université ou une entreprise" selected="selected">Choisissez une université ou une entreprise</option>
+								<!-- available options are filled by AJAJ -->				
+							</select>					
+						</td>
+					</tr>
+
+<!--Langue-->				
+					<tr>
+						<td>Langues parlées</td>
+						<td>
+							<select name="langue" id="langue" onChange="viewOthers()">		
+								<option value="Choisissez une langue de travail majoritaire" selected="selected">Choisissez une langue de travail majoritaire</option>
+								<!-- available options are filled by AJAJ -->					
+							</select>
+							<img src="images/iconeInformation.jpg" height="12%" width="5%"class="imageflottante">
+						</td>
+					</tr>
+
+<!--Domaine d'activité-->					
+					<tr>
+						<td>Domaines d'activités</td>
+						<td>
+							<select name="domaine" id="domaine" onChange="viewOthers()">
+								<option value="Choisissez un domaine d'activité principal" selected="selected">Choisissez un domaine d'activité principal</option>
+								<!-- available options are filled by AJAJ -->					 												
+							</select>
+							<img src="images/iconeInformation.jpg" height="12%" width="5%" class="imageflottante">
+						</td>
+					</tr>
+
+<!--Adresse du lieu de séjour-->						
+					<tr>
+						<td>Adresse du lieu de séjour</td>
+						<td><input type="text" placeholder="Entrer l'adresse du lieu de sejour" size="27"></td>
+						<td><input class="envoiFormulaire" type="button" value="Recherche des coordonnees GPS "></td>
+					</tr>
+
+<!--Affichage des coordonnées GPS-->		
+					<tr>
+						<td>Coordonnées GPS</td>
+						<td>Lancer la recherche apres avoir saisi l'adresse <td>
+					</tr>
+
+<!--Chemin du fichier-->
+					<tr>
+						<td>Rapport</td>
+						<td><input type="text" placeholder="Chemin du fichier"></td>
+						<td><input class="envoiFormulaire" type="button" value="Parcourir"></td>
+					</tr>
+					
+<!--Reset et soumettre le rapport-->	
+					<tr>
+						<td><input class="envoiFormulaire" type="reset" value="Reset"></td>
+						<td><input class="envoiFormulaire" type="submit" value="Envoyer le rapport"></td>
+					</tr>
+				</table>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
 		
+					
+			</fieldset>
+		</p>
 	</body>
 </html>

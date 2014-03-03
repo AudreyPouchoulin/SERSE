@@ -1,10 +1,101 @@
 /**
- * 
+ * Project: SERSE_ECN
+ * Creation date: 03 mar. 2014
+ * Author: Audrey
+ * Lancement de la recherche lors du changement d'un des choix dans les listes déroulantes ou cases à cocher des filtres de recherche:
+ * - continent
+ * - pays
+ * - ville
+ * - universités/entreprises
+ * - professionnel/académique/CME/STING/TFE/Césure/Semestre/Année/Double diplôme
+ * - université/entreprise nom
+ * - langue
+ * - domaine d'activité
+ * - date
  */
+$(document).ready(function() {
+	
+	// Géographie
+	$('#continent').change(function() {
+		recherche();
+	});
+	$('#pays').change(function() {
+		recherche();
+	});
+	$('#ville').change(function() {
+		recherche();
+	});
+	
+	// Séjour en université ou entreprise
+	$('#sejourUniversite').click(function() {
+		recherche();
+	});
+	$('#sejourEntreprise').click(function() {
+		recherche();
+	});
+	
+	// Cadre de mobilité
+	$('#cadreProfessionnel').click(function() {
+		recherche();
+	});
+	$('#cadreAcademique').click(function() {
+		recherche();
+	});
+	$('#pCME').click(function() {
+		recherche();
+	});
+	$('#pSTING').click(function() {
+		recherche();
+	});
+	$('#pTFE').click(function() {
+		recherche();
+	});
+	$('#pCesure').click(function() {
+		recherche();
+	});
+	$('#pSemestre').click(function() {
+		recherche();
+	});
+	$('#aSemestre').click(function() {
+		recherche();
+	});
+	$('#aAnnee').click(function() {
+		recherche();
+	});
+	$('#aDoubleDiplome').click(function() {
+		recherche();
+	});
+	$('#aCesure').click(function() {
+		recherche();
+	});
+	
+	//Autres
+	$('#universite_entreprise').change(function() {
+		recherche();
+	});
+	$('#langue').change(function() {
+		recherche();
+	});
+	$('#domaine').change(function() {
+		recherche();
+	});
+	$('#date').change(function() {
+		recherche();
+	});
+	
+});
 
 function recherche(){
-	
-	
+	var $arguments = preparationParametresRecherche();
+	$.post('RechercheServlet', $arguments,function(responseJson){
+	            fillResults(responseJson);
+    });
+}
+
+/** 
+ */
+function preparationParametresRecherche(){
+
 	// regroupement de cases à cocher : semestre, année, césure
 		var $semestre = false;
 		var $annee = false;
@@ -70,9 +161,11 @@ function recherche(){
 }
 
 function fillResults(responseJson){
+	//$("#contenuTableauResultats").();
 	$.each(responseJson, function(key, value) {
-		alert ("printed");
-		$("#testResultats").val().text(value).appendTo($("#testResultats"));
+		$("#tableauResultats").append("<tr>");
+			$("#tableauResultats").append("<td>" + value + "</td>");
+		$("#tableauResultats").append("</tr>");	
 		
 	});
 }

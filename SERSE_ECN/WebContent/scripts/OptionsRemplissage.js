@@ -6,6 +6,7 @@
  */
 
 	$(document).ready(function() { 
+		recherche();
 		
 /** remplissage de la liste déroulante de continents*/
 	        $.post('OptionsServlet',{nom_liste:'continent', message_defaut:$("#continent" ).val()},function(responseJson) {  
@@ -17,6 +18,10 @@
 	        $.post('OptionsServlet',{nom_liste:'pays', message_defaut:$("#pays" ).val()},function(responseJson) {  
 		            var $select = $('#pays'); 
 		            fillOptions($select, responseJson);
+		            alert($('head').find('title').val());
+		            if ($('title').val() == 'SERSE Soumission de Rapports'){
+		            	addOptionAutre($select);
+		            }
 	        });
 	     	
 /** remplissage de la liste déroulante de villes */
@@ -53,4 +58,8 @@
      	$.each(responseJson, function(key, value) {               
          	$('<option>').val(key).text(value).appendTo($select); 
       });
+	}
+	
+	function addOptionAutre($select){
+		$('<option>').val("Autre").text("Autre").appendTo($select); 
 	}

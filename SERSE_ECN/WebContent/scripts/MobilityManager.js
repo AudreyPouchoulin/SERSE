@@ -2,7 +2,8 @@
  * Project: SERSE_ECN
  * Creation date: 26 fev. 2014
  * Author: Audrey
- * Gestion des cases à cocher dans le cadre mobilité pour la page de recherche de rapports
+ * Gestion des cases à cocher (cochage/décochage en fonction de la hierarchie)
+ *  dans le cadre mobilité pour la page de recherche de rapports
  */
 
 $(document).ready(function() {

@@ -1,11 +1,28 @@
 /**
- * 
+ * Project: SERSE_ECN
+ * Creation date: 03 mar. 2014
+ * Author: Audrey
+ * Gestion du contenu des listes de:
+ * - continent
+ * - pays
+ * - ville
+ * - université/entreprise noms
+ * en fonction des choix faits dans les champs :
+ * - continent
+ * - pays
+ * - ville
  */
-$(document).ready(function() {
-	$('#continent').change(function() {
-		var $arguments = recherche();
-		$.post('RechercheServlet', $arguments,function(responseJson){
-		            fillResults(responseJson);
-	        });
-	});
-});
+
+
+function updatePays(){
+	
+}
+
+function updateVille(){
+	
+}
+
+function updateUniversiteEntreprise(){
+	
+}
+}

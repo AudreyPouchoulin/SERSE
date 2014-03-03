@@ -57,16 +57,17 @@ public class RechercheController {
 				+ "LEFT JOIN serse.langue ON serse.rapport_langue.langue_id = serse.langue.langue_id "
 				+ "LEFT JOIN serse.universite ON serse.rapport.universite_id = serse.universite.universite_id "
 				+ "LEFT JOIN serse.entreprise ON serse.rapport.entreprise_id = serse.entreprise.entreprise_id "
-				+ "WHERE continent_nom = ? "
+				+ "WHERE continent_nom = ?"
 				+ "ORDER BY rapport_nom;");
-		// 				+ "AND pays_nom = ? + "AND ville_nom = ?"
 	
 		statement.setString(1, continentNom);
 		
 		if (statement.execute()){
 			ResultSet resultSet = statement.getResultSet();
 			if (!resultSet.next()){
-				listeRapports.put("rapport_nom", "pas de résultats correspondants aux critères");
+				listeRapports.put("erreur", "pas de résultats correspondants aux critères");
+			} else {
+				listeRapports.put("rapport_nom", resultSet.getString(1));
 			}
 			while(resultSet.next()){
 				listeRapports.put("rapport_nom", resultSet.getString(1));
