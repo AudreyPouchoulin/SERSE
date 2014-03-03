@@ -16,44 +16,45 @@
 	</head>
 
 	<body>
-		<!-- Onglets du menu de navigation et en-tête de page-->
-			<p><%@include file="menu.jsp" %></p>
+
+<!-- Onglets du menu de navigation et en-tête de page-->
+		<p><%@include file="menu.jsp" %></p>
 		
-		<!-- Champs des infos  -->
+<!-- Champs des infos  -->
 		<fieldset>
-		<p>
-			<br/>
-			<br/>
-			<br/>
-			<form  align="center" id="bouttonSoumission" method="post" action="Soumission">
-				<input type="submit" class="button" type="button" VALUE=" Soumettre un nouveau rapport">
-			<form/>
-			
-			<br/>
-			<br/>
-			<br/>
-			<table id="tableau">
-				<thead>
-					<tr>
-						<th width="10px">Rapport<img src="images/iconeCroissantDecroissant.png" align="center" class="imageflottante"></th>
-						<th>Date de soumission<img src="images/iconeCroissantDecroissant.png" align="center" class="imageflottante"></th>
-						<th>Etat<img src="images/iconeCroissantDecroissant.png" align="center" class="imageflottante"></th>
-						<th>Date du dernier changement d'etat<img src="images/iconeCroissantDecroissant.png" align="center" class="imageflottante"></th>
-						<th>Commentaire<img src="images/iconeCroissantDecroissant.png" align="center" class="imageflottante"></th>
-					</tr>
-				</thead>
+			<p>
+				<br/>
+				<br/>
+				<br/>
+				<form  id="bouttonSoumission" method="post" action="Soumission">
+					<input type="submit" class="button" type="button" VALUE=" Soumettre un nouveau rapport">
+				</form>
+				<br/>
+				<br/>
+				<br/>
 				
-				<tbody>
-					<tr>
-						<td><div align="center">UK_Semestre_Informatique<img src="images/iconeTelechargemet.jpg" height="7%" width="5%" align="center"></div></td>
-						<td>01/09/2013</td>
-						<td>En attente de validation</td>
-						<td>12/12/2013</td>
-						<td>RAS</td>
-					</tr>
-				</tbody>
-			</table>
-		</p>		
+				<table id="tableau">
+					<thead>
+						<tr>
+							<th>Rapport<img src="images/iconeCroissantDecroissant.png" class="imageflottante"></th>
+							<th>Date de soumission<img src="images/iconeCroissantDecroissant.png" class="imageflottante"></th>
+							<th>Etat<img src="images/iconeCroissantDecroissant.png" class="imageflottante"></th>
+							<th>Date du dernier changement d'etat<img src="images/iconeCroissantDecroissant.png" class="imageflottante"></th>
+							<th>Commentaire<img src="images/iconeCroissantDecroissant.png" class="imageflottante"></th>
+						</tr>
+					</thead>
+					
+					<tbody>
+						<tr>
+							<td><div>UK_Semestre_Informatique<img src="images/iconeTelechargemet.jpg" height="7%" width="5%"></div></td>
+							<td>01/09/2013</td>
+							<td>En attente de validation</td>
+							<td>12/12/2013</td>
+							<td>RAS</td>
+						</tr>
+					</tbody>
+				</table>
+			</p>		
 		</fieldset>
 	</body>
 </html>

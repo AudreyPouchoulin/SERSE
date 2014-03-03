@@ -43,16 +43,12 @@
 	     
 /** remplissage de la liste déroulante des langues */
 	        $.post('OptionsServlet',{nom_liste:'langue', message_defaut:$("#langue" ).val()},function(responseJson) {  
-		           
-	        	alert("trying to fill");
-	        	var $select = $('#langue'); 
+		            var $select = $('#langue'); 
 		            fillOptions($select, responseJson);
-		            
 	        });
 	 });
 	
 	function fillOptions($select, responseJson){
-		alert("trying to fill");
 		$select.find('option').remove();
      	$.each(responseJson, function(key, value) {               
          	$('<option>').val(key).text(value).appendTo($select); 
