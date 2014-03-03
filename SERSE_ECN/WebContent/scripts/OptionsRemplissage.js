@@ -6,7 +6,9 @@
  */
 
 	$(document).ready(function() { 
-		recherche();
+		if ($('title').text() == 'SERSE Recherche de Rapports'){
+			recherche();
+		}
 		
 /** remplissage de la liste déroulante de continents*/
 	        $.post('OptionsServlet',{nom_liste:'continent', message_defaut:$("#continent" ).val()},function(responseJson) {  
@@ -18,8 +20,7 @@
 	        $.post('OptionsServlet',{nom_liste:'pays', message_defaut:$("#pays" ).val()},function(responseJson) {  
 		            var $select = $('#pays'); 
 		            fillOptions($select, responseJson);
-		            alert($('head').find('title').val());
-		            if ($('title').val() == 'SERSE Soumission de Rapports'){
+		            if ($('title').text() == 'SERSE Soumission de Rapports'){
 		            	addOptionAutre($select);
 		            }
 	        });
@@ -61,5 +62,5 @@
 	}
 	
 	function addOptionAutre($select){
-		$('<option>').val("Autre").text("Autre").appendTo($select); 
+		$('<option>').val('Autre').text('Autre').appendTo($select); 
 	}

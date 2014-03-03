@@ -161,11 +161,12 @@ function preparationParametresRecherche(){
 }
 
 function fillResults(responseJson){
-	//$("#contenuTableauResultats").();
+	$("#contenuTableauResultats").find('tr').remove();
+	$("#contenuTableauResultats").find('td').remove();
 	$.each(responseJson, function(key, value) {
-		$("#tableauResultats").append("<tr>");
-			$("#tableauResultats").append("<td>" + value + "</td>");
-		$("#tableauResultats").append("</tr>");	
-		
+		$("#contenuTableauResultats").append("<tr>");
+			$("#contenuTableauResultats").append("<td>" + value + "</td>");
+		$("#contenuTableauResultats").append("</tr>");	
 	});
+	$("#tableauResultats").append("</tbody>");
 }
