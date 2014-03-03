@@ -2,6 +2,7 @@ package org.ecn.serse.servlets;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -12,6 +13,8 @@ import org.ecn.serse.controllers.BddController;
 import org.ecn.serse.controllers.RechercheController;
 //
 import org.ecn.serse.exceptions.DatabaseException;
+
+import com.google.gson.Gson;
 /**
  * Servlet implementation class RechercheServlet
  */
@@ -50,10 +53,14 @@ public class RechercheServlet extends HttpServlet {
 			try {
 				bddController = new BddController();
 				RechercheController rechercheController = new RechercheController(bddController);
-				rechercheController.getRapports(continentNom, paysNom, villeNom, 
+				Map<String, String> listeRapports = rechercheController.getRapports(continentNom, paysNom, villeNom, 
 						universite, entreprise, professionnel, academique, 
 						CME, STING, TFE, semestre, annee, cesure, doubleDiplome,
 						universiteNom, entrepriseNom, langueNom, domaineActiviteNom, date);
+				String jsonResponse = new Gson().toJson(listeRapports);
+				response.setContentType("application/json");
+			    response.setCharacterEncoding("UTF-8");
+			    response.getWriter().write(jsonResponse);
 			} catch (DatabaseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

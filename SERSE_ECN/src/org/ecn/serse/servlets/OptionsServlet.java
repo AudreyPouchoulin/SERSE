@@ -33,18 +33,19 @@ public class OptionsServlet extends HttpServlet {
 			bddController = new BddController();
 			OptionsController optionsController = new OptionsController(bddController);
 			String nomListe = request.getParameter("nom_liste");
+			String messageDefaut = request.getParameter("message_defaut");
 			switch (nomListe){
 				case "continent":
 					ArrayList<String> continents = optionsController.getContinents();
-					sendOptions(continents, "Tous les continents", response);
+					sendOptions(continents, messageDefaut, response);
 					break;
 				case "pays":
 					ArrayList<String> pays = optionsController.getPays();
-					sendOptions(pays, "Tous les pays", response);
+					sendOptions(pays, messageDefaut, response);
 					break;
 				case "ville":
 					ArrayList<String> villes = optionsController.getVilles();
-					sendOptions(villes, "Toutes les villes", response);
+					sendOptions(villes, messageDefaut, response);
 					break;
 				case "université":
 					ArrayList<String> universites = optionsController.getUniversites();
@@ -56,11 +57,11 @@ public class OptionsServlet extends HttpServlet {
 					break;
 				case "domaine":
 					ArrayList<String> domainesActivite = optionsController.getDomainesActivite();
-					sendOptions(domainesActivite, "Tous les domaines d'activité", response);
+					sendOptions(domainesActivite, messageDefaut, response);
 					break;
 				case "langue":
 					ArrayList<String> langues = optionsController.getLangues();
-					sendOptions(langues, "Toutes les langues", response);
+					sendOptions(langues, messageDefaut, response);
 					break;
 				default:
 					Map<String, String> erreur = new LinkedHashMap<String, String>();
@@ -83,15 +84,11 @@ public class OptionsServlet extends HttpServlet {
 	
 	private void sendOptions(ArrayList<String> listeObjets, String messageDefaut, HttpServletResponse response) throws IOException  {
 		Map<String, String> listeOptions = new LinkedHashMap<>();
-		if (messageDefaut==null){
-			for (int i=0; i<listeObjets.size(); i++){
-				listeOptions.put(Integer.toString(i), listeObjets.get(i));
-			}
-		} else {
-			listeOptions.put(Integer.toString(0), messageDefaut);
-			for (int i=0; i<listeObjets.size(); i++){
-				listeOptions.put(Integer.toString(i+1), listeObjets.get(i));
-			}
+		if (messageDefaut!=null){
+			listeOptions.put(messageDefaut, messageDefaut);
+		}
+		for (int i=0; i<listeObjets.size(); i++){
+			listeOptions.put(listeObjets.get(i), listeObjets.get(i));
 		}
 		
 		String jsonResponse = new Gson().toJson(listeOptions);

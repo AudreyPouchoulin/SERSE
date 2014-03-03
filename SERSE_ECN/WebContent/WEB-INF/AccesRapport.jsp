@@ -1,4 +1,4 @@
-﻿"<!-- 
+﻿<!-- 
  Utilisateurs : Etudiants
  Page : Recherche de Rapports
  Date création : 14/02/2014
@@ -15,9 +15,10 @@
 		<link rel="stylesheet" type="text/css" href="styles/StyleSheet1.css"/>
 		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 		<script type="text/javascript" src="scripts/OptionsRemplissage.js"></script>
+		<script type="text/javascript" src="scripts/Recherche.js"></script>
 		<script type="text/javascript" src="scripts/MobilityManager.js"></script>
 		<script type="text/javascript" src="scripts/GeographyManager.js"></script>
-		<script type="text/javascript" src="scripts/Recherche.js"></script>
+		
 	</head>
 
 	<body>
@@ -129,7 +130,7 @@
 <!-- Domaine d activites -->
 					<p>
 						<select name="domaine" id="domaine">	
-							<option value="Tous les domaines d'activités" selected="selected">Tous les domaines d'activité</option>
+							<option value="Tous les domaines d'activité" selected="selected">Tous les domaines d'activité</option>
 							<!-- options are filled by AJAJ -->	
 						</select>
 					</p>
@@ -149,6 +150,10 @@
 		</fieldset>
 	</p>	
 <!-- Resultats"-->
+
+	<p id="testResultats"> Les résultats seront écrits ici
+	</p>
+
 	<p>
 		<fieldset>
 			<h2> Resultats </h2>

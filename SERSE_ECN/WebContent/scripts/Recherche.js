@@ -4,6 +4,7 @@
 
 function recherche(){
 	
+	
 	// regroupement de cases à cocher : semestre, année, césure
 		var $semestre = false;
 		var $annee = false;
@@ -25,42 +26,42 @@ function recherche(){
 		var $langue= null;
 		var $domaineActivite = null;
 		var $date = null;
-		
-		if (('#continent>option:selected').val()!="Tous les continents"){
-			$continent = ('#continent>option:selected').val();
+
+		if ($('#continent').val() != 'Tous les continents'){
+			$continent = $('#continent').val();
 		}
-		if (('#pays>option:selected').val()!="Tous les pays"){
-			$pays = ('#pays>option:selected').val();
+		if ($('#pays').val() != "Tous les pays"){
+			$pays = $('#pays').val();
 		}
-		if (('#ville>option:selected').val()!="Toutes les villes"){
-			$ville = ('#ville>option:selected').val();
+		if ($('#ville').val() != "Toutes les villes"){
+			$ville = $('#ville').val();
 		}
-		if (('#langue>option:selected').val()!="Toutes les langues"){
-			$langue = ('#ville>option:selected').val();
+		if ($('#langue').val() != "Toutes les langues"){
+			$langue = $('#langue').val();
 		}
-		if (('#domaine>option:selected').val()!="Tous les domaines d'activité"){
-			$domaineActivite = ('#domaine>option:selected').val();
+		if ($('#domaine').val() != "Tous les domaines d'activité"){
+			$domaineActivite = $('#domaine').val();
 		}
-		if (('#date>option:selected').val()!="Toutes les rapports"){
-			$date = ('#date>option:selected').val();
+		if ($('#date').val() != "Toutes les rapports"){
+			$date = $('#date').val();
 		}
-	
+
 	var $arguments = {continent:$continent, 
 					pays:$pays,
 					ville:$ville,
-					universite:('#universite').prop('checked'),
-					entreprise:('#entreprise').prop('checked'),
-					professionnel:('#cadreProfessionnel').prop('checked'),
-					academique:('#cadreAcademique').prop('checked'),
-					CME:('#pCME').prop('checked'),
-					STING:('#pSTING').prop('checked'),
-					TFE:('#pTFE').prop('checked'),
+					universite:$('#universite').prop('checked'),
+					entreprise:$('#entreprise').prop('checked'),
+					professionnel:$('#cadreProfessionnel').prop('checked'),
+					academique:$('#cadreAcademique').prop('checked'),
+					CME:$('#pCME').prop('checked'),
+					STING:$('#pSTING').prop('checked'),
+					TFE:$('#pTFE').prop('checked'),
 					semestre:$semestre,
 					annee:$annee,
 					cesure:$cesure,
-					doubleDiplome:('#aDoubleDiplome').prop('checked'),
-					universiteNom:('#universiteGroup>option:selected').val(),
-					entrepriseNom:('#entrepriseGroup>option:selected').val(),
+					doubleDiplome:$('#aDoubleDiplome').prop('checked'),
+					universiteNom:$('#universiteGroup>option:selected').val(),
+					entrepriseNom:$('#entrepriseGroup>option:selected').val(),
 					langue:$langue,
 					domaineActivite:$domaineActivite,
 					date:$date};
@@ -69,5 +70,9 @@ function recherche(){
 }
 
 function fillResults(responseJson){
-	
+	$.each(responseJson, function(key, value) {
+		alert ("printed");
+		$("#testResultats").val().text(value).appendTo($("#testResultats"));
+		
+	});
 }
