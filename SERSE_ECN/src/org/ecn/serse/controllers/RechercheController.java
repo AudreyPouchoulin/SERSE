@@ -64,15 +64,18 @@ public class RechercheController {
 		
 		if (statement.execute()){
 			ResultSet resultSet = statement.getResultSet();
-			if (!resultSet.next()){
-				listeRapports.put("erreur", "pas de résultats correspondants aux critères");
-			} else {
-				listeRapports.put("rapport_nom", resultSet.getString(1));
+			if (resultSet==null){
+				listeRapports.put("erreur", "Pas de résultats correspondants aux critères");
 			}
 			while(resultSet.next()){
 				listeRapports.put("rapport_nom", resultSet.getString(1));
-			}	
-			
+				listeRapports.put("rapport_date", resultSet.getString(2) + " - " + resultSet.getString(3));
+				listeRapports.put("rapport_pays", resultSet.getString(4));
+				listeRapports.put("rapport_ville", resultSet.getString(5));
+				listeRapports.put("rapport_domaine", resultSet.getString(6));
+				listeRapports.put("rapport_mobilite", resultSet.getString(7));
+				listeRapports.put("rapport_langue", resultSet.getString(8));
+			}
 		}
 		
 		return listeRapports;

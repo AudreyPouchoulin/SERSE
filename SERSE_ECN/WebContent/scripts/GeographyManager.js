@@ -14,15 +14,35 @@
  */
 
 
-function updatePays(){
+function updatePaysAccordingToContinent(){
+	//TODO: obtenir le message défaut
+	var $argumentsJson = {nom_liste:'pays', message_defaut:"a", continent:$("#continent").val()};
+	var $liste = $('#pays');
+	update($liste, $argumentsJson);
+}
+
+function updateVilleAccordingToContinent(){
 	
 }
 
-function updateVille(){
+function updateVilleAccordingToPays(){
 	
 }
 
-function updateUniversiteEntreprise(){
+function updateUniversiteEntrepriseAccordingToContinent(){
 	
 }
+
+function updateUniversiteEntrepriseAccordingToPays(){
+	
+}
+
+function updateUniversiteEntrepriseAccordingToVille(){
+	
+}
+
+function update(liste, argumentsJson){
+	$.post('OptionsRestreintesServlet',argumentsJson, function(responseJson) {   
+        fillOptions(liste, responseJson);
+	});
 }

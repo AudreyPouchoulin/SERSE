@@ -72,4 +72,14 @@
     <servlet-name>SoumissionRapportServlet</servlet-name>
     <url-pattern>/Soumission</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>OptionsRestreintesServlet</display-name>
+    <servlet-name>OptionsRestreintesServlet</servlet-name>
+    <servlet-class>org.ecn.serse.servlets.OptionsRestreintesServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>OptionsRestreintesServlet</servlet-name>
+    <url-pattern>/OptionsRestreintesServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

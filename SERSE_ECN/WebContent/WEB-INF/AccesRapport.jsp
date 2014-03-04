@@ -41,7 +41,7 @@
 <!-- "Continent"-->
 						<p>
 							<select name="continent" id="continent">
-								<option value="Tous les continents" selected="selected">Tous les continents</option>
+								<option value="defaut" selected="selected">Tous les continents</option>
 									<!-- available options are filled by AJAJ -->						
 							</select>
 						</p>
@@ -49,7 +49,7 @@
 <!-- "Pays"-->
 						<p>
 							<select name="pays" id="pays">
-								<option value="Tous les pays" selected="selected">Tous les pays</option>
+								<option value="defaut" selected="selected">Tous les pays</option>
 									<!-- available options are filled by AJAJ -->	
 							</select>
 						</p>
@@ -57,7 +57,7 @@
 <!-- "Ville"-->
 						<p>
 							<select name="ville" id="ville">
-								<option value="Toutes les villes" selected="selected">Toutes les villes</option>
+								<option value="defaut" selected="selected">Toutes les villes</option>
 									<!-- available options are filled by AJAJ -->
 							</select>
 						</p>
@@ -115,7 +115,7 @@
 					<p>
 <!-- Universites/Entreprises -->
 						<select id="universite_entreprise">
-							<option value="Toutes les universités et entreprises" selected="selected">Toutes les universités et entreprises</option>
+							<option value="defaut" selected="selected">Toutes les universités et entreprises</option>
 							<optgroup id="universiteGroup" label="Universite">Université</optgroup>
 								<!-- available options are filled by AJAJ -->	
 							<optgroup id="entrepriseGroup" label="Entreprise">Entreprise</optgroup>
@@ -126,7 +126,7 @@
 <!-- Langues -->
 					<p>
 						<select id="langue">
-							<option value="Toutes les langues" selected="selected">Toutes les langues</option>
+							<option value="defaut" selected="selected">Toutes les langues</option>
 								<!-- available options are filled by AJAJ -->							
 						</select>
 					</p>
@@ -134,7 +134,7 @@
 <!-- Domaine d activites -->
 					<p>
 						<select id="domaine">	
-							<option value="Tous les domaines d'activité" selected="selected">Tous les domaines d'activité</option>
+							<option value="defaut" selected="selected">Tous les domaines d'activité</option>
 							<!-- available options are filled by AJAJ -->	
 						</select>
 					</p>
@@ -142,7 +142,7 @@
 <!-- Tous les rapports -->
 					<p>
 						<select id="date">
-							<option value="Tous les rapports" selected="selected">Tous les rapports</option>
+							<option value="defaut" selected="selected">Tous les rapports</option>
 							<option value="2013-2014">2013-2014</option>
 							<option value="2011-2012">2011-2012</option>	
 							<option value="2009-2010">2009-2010</option>		

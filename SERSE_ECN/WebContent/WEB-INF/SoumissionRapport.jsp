@@ -21,6 +21,7 @@
 		<script type="text/javascript" src="scripts/SoumissionPageInitialisation.js"></script>
 		<script type="text/javascript" src="scripts/SoumissionChampsVerification.js"></script>
 		<script type="text/javascript" src="scripts/SoumissionChampsAutre.js"></script>
+		<script type="text/javascript" src="scripts/Soumission.js"></script>
 	</head>
 
 	<body>
@@ -33,34 +34,34 @@
 				<table>
 					<tr>
 						<td>Nom</td>
-						<td>Pouchoulin</td>
+						<td id='nom' >Pouchoulin</td>
 					</tr>
 					
 					<tr>
 						<td>Prenom</td>
-						<td>Audrey</td>
+						<td id='prenom'>Audrey</td>
 					</tr>
 					
 					<tr>
 						<td>Sexe</td>
-						<td>F</td>
+						<td sexe='sexe'>F</td>
 					</tr>
 					
 					<tr>
-						<td>Date de debut de séjour</td>
-						<td><input type="text" name="dateDebut" placeholder="jj/mm/aaaa"><img src="images/iconeCalendrier.png" width="10%" height="20%"/></td>
+						<td>Date de début de séjour</td>
+						<td><input type="text" id="dateDebut" placeholder="jj/mm/aaaa"><img src="images/iconeCalendrier.png" width="10%" height="20%"/></td>
 					</tr>
 					
 					<tr>
 						<td>Date de fin de séjour</td>
-						<td><input type="text" name="dateDebut" placeholder="jj/mm/aaaa"><img src="images/iconeCalendrier.png" width="10%" height="20%"/></td>
+						<td><input type="text" id="dateFin" placeholder="jj/mm/aaaa"><img src="images/iconeCalendrier.png" width="10%" height="20%"/></td>
 					</tr>
 <!--Continent-->					
 					<tr>
 						<td>Continent</td>
 						<td>
 							<select name="continent" id="continent">
-								<option value="Choisissez un continent" selected="selected">Choisissez un continent</option>
+								<option value="defaut" selected="selected">Choisissez un continent</option>
 								<!-- available options are filled by AJAJ -->					
 							</select>
 						</td>
@@ -71,7 +72,7 @@
 						<td>Pays</td>
 						<td>
 							<select name="pays" id="pays">
-								<option value="Choisissez un pays" selected="selected">Choisissez un pays</option>
+								<option value="defaut" selected="selected">Choisissez un pays</option>
 								<!-- available options are filled by AJAJ + champs Autre-->
 							</select>
 						</td>
@@ -85,7 +86,7 @@
 						<td>Ville</td>
 						<td>
 							<select id="ville">
-								<option value="Choisissez une ville" selected="selected">Choisissez une ville</option>
+								<option value="defaut" selected="selected">Choisissez une ville</option>
 								<!-- available options are filled by AJAJ -->
 							</select>
 						</td>
@@ -99,7 +100,7 @@
 						<td>Type de séjour</td>
 						<td>
 							<select id="typeSejour">
-								<option value="Choisissez un type de séjour" selected="selected">Choisissez un type de séjour</option>
+								<option value="defaut" selected="selected">Choisissez un type de séjour</option>
 								<!-- available options are filled by AJAJ -->
 							</select>	
 						</td>
@@ -110,7 +111,7 @@
 						<td>Type de mobilité</td>
 						<td>
 							<select id="typeMobilite">
-								<option value="Choisissez un type de mobilité" selected="selected">Choisissez un type de mobilité</option>
+								<option value="defaut" selected="selected">Choisissez un type de mobilité</option>
 								<!-- available options are filled by AJAJ -->
 							</select>		
 						</td>
@@ -121,7 +122,7 @@
 						<td>Type Expérience</td>
 						<td>
 							<select id="typeExperience">
-								<option value="Choisissez un type d'expérience" selected="selected">Choisissez un type d'expérience</option>
+								<option value="defaut" selected="selected">Choisissez un type d'expérience</option>
 								<!-- available options are filled by AJAJ -->
 							</select>
 						</td>
@@ -132,7 +133,7 @@
 						<td>Universite/Entreprise</td>
 						<td>
 							<select id="universite_entreprise">
-								<option value="Choisissez une université ou une entreprise" selected="selected">Choisissez une université ou une entreprise</option>
+								<option value="defaut" selected="selected">Choisissez une université ou une entreprise</option>
 								<optgroup id="universiteGroup" label="Universite">Université</optgroup>
 									<!-- available options are filled by AJAJ -->	
 								<optgroup id="entrepriseGroup" label="Entreprise">Entreprise</optgroup>
@@ -152,7 +153,7 @@
 						<td>Langues parlées</td>
 						<td>
 							<select id="langue">		
-								<option value="Choisissez une langue de travail majoritaire" selected="selected">Choisissez une langue de travail majoritaire</option>
+								<option value="defaut" selected="selected">Choisissez une langue de travail majoritaire</option>
 								<!-- available options are filled by AJAJ -->					
 							</select>
 							<img src="images/iconeInformation.jpg" height="12%" width="5%"class="imageflottante">
@@ -167,7 +168,7 @@
 						<td>Domaines d'activités</td>
 						<td>
 							<select id="domaine">
-								<option value="Choisissez un domaine d'activité principal" selected="selected">Choisissez un domaine d'activité principal</option>
+								<option value="defaut" selected="selected">Choisissez un domaine d'activité principal</option>
 								<!-- available options are filled by AJAJ -->					 												
 							</select>
 							<img src="images/iconeInformation.jpg" height="12%" width="5%" class="imageflottante">
@@ -180,27 +181,27 @@
 <!--Adresse du lieu de séjour-->						
 					<tr>
 						<td>Adresse du lieu de séjour</td>
-						<td><input type="text" placeholder="Entrer l'adresse du lieu de sejour" size="27"></td>
-						<td><input class="envoiFormulaire" type="button" value="Recherche des coordonnees GPS "></td>
+						<td><input id="adresse" type="text" placeholder="Entrer l'adresse du lieu de séjour" size="27"></td>
+						<td><input type="button" value="Recherche des coordonnées GPS "></td>
 					</tr>
 
 <!--Affichage des coordonnées GPS-->		
 					<tr>
 						<td>Coordonnées GPS</td>
-						<td>Lancer la recherche apres avoir saisi l'adresse <td>
+						<td id="coordonnees">Lancer la recherche apres avoir saisi l'adresse <td>
 					</tr>
 
 <!--Chemin du fichier-->
 					<tr>
 						<td>Rapport</td>
-						<td><input type="text" placeholder="Chemin du fichier"></td>
-						<td><input class="envoiFormulaire" type="button" value="Parcourir"></td>
+						<td><input id="cheminFichier" type="text" placeholder="Chemin du fichier"></td>
+						<td><input type="button" value="Parcourir"></td>
 					</tr>
 					
 <!--Reset et soumettre le rapport-->	
 					<tr>
-						<td><input class="envoiFormulaire" type="reset" value="Reset"></td>
-						<td><input class="envoiFormulaire" type="submit" value="Valider"></td>
+						<td><input id="reset" type="reset" value="Reset"></td>
+						<td><input id="valider" type="submit" value="Valider"></td>
 					</tr>
 				</table>
 			<br/>

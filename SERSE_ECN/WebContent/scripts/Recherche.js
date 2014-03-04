@@ -17,12 +17,18 @@ $(document).ready(function() {
 	
 	// Géographie
 	$('#continent').change(function() {
+		updatePaysAccordingToContinent(this);
+		updateVilleAccordingToContinent(this);
+		updateUniversiteEntrepriseAccordingToContinent(this);
 		recherche();
 	});
 	$('#pays').change(function() {
+		updateVilleAccordingToPays();
+		updateUniversiteEntrepriseAccordingToPays();
 		recherche();
 	});
 	$('#ville').change(function() {
+		updateUniversiteEntrepriseAccordingToVille();
 		recherche();
 	});
 	
@@ -88,7 +94,7 @@ $(document).ready(function() {
 function recherche(){
 	var $arguments = preparationParametresRecherche();
 	$.post('RechercheServlet', $arguments,function(responseJson){
-	            fillResults(responseJson);
+	     fillResults(responseJson);
     });
 }
 

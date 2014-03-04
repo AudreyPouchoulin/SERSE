@@ -18,11 +18,11 @@ import org.ecn.serse.exceptions.DatabaseException;
 import com.google.gson.Gson;
 
 /**
- * Servlet implementation class ContinentServlet
+ * Servlet implementation class OptionsRestreintesServlet
  */
-public class OptionsServlet extends HttpServlet {
+public class OptionsRestreintesServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    
+
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -34,54 +34,53 @@ public class OptionsServlet extends HttpServlet {
 			OptionsController optionsController = new OptionsController(bddController);
 			String nomListe = request.getParameter("nom_liste");
 			String messageDefaut = request.getParameter("message_defaut");
+			String continent = request.getParameter("continent");
+			String pays = request.getParameter("pays");
+			String ville = request.getParameter("ville");
 			switch (nomListe){
-				case "continent":
-					ArrayList<String> continents = optionsController.getContinents();
-					ServletUtil.sendOptions(continents, messageDefaut, response);
-					break;
 				case "pays":
-					ArrayList<String> pays = optionsController.getPays();
-					ServletUtil.sendOptions(pays, messageDefaut, response);
+					ArrayList<String> listePays = optionsController.getPaysByContinent(continent);
+					ServletUtil.sendOptions(listePays, messageDefaut, response);
 					break;
 				case "ville":
-					ArrayList<String> villes = optionsController.getVilles();
-					ServletUtil.sendOptions(villes, messageDefaut, response);
+					ArrayList<String> listeVilles = new ArrayList<String>();
+					if (pays!=null){
+						listeVilles = optionsController.getVillesByPays(pays);
+					} else {
+						listeVilles = optionsController.getVillesByContinent(continent);
+					}
+					ServletUtil.sendOptions(listeVilles, messageDefaut, response);
 					break;
 				case "université":
-					ArrayList<String> universites = optionsController.getUniversites();
-					ServletUtil.sendOptions(universites, null, response);
+					ArrayList<String> listeUniversites = new ArrayList<String>();
+					if (ville!=null){
+						listeUniversites = optionsController.getUniversitesByVille(ville);
+					} else if (pays!=null){
+						listeUniversites = optionsController.getUniversitesByPays(pays);
+					} else {
+						listeUniversites = optionsController.getUniversitesByContinent(continent);
+					}
+					ServletUtil.sendOptions(listeUniversites, null, response);
 					break;
 				case "entreprise":
-					ArrayList<String> entreprises = optionsController.getEntreprises();
-					ServletUtil.sendOptions(entreprises, null, response);
-					break;
-				case "domaine":
-					ArrayList<String> domainesActivite = optionsController.getDomainesActivite();
-					ServletUtil.sendOptions(domainesActivite, messageDefaut, response);
-					break;
-				case "langue":
-					ArrayList<String> langues = optionsController.getLangues();
-					ServletUtil.sendOptions(langues, messageDefaut, response);
-					break;
-				case "sejour":
-					ArrayList<String> sejours = optionsController.getSejours();
-					ServletUtil.sendOptions(sejours, messageDefaut, response);
-					break;
-				case "mobilite":
-					ArrayList<String> mobilites = optionsController.getMobilites();
-					ServletUtil.sendOptions(mobilites, messageDefaut, response);
-					break;
-				case "experience":
-					ArrayList<String> experiences = optionsController.getExperiences();
-					ServletUtil.sendOptions(experiences, messageDefaut, response);
+					ArrayList<String> listeEntreprises = new ArrayList<String>();
+					if (ville!=null){
+						listeEntreprises = optionsController.getEntreprisesByVille(ville);
+					} else if (pays!=null){
+						listeEntreprises = optionsController.getEntreprisesByPays(pays);
+					} else {
+						listeEntreprises = optionsController.getEntreprisesByContinent(continent);
+					}
+					ServletUtil.sendOptions(listeEntreprises, null, response);
 					break;
 				default:
 					Map<String, String> erreur = new LinkedHashMap<String, String>();
-					erreur.put("erreur", "Problem when calling for filling the lists");
+					erreur.put("erreur", "Problem when calling for updating the lists");
 					String jsonResponse = new Gson().toJson(erreur);
 					response.setContentType("application/json");
 				    response.setCharacterEncoding("UTF-8");
 				    response.getWriter().write(jsonResponse);
+					
 			}
 		} catch (DatabaseException e) {
 			// TODO Auto-generated catch block
@@ -92,5 +91,4 @@ public class OptionsServlet extends HttpServlet {
 		}
 		
 	}
-
 }
