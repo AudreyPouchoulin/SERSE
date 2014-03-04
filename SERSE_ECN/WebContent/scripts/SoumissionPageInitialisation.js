@@ -13,7 +13,8 @@ $(document).ready(function() {
 	remplissageTypeSejour();
 	remplissageTypeMobilite();
 	remplissageTypeExperience();
-	remplissageUniversiteEntreprise(true);
+	remplissageUniversite(true);
+	remplissageEntreprise(true);
 	remplissageLangue(true);
 	remplissageDomaineActivite(true);
 });

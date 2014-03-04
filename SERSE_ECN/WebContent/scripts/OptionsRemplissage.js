@@ -39,10 +39,10 @@
 	    });
 	}	
 
-/** remplissage de la liste déroulante d'universités et entreprises 
+/** remplissage des universités de la liste déroulante d'universités/entreprises
  * @param avecAutre : booléen vrai si il est nécessaire d'ajouter un champs "Autre", faux sinon
  */
-	function remplissageUniversiteEntreprise(avecAutre){
+	function remplissageUniversite(avecAutre){
 	        $.post('OptionsServlet',{nom_liste:'université'},function(responseJson) {  
 		            var $select = $('#universiteGroup'); 
 		            fillOptions($select, responseJson);
@@ -50,6 +50,12 @@
 		            	addOptionAutre($select);
 		            }
 	        });
+	}
+
+/** remplissage des entreprises de la liste déroulante d'universités/entreprises
+ * @param avecAutre : booléen vrai si il est nécessaire d'ajouter un champs "Autre", faux sinon
+ */
+	function remplissageEntreprise(avecAutre){
 	        $.post('OptionsServlet',{nom_liste:'entreprise'},function(responseJson) {  
 	            var $select = $('#entrepriseGroup'); 
 	            fillOptions($select, responseJson);

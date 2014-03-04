@@ -10,7 +10,8 @@
 		remplissageContinent();
 		remplissagePays(false);
 		remplissageVille(false);
-		remplissageUniversiteEntreprise(false);
+		remplissageUniversite(false);
+		remplissageEntreprise(false);
 		remplissageDomaineActivite(false);
 		remplissageLangue(false);
 		recherche();

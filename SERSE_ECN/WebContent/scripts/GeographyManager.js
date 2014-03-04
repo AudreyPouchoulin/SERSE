@@ -13,7 +13,6 @@
  * - ville
  */
 
-
 function updatePaysAccordingToContinent(){
 	//TODO: obtenir le message défaut
 	var $argumentsJson = {nom_liste:'pays', message_defaut:"a", continent:$("#continent").val()};
@@ -29,15 +28,27 @@ function updateVilleAccordingToPays(){
 	
 }
 
-function updateUniversiteEntrepriseAccordingToContinent(){
+function updateUniversiteAccordingToContinent(){
 	
 }
 
-function updateUniversiteEntrepriseAccordingToPays(){
+function updateUniversiteAccordingToPays(){
 	
 }
 
-function updateUniversiteEntrepriseAccordingToVille(){
+function updateUniversiteAccordingToVille(){
+	
+}
+
+function updateEntrepriseAccordingToContinent(){
+	
+}
+
+function updateEntrepriseAccordingToPays(){
+	
+}
+
+function updateEntrepriseAccordingToVille(){
 	
 }
 

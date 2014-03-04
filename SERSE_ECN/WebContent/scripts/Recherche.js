@@ -2,94 +2,11 @@
  * Project: SERSE_ECN
  * Creation date: 03 mar. 2014
  * Author: Audrey
- * Lancement de la recherche lors du changement d'un des choix dans les listes déroulantes ou cases à cocher des filtres de recherche:
- * - continent
- * - pays
- * - ville
- * - universités/entreprises
- * - professionnel/académique/CME/STING/TFE/Césure/Semestre/Année/Double diplôme
- * - université/entreprise nom
- * - langue
- * - domaine d'activité
- * - date
+ * Fonctions relatives à la recherche: 
+ * - récupération des paramètres de recherche
+ * - appel de la servlet de recherche
+ * - remplissage des résultats
  */
-$(document).ready(function() {
-	
-	// Géographie
-	$('#continent').change(function() {
-		updatePaysAccordingToContinent(this);
-		updateVilleAccordingToContinent(this);
-		updateUniversiteEntrepriseAccordingToContinent(this);
-		recherche();
-	});
-	$('#pays').change(function() {
-		updateVilleAccordingToPays();
-		updateUniversiteEntrepriseAccordingToPays();
-		recherche();
-	});
-	$('#ville').change(function() {
-		updateUniversiteEntrepriseAccordingToVille();
-		recherche();
-	});
-	
-	// Séjour en université ou entreprise
-	$('#sejourUniversite').click(function() {
-		recherche();
-	});
-	$('#sejourEntreprise').click(function() {
-		recherche();
-	});
-	
-	// Cadre de mobilité
-	$('#cadreProfessionnel').click(function() {
-		recherche();
-	});
-	$('#cadreAcademique').click(function() {
-		recherche();
-	});
-	$('#pCME').click(function() {
-		recherche();
-	});
-	$('#pSTING').click(function() {
-		recherche();
-	});
-	$('#pTFE').click(function() {
-		recherche();
-	});
-	$('#pCesure').click(function() {
-		recherche();
-	});
-	$('#pSemestre').click(function() {
-		recherche();
-	});
-	$('#aSemestre').click(function() {
-		recherche();
-	});
-	$('#aAnnee').click(function() {
-		recherche();
-	});
-	$('#aDoubleDiplome').click(function() {
-		recherche();
-	});
-	$('#aCesure').click(function() {
-		recherche();
-	});
-	
-	//Autres
-	$('#universite_entreprise').change(function() {
-		recherche();
-	});
-	$('#langue').change(function() {
-		recherche();
-	});
-	$('#domaine').change(function() {
-		recherche();
-	});
-	$('#date').change(function() {
-		recherche();
-	});
-	
-});
 
 function recherche(){
 	var $arguments = preparationParametresRecherche();
