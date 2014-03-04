@@ -18,8 +18,9 @@
 		<script type="text/javascript" src="scripts/jquery-1.10.2.min.js"></script>
 		
 		<script type="text/javascript" src="scripts/OptionsRemplissage.js"></script>
-		<script type="text/javascript" src="scripts/RemplissageChampsVerification.js"></script>
-		<script type="text/javascript" src="scripts/ChampsAutre.js"></script>
+		<script type="text/javascript" src="scripts/SoumissionPageInitialisation.js"></script>
+		<script type="text/javascript" src="scripts/SoumissionChampsVerification.js"></script>
+		<script type="text/javascript" src="scripts/SoumissionChampsAutre.js"></script>
 	</head>
 
 	<body>
@@ -83,10 +84,13 @@
 					<tr>
 						<td>Ville</td>
 						<td>
-							<select name="ville" id="ville" onChange="viewOthers()">
+							<select id="ville">
 								<option value="Choisissez une ville" selected="selected">Choisissez une ville</option>
 								<!-- available options are filled by AJAJ -->
 							</select>
+						</td>
+						<td id='autreVille' style="display: none">
+							<input id="valueAutreVille" type="text" placeholder="Nom de la ville ?"/>
 						</td>
 					</tr>
 
@@ -94,7 +98,7 @@
 					<tr>
 						<td>Type de séjour</td>
 						<td>
-							<select name="typeSejour">
+							<select id="typeSejour">
 								<option value="Choisissez un type de séjour" selected="selected">Choisissez un type de séjour</option>
 								<!-- available options are filled by AJAJ -->
 							</select>	
@@ -105,7 +109,7 @@
 					<tr>
 						<td>Type de mobilité</td>
 						<td>
-							<select name="typeMobilite">
+							<select id="typeMobilite">
 								<option value="Choisissez un type de mobilité" selected="selected">Choisissez un type de mobilité</option>
 								<!-- available options are filled by AJAJ -->
 							</select>		
@@ -116,7 +120,7 @@
 					<tr>
 						<td>Type Expérience</td>
 						<td>
-							<select name="typeExperience">
+							<select id="typeExperience">
 								<option value="Choisissez un type d'expérience" selected="selected">Choisissez un type d'expérience</option>
 								<!-- available options are filled by AJAJ -->
 							</select>
@@ -127,10 +131,19 @@
 					<tr>
 						<td>Universite/Entreprise</td>
 						<td>
-							<select name="universite" id="universite_entreprise" onChange="viewOthers()">
+							<select id="universite_entreprise">
 								<option value="Choisissez une université ou une entreprise" selected="selected">Choisissez une université ou une entreprise</option>
-								<!-- available options are filled by AJAJ -->				
+								<optgroup id="universiteGroup" label="Universite">Université</optgroup>
+									<!-- available options are filled by AJAJ -->	
+								<optgroup id="entrepriseGroup" label="Entreprise">Entreprise</optgroup>
+									<!-- available options are filled by AJAJ -->					
 							</select>					
+						</td>
+						<td id='autreUniversite' style="display: none">
+							<input id="valueAutreUniversite" type="text" placeholder="Nom de l'université ?"/>
+						</td>
+						<td id='autreEntreprise' style="display: none">
+							<input id="valueAutreEntreprise" type="text" placeholder="Nom de l'entreprise?"/>
 						</td>
 					</tr>
 
@@ -138,11 +151,14 @@
 					<tr>
 						<td>Langues parlées</td>
 						<td>
-							<select name="langue" id="langue" onChange="viewOthers()">		
+							<select id="langue">		
 								<option value="Choisissez une langue de travail majoritaire" selected="selected">Choisissez une langue de travail majoritaire</option>
 								<!-- available options are filled by AJAJ -->					
 							</select>
 							<img src="images/iconeInformation.jpg" height="12%" width="5%"class="imageflottante">
+						</td>
+						<td id='autreLangue' style="display: none">
+							<input id="valueAutreLangue" type="text" placeholder="Nom de la langue ?"/>
 						</td>
 					</tr>
 
@@ -150,11 +166,14 @@
 					<tr>
 						<td>Domaines d'activités</td>
 						<td>
-							<select name="domaine" id="domaine" onChange="viewOthers()">
+							<select id="domaine">
 								<option value="Choisissez un domaine d'activité principal" selected="selected">Choisissez un domaine d'activité principal</option>
 								<!-- available options are filled by AJAJ -->					 												
 							</select>
 							<img src="images/iconeInformation.jpg" height="12%" width="5%" class="imageflottante">
+						</td>
+						<td id='autreDomaine' style="display: none">
+							<input id="valueAutreDomaine" type="text" placeholder="Nom du domaine d'activité ?"/>
 						</td>
 					</tr>
 
@@ -181,7 +200,7 @@
 <!--Reset et soumettre le rapport-->	
 					<tr>
 						<td><input class="envoiFormulaire" type="reset" value="Reset"></td>
-						<td><input class="envoiFormulaire" type="submit" value="Envoyer le rapport"></td>
+						<td><input class="envoiFormulaire" type="submit" value="Valider"></td>
 					</tr>
 				</table>
 			<br/>

@@ -19,7 +19,8 @@
 		
 		<script type="text/javascript" src="scripts/OptionsRemplissage.js"></script>
 		<script type="text/javascript" src="scripts/Recherche.js"></script>
-		<script type="text/javascript" src="scripts/MobilityManager.js"></script>
+		<script type="text/javascript" src="scripts/RecherchePageInitialisation.js"></script>
+		<script type="text/javascript" src="scripts/RechercheMobilityManager.js"></script>
 		<script type="text/javascript" src="scripts/GeographyManager.js"></script>
 		
 	</head>
@@ -70,8 +71,8 @@
 					<h2> Séjour </h2>
 					<table id="invisibleTable">
 						<tr id="invisibleTable">
-							<td id="invisibleTable"><input type="checkbox" id="sejourUniversite" /> <label for="sejourUniversite">Universite</label></td>
-							<td id="invisibleTable"><input type="checkbox" id="sejourEntreprise" /> <label for="sejourEntreprise">Entreprise</label></td>
+							<td id="invisibleTable"><input type="checkbox" id="sejourUniversite" checked="checked"/> <label for="sejourUniversite">Universite</label></td>
+							<td id="invisibleTable"><input type="checkbox" id="sejourEntreprise" checked="checked"/> <label for="sejourEntreprise">Entreprise</label></td>
 						</tr>
 					</table>		
 				</fieldset>
@@ -84,22 +85,22 @@
 					<table id="invisibleTable" >
 						<tr id="invisibleTable">
 							<td id="invisibleTable">
-								<input type="checkbox" id="cadreProfessionnel"/><label for="cadreProfessionnel">Professionnel</label>
+								<input type="checkbox" id="cadreProfessionnel" checked="checked"/><label for="cadreProfessionnel">Professionnel</label>
 								<ul id='casesCadreProfessionnel' style="list-style: none">
-								    <li><input type='checkbox' style="list-style:none" id='pCME'/>CME</li>
-								    <li><input type='checkbox' style="list-style:none" id='pSTING'/>STING</li>
-								    <li><input type='checkbox' style="list-style:none" id='pTFE'/>TFE</li>
-								    <li><input type='checkbox' style="list-style:none" id='pCesure'/>Césure</li>
-								    <li><input type='checkbox' style="list-style:none" id='pSemestre'/>Semestre</li>	    
+								    <li><input type='checkbox' style="list-style:none" id='pCME' checked="checked"/>CME</li>
+								    <li><input type='checkbox' style="list-style:none" id='pSTING' checked="checked"/>STING</li>
+								    <li><input type='checkbox' style="list-style:none" id='pTFE' checked="checked"/>TFE</li>
+								    <li><input type='checkbox' style="list-style:none" id='pCesure' checked="checked"/>Césure</li>
+								    <li><input type='checkbox' style="list-style:none" id='pSemestre' checked="checked"/>Semestre</li>	    
 								</ul>
 							</td>
 							<td id="invisibleTable">
-								<input type="checkbox" id="cadreAcademique"><label for="cadreAcademique">Académique</label>
+								<input type="checkbox" id="cadreAcademique" checked="checked"><label for="cadreAcademique">Académique</label>
 								<ul id='casesCadreAcademique' style="list-style: none">
-								    <li><input type='checkbox' id='aSemestre'/>Semestre</li>
-								    <li><input type='checkbox' id='aAnnee'/>Annee</li>
-								    <li><input type='checkbox' id='aDoubleDiplome'/>Double Diplome</li>
-								    <li><input type='checkbox' id='aCesure'/>Césure</li>	    
+								    <li><input type='checkbox' id='aSemestre' checked="checked"/>Semestre</li>
+								    <li><input type='checkbox' id='aAnnee' checked="checked"/>Annee</li>
+								    <li><input type='checkbox' id='aDoubleDiplome' checked="checked"/>Double Diplome</li>
+								    <li><input type='checkbox' id='aCesure' checked="checked"/>Césure</li>	    
 								</ul>
 							</td>
 						</tr>		

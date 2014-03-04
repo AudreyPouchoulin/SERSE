@@ -63,6 +63,18 @@ public class OptionsServlet extends HttpServlet {
 					ArrayList<String> langues = optionsController.getLangues();
 					sendOptions(langues, messageDefaut, response);
 					break;
+				case "sejour":
+					ArrayList<String> sejours = optionsController.getSejours();
+					sendOptions(sejours, messageDefaut, response);
+					break;
+				case "mobilite":
+					ArrayList<String> mobilites = optionsController.getMobilites();
+					sendOptions(mobilites, messageDefaut, response);
+					break;
+				case "experience":
+					ArrayList<String> experiences = optionsController.getExperiences();
+					sendOptions(experiences, messageDefaut, response);
+					break;
 				default:
 					Map<String, String> erreur = new LinkedHashMap<String, String>();
 					erreur.put(Integer.toString(1), "Problem when calling for filling the lists");

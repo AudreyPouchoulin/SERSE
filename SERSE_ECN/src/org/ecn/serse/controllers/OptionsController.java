@@ -155,4 +155,57 @@ public class OptionsController {
 		return listeLangues;
 	}
 
+	/**
+	 * Permet d'obtenir l'ensemble des séjours possibles
+	 * @return liste de séjours en base de données
+	 * @throws DatabaseException
+	 * @throws SQLException
+	 */
+	public ArrayList<String> getSejours() throws DatabaseException, SQLException{
+		ArrayList<String> listeSejours = new ArrayList<String>();
+		ResultSet resultSet = bdd.executeRequest(
+				"SELECT typesejour_libelle "
+				+ "FROM serse.typesejour "
+				+ "ORDER BY typesejour_libelle;");
+		while(resultSet.next()){
+			listeSejours.add(resultSet.getString(1));
+		}
+		return listeSejours;
+	}
+	
+	/**
+	 * Permet d'obtenir l'ensemble des mobilités possibles
+	 * @return liste de mobilités en base de données
+	 * @throws DatabaseException
+	 * @throws SQLException
+	 */
+	public ArrayList<String> getMobilites() throws DatabaseException, SQLException{
+		ArrayList<String> listeMobilites = new ArrayList<String>();
+		ResultSet resultSet = bdd.executeRequest(
+				"SELECT typemobilite_libelle "
+				+ "FROM serse.typemobilite "
+				+ "ORDER BY typemobilite_libelle;");
+		while(resultSet.next()){
+			listeMobilites.add(resultSet.getString(1));
+		}
+		return listeMobilites;
+	}
+	
+	/**
+	 * Permet d'obtenir l'ensemble des expériences possibles
+	 * @return liste des expériences en base de données
+	 * @throws DatabaseException
+	 * @throws SQLException
+	 */
+	public ArrayList<String> getExperiences() throws DatabaseException, SQLException{
+		ArrayList<String> listeExperiences = new ArrayList<String>();
+		ResultSet resultSet = bdd.executeRequest(
+				"SELECT typeexperience_libelle "
+				+ "FROM serse.typeexperience "
+				+ "ORDER BY typeexperience_libelle;");
+		while(resultSet.next()){
+			listeExperiences.add(resultSet.getString(1));
+		}
+		return listeExperiences;
+	}
 }
