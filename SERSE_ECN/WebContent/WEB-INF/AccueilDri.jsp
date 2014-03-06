@@ -13,22 +13,22 @@
 	<head>
 		<meta charset="utf-8" />
 		<title>SERSE Soumission de Rapports</title>
-		<LINK type="text/css/html" rel="stylesheet" media="all" title="CSS" href="StyleSheet.css" />
+		<LINK type="text/css/html" rel="stylesheet" media="all" title="CSS" href="styles/StyleSheet.css" />
 	</head>
 
 	<body>
 		<!-- Onglets du menu de navigation -->
 			<div id="menu">
 				 <ul id="onglets">
-				<li class="active"><a href="AccueilDri.html"> Accueil </a></li>
+				<li class="active"><a href="/AccueilAdmin"> Accueil </a></li>
 				<!-- Liens a completer au fur et a mesure -->
-				<li><a href="AccesRapportDri.html"> Acces aux rapports </a></li>
-				<li><a href="ValidationRapportsDri.html"> Rapports a valider </a></li>
-				<li><a href="RapportsMiseEnLigneDri.html"> Gerer les rapports </a></li>
-				<li><a href="AboDesaboDri.html"> Preferences </a></li>
+				<li><a href="AccueilDri"> Acces aux rapports </a></li>
+				<li><a href="SERSE_ECN/AccueilDri"> Rapports a valider </a></li>
+				<li><a href="/AccueilAdmin"> Gerer les rapports </a></li>
+				<li><a href="/AccueilAdmin"> Preferences </a></li>
 				</ul>
 			</div>
-			
+					
 			<br/>
 			<br/>
 			<br/>
@@ -37,8 +37,18 @@
 			<div align="center"><h1>Bonjour </h1></div>
 			<div class="textWelcome">
 				<div class="textWelcome">  Vous avez : </div>	
-					<div class="textWelcome">5 Rapports a valider </div>	
-					<div class="textWelcome">2 Rapports en attente de mise en ligne <br/></div>	
+					<div class="textWelcome">
+						<% 
+							Integer nbrValider = (Integer) request.getAttribute("nbrRapportsValider");
+							out.println( nbrValider + " ");
+						%>
+					 Rapports a valider </div>	
+					<div class="textWelcome"> 
+						<% 
+							Integer nbrLigne = (Integer) request.getAttribute("nbrRapportsLigne");
+							out.println( nbrLigne  + " ");
+						%>					
+					Rapports en attente de mise en ligne <br/></div>	
 				
 			</div>		
 			</fieldset>

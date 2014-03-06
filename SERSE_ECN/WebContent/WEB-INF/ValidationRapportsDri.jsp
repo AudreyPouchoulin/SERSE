@@ -16,7 +16,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<title>SERSE Soumission de Rapports</title>
-		<LINK type="text/css/html" rel="stylesheet" media="all" title="CSS" href="StyleSheet.css" />
+		<LINK type="text/css/html" rel="stylesheet" media="all" title="CSS" href="styles/StyleSheet.css" />
 	</head>
 
 	<body>
@@ -49,12 +49,12 @@
 				<table id="tableau" align="center">
 				<thead>
 					<tr>
-						<th height="10" id="tableau" width="20%">Titre <img src="iconeCroissantDecroissant.png" align="center" class="imageflottante"></th>
-						<th id="tableau" width="15%">Date soumission<img src="iconeCroissantDecroissant.png" align="center" class="imageflottante"></th>
-						<th id="tableau" width="10%">Pays<img src="iconeCroissantDecroissant.png" align="center" class="imageflottante"></th>
-						<th id="tableau" width="12%">Etat<img src="iconeCroissantDecroissant.png" align="center" class="imageflottante"></th>
-						<th id="tableau" width="13%">Type experience<img src="iconeCroissantDecroissant.png" align="center" class="imageflottante"></th>
-						<th id="tableau" width="15%">Rapports assigne a<img src="iconeCroissantDecroissant.png" align="center" class="imageflottante"></th>
+						<th height="10" id="tableau" width="20%">Titre <img src="images/iconeCroissantDecroissant.png" align="center" class="imageflottante"></th>
+						<th id="tableau" width="15%">Date soumission<img src="images/iconeCroissantDecroissant.png" align="center" class="imageflottante"></th>
+						<th id="tableau" width="10%">Pays<img src="images/iconeCroissantDecroissant.png" align="center" class="imageflottante"></th>
+						<th id="tableau" width="12%">Etat<img src="images/iconeCroissantDecroissant.png" align="center" class="imageflottante"></th>
+						<th id="tableau" width="13%">Type experience<img src="images/iconeCroissantDecroissant.png" align="center" class="imageflottante"></th>
+						<th id="tableau" width="15%">Rapports assigne a<img src="images/iconeCroissantDecroissant.png" align="center" class="imageflottante"></th>
 						<th id="tableau" width="20%">Actions</th>
 						<th id="tableau" width="40%"></th>
 					</tr>
@@ -62,7 +62,7 @@
 				
 				<tbody>
 					<tr>
-						<td><div align="center">UK_Semestre_Informatique.pdf <img src="iconeTelechargemet.jpg" height="7%" width="10%" align="center"></div></td>
+						<td><div align="center">UK_Semestre_Informatique.pdf <img src="images/iconeTelechargemet.jpg" height="7%" width="10%" align="center"></div></td>
 						<td><div align="center">07/12/2013</div></td>
 						<td><div align="center">Royaume-Uni</div></td>
 						<td><div align="center">Attente validation</td>

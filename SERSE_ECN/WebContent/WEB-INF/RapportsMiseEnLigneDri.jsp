@@ -13,7 +13,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<title>SERSE Soumission de Rapports</title>
-		<LINK type="text/css/html" rel="stylesheet" media="all" title="CSS" href="StyleSheet.css" />
+		<LINK type="text/css/html" rel="stylesheet" media="all" title="CSS" href="styles/StyleSheet.css" />
 	</head>
 
 	<body>
@@ -42,16 +42,16 @@
 				<table id="tableau" align="center">
 				<thead>
 					<tr>
-						<th height="10" id="tableau" width="25%">Rapport <img src="iconeCroissantDecroissant.png" align="center" class="imageflottante"></th>
-						<th id="tableau">Propose par<img src="iconeCroissantDecroissant.png" align="center" class="imageflottante"></th>
-						<th id="tableau">Date Proposition<img src="iconeCroissantDecroissant.png" align="center" class="imageflottante"></th>
+						<th height="10" id="tableau" width="25%">Rapport <img src="images/iconeCroissantDecroissant.png" align="center" class="imageflottante"></th>
+						<th id="tableau">Propose par<img src="images/iconeCroissantDecroissant.png" align="center" class="imageflottante"></th>
+						<th id="tableau">Date Proposition<img src="images/iconeCroissantDecroissant.png" align="center" class="imageflottante"></th>
 						<th id="tableau" width="40%"></th>
 					</tr>
 				</thead>
 				
 				<tbody>
 					<tr>
-						<td><div align="center">UK_Semestre_Informatique.pdf <img src="iconeTelechargemet.jpg" height="7%" width="7%" align="center"></div></td>
+						<td><div align="center">UK_Semestre_Informatique.pdf <img src="images/iconeTelechargemet.jpg" height="7%" width="7%" align="center"></div></td>
 						<td><div align="center">07/07/2012</div></td>
 						<td><div align="center">En ligne</div></td>
 						<td>
