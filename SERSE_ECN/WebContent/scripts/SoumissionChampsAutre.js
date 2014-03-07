@@ -11,34 +11,6 @@
  * - domaine d'activité
  */
 
-$(document).ready(function() {
-	$('#pays').change(function() {
-		gestionAutre($('#pays'), $('#autrePays'));
-	});
-	
-	$('#ville').change(function() {
-		gestionAutre($('#ville'), $('#autreVille'));
-	});
-	
-	$('#universite_entreprise').change(function() {
-		//TODO: différencier entre université et entreprise
-		if ($('#universite_entreprise').val() == 'Autre'){
-			$('#autreUniversite').show();
-		} else {
-			$('#autreUniversite').hide();
-		}
-	});
-	
-	$('#langue').change(function() {
-		gestionAutre($('#langue'), $('#autreLangue'));
-	});
-	
-	$('#domaine').change(function() {
-		gestionAutre($('#domaine'), $('#autreDomaine'));
-	});
-	
-});
-
 function gestionAutre($champs, $autreChamps){
 	if ($champs.val() == 'Autre'){
 		$autreChamps.show();

@@ -10,18 +10,26 @@ $(document).ready(function() {
 	
 /** Géographie */
 	$('#continent').change(function() {
-		updatePaysAccordingToContinent();
-		updateVilleAccordingToContinent();
-		updateUniversiteAccordingToContinent();
+		if ($('#continent').val() !='defaut'){
+			updatePaysAccordingToContinent();
+			updateVilleAccordingToContinent();
+			updateUniversiteAccordingToContinent();
+		}
 	});
 	
 	$('#pays').change(function() {
-		updateVilleAccordingToPays();
-		updateUniversiteAccordingToPays();
+		gestionAutre($('#pays'), $('#autrePays'));
+		if ($('#pays').val() != 'Autre' && $('#pays').val() !='defaut'){
+			updateVilleAccordingToPays();
+			updateUniversiteAccordingToPays();
+		}
 	});
 	
 	$('#ville').change(function() {
-		updateUniversiteAccordingToVille();
+		gestionAutre($('#ville'), $('#autreVille'));
+		if ($('#ville').val() != 'Autre' && $('#ville').val() !='defaut'){
+			updateUniversiteAccordingToVille();
+		}
 	});
 	
 /**Type de séjour*/
@@ -57,17 +65,26 @@ $(document).ready(function() {
 
 /** Nom de l'université ou de l'entreprise */
 	$('#universite_entreprise').change(function() {
-
+		if ($('#universite_entreprise #universiteGroup option:selected').text() == 'Autre'){
+			$('#autreUniversite').show();
+			$('#autreEntreprise').hide();
+		} else if ($('#universite_entreprise #entrepriseGroup option:selected').text() == 'Autre'){
+			$('#autreEntreprise').show();
+			$('#autreUniversite').hide();
+		} else {
+			$('#autreUniversite').hide();
+			$('#autreEntreprise').hide();
+		}
 	});
 
 /** langue */
 	$('#langue').change(function() {
-
+		gestionAutre($('#langue'), $('#autreLangue'));
 	});
 	
 /** domaine */	
 	$('#domaine').change(function() {
-		
+		gestionAutre($('#domaine'), $('#autreDomaine'));
 	});
 	
 /** adresse et coordonnées GPS*/
