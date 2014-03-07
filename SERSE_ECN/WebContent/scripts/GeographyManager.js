@@ -14,8 +14,7 @@
  */
 
 function updatePaysAccordingToContinent(){
-	//TODO: obtenir le message défaut
-	var $argumentsJson = {nom_liste:'pays', message_defaut:"a", continent:$("#continent").val()};
+	var $argumentsJson = {nom_liste:'pays', message_defaut:$("#pays option[value='defaut']").text(), continent:$("#continent").val()};
 	var $liste = $('#pays');
 	update($liste, $argumentsJson);
 }
@@ -53,7 +52,7 @@ function updateEntrepriseAccordingToVille(){
 }
 
 function update(liste, argumentsJson){
-	$.post('OptionsRestreintesServlet',argumentsJson, function(responseJson) {   
+	$.post('OptionsRestreintesServlet',argumentsJson, function(responseJson) {  
         fillOptions(liste, responseJson);
 	});
 }

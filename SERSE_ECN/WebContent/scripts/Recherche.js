@@ -86,10 +86,15 @@ function preparationParametresRecherche(){
 function fillResults(responseJson){
 	$("#contenuTableauResultats").find('tr').remove();
 	$("#contenuTableauResultats").find('td').remove();
+	alert("filling results 1");
 	$.each(responseJson, function(key, value) {
-		$("#contenuTableauResultats").append("<tr>");
-			$("#contenuTableauResultats").append("<td>" + value + "</td>");
-		$("#contenuTableauResultats").append("</tr>");	
+		if (key=='rapport_nom'){
+			$("#contenuTableauResultats").append("<tr>");
+		}
+		$("#contenuTableauResultats").append("<td>" + value + "</td>");
+		if (key=='rapport_langue'){
+			$("#contenuTableauResultats").append("</tr>");	
+		}
 	});
-	$("#tableauResultats").append("</tbody>");
+	alert("filling results 2");
 }

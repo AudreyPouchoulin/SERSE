@@ -57,7 +57,9 @@ public class RechercheServlet extends HttpServlet {
 						universite, entreprise, professionnel, academique, 
 						CME, STING, TFE, semestre, annee, cesure, doubleDiplome,
 						universiteNom, entrepriseNom, langueNom, domaineActiviteNom, date);
+				System.out.println(listeRapports);
 				String jsonResponse = new Gson().toJson(listeRapports);
+				System.out.println(jsonResponse);
 				response.setContentType("application/json");
 			    response.setCharacterEncoding("UTF-8");
 			    response.getWriter().write(jsonResponse);

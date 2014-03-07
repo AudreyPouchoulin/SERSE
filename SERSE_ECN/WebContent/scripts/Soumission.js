@@ -22,9 +22,6 @@ $(document).ready(function() {
 		$('#langue').val("defaut");
 		$('#domaine').val("defaut");
 		
-		
-		
-		// TODO: empty not working
 		$('#dateDebut').val('');
 		$('#dateFin').val('');
 		$('#adresse').val('');
