@@ -22,13 +22,14 @@ $(document).ready(function() {
 		$('#langue').val("defaut");
 		$('#domaine').val("defaut");
 		
-		// TODO: empty not working
-		$('#dateDebut').text().empty();
-		$('#dateFin').empty();
-		$('#adresse').empty();
-		$('#coordonnees').text('Lancer la recherche apres avoir saisi l\'adresse');
-		$('#cheminFichier').empty();
 		
+		
+		// TODO: empty not working
+		$('#dateDebut').val('');
+		$('#dateFin').val('');
+		$('#adresse').val('');
+		$('#coordonnees').text('Lancer la recherche apres avoir saisi l\'adresse');
+		$('#cheminFichier').val('');	
 		
 		$('#autrePays').hide();
 		$('#autreVille').hide();
