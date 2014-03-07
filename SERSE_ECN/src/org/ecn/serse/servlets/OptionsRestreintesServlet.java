@@ -46,12 +46,12 @@ public class OptionsRestreintesServlet extends HttpServlet {
 					ArrayList<String> listeVilles = new ArrayList<String>();
 					if (pays!=null){
 						listeVilles = optionsController.getVillesByPays(pays);
-					} else {
+					} else if (continent!=null){
 						listeVilles = optionsController.getVillesByContinent(continent);
 					}
 					ServletUtil.sendOptions(listeVilles, messageDefaut, response);
 					break;
-				case "université":
+				case "universite":
 					ArrayList<String> listeUniversites = new ArrayList<String>();
 					if (ville!=null){
 						listeUniversites = optionsController.getUniversitesByVille(ville);

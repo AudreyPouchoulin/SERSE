@@ -56,7 +56,7 @@
  * @param avecAutre : booléen vrai si il est nécessaire d'ajouter un champs "Autre", faux sinon
  */
 	function remplissageEntreprise(avecAutre){
-	        $.post('OptionsServlet',{nom_liste:'entreprise'},function(responseJson) {  
+	        $.post('OptionsServlet',{nom_liste:'entreprise'},function(responseJson) { 
 	            var $select = $('#entrepriseGroup'); 
 	            fillOptions($select, responseJson);
 	            if (avecAutre){
@@ -126,7 +126,7 @@
  */
 	function fillOptions(liste, responseJson){
 		liste.find('option').remove();
-     	$.each(responseJson, function(key, value) {               
+     	$.each(responseJson, function(key, value) {  
          	$('<option>').val(key).text(value).appendTo(liste); 
       });
 	}

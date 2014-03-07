@@ -41,59 +41,74 @@ $(document).ready(function() {
 /**Séjour en université ou entreprise */
 	$('#sejourUniversite').click(function() {
 		if (this.checked){
-			// TODO: prendre en compte continent, pays, ville si nécessaire
-			$('#universite_entreprise').append("<optgroup id=\"universiteGroup\" label=\"Universite\">Université</optgroup>");
-			remplissageUniversite(false);
+			universiteCoche();
 		} else {
-			// TODO: changer la valeur du champs par défaut
-			$('#universiteGroup').remove();
+				universiteDecoche();
+				if (!($('#sejourEntreprise').prop('checked'))) {
+				alert('Une des 2 cases au moins doit être cochée (université et/ou entreprise) pour que la recherche soit possible.');
+				entrepriseCoche();
+			}
+			
 		}
 		recherche();
 	});
 	
 	$('#sejourEntreprise').click(function() {
 		if (this.checked){
-			$('#universite_entreprise').append("<optgroup id=\"entrepriseGroup\" label=\"Entreprise\">Entreprise</optgroup>");
-			remplissageEntreprise(false);
+			entrepriseCoche();
 		} else {
-			// TODO: changer la valeur du champs par défaut
-			$('#entrepriseGroup').remove();
+			entrepriseDecoche();
+			if(!($('#sejourUniversite').prop('checked'))){
+				alert('Une des 2 cases au moins doit être cochée (université et/ou entreprise) pour que la recherche soit possible.');
+				universiteCoche();
+			}
 		}
 		recherche();
 	});
-	
+
 /**Cadre de mobilité */
 	$('#cadreProfessionnel').click(function() {
+		cocheDecocheCaseProfessionnel();
 		recherche();
 	});
 	$('#cadreAcademique').click(function() {
+		cocheDecocheCaseAcademique();
 		recherche();
 	});
 	$('#pCME').click(function() {
+		cocheDecochePro(this);
 		recherche();
 	});
 	$('#pSTING').click(function() {
+		cocheDecochePro(this);
 		recherche();
 	});
 	$('#pTFE').click(function() {
+		cocheDecochePro(this);
 		recherche();
 	});
 	$('#pCesure').click(function() {
+		cocheDecochePro(this);
 		recherche();
 	});
 	$('#pSemestre').click(function() {
+		cocheDecochePro(this);
 		recherche();
 	});
 	$('#aSemestre').click(function() {
+		cocheDecocheAca(this);
 		recherche();
 	});
 	$('#aAnnee').click(function() {
+		cocheDecocheAca(this);
 		recherche();
 	});
 	$('#aDoubleDiplome').click(function() {
+		cocheDecocheAca(this);
 		recherche();
 	});
 	$('#aCesure').click(function() {
+		cocheDecocheAca(this);
 		recherche();
 	});
 	

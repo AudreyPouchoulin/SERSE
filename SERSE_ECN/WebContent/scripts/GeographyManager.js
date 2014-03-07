@@ -14,21 +14,35 @@
  */
 
 function updatePaysAccordingToContinent(){
-	var $argumentsJson = {nom_liste:'pays', message_defaut:$("#pays option[value='defaut']").text(), continent:$("#continent").val()};
-	var $liste = $('#pays');
-	update($liste, $argumentsJson);
+	if($("#continent").val()!='defaut'){
+		var $argumentsJson = {nom_liste:'pays', message_defaut:$("#pays option[value='defaut']").text(), continent:$("#continent").val()};
+		var $liste = $('#pays');
+		update($liste, $argumentsJson);
+	}
 }
 
 function updateVilleAccordingToContinent(){
-	
+	if ($("#continent").val()!='defaut'){
+		var $argumentsJson = {nom_liste:'ville', message_defaut:$("#ville option[value='defaut']").text(), continent:$("#continent").val()};
+		var $liste = $('#ville');
+		update($liste, $argumentsJson);
+	}
 }
 
 function updateVilleAccordingToPays(){
-	
+	if ($("#pays").val()!='defaut'){
+		var $argumentsJson = {nom_liste:'ville', message_defaut:$("#ville option[value='defaut']").text(), pays:$("#pays").val()};
+		var $liste = $('#ville');
+		update($liste, $argumentsJson);
+	}
 }
 
 function updateUniversiteAccordingToContinent(){
-	
+	if($("#continent").val()!='defaut'){
+		var $argumentsJson = {nom_liste:'universite', message_defaut:$("#universite_entreprise option[value='defaut']").text(), continent:$("#continent").val()};
+		var $liste = $('#universiteGroup');
+		update($liste, $argumentsJson);
+	}
 }
 
 function updateUniversiteAccordingToPays(){
@@ -40,7 +54,11 @@ function updateUniversiteAccordingToVille(){
 }
 
 function updateEntrepriseAccordingToContinent(){
-	
+	if($("#continent").val()!='defaut'){
+		var $argumentsJson = {nom_liste:'entreprise', message_defaut:$("#universite_entreprise option[value='defaut']").text(), continent:$("#continent").val()};
+		var $liste = $('#entrepriseGroup');
+		update($liste, $argumentsJson);
+	}
 }
 
 function updateEntrepriseAccordingToPays(){

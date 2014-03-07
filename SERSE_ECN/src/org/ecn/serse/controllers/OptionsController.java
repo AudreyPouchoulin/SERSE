@@ -126,8 +126,8 @@ public class OptionsController {
 		PreparedStatement statement = bdd.getConnection().prepareStatement(
 				"SELECT ville_nom "
 				+ "FROM serse.ville "
-				+ "INNER JOIN serse.pays ON serse.pays.ville_id = serse.ville.ville_id "
-				+ "INNER JOIN serse.continent ON serse.continent.pays_id = serse.pays.pays_id "
+				+ "INNER JOIN serse.pays ON serse.pays.pays_id = serse.ville.pays_id "
+				+ "INNER JOIN serse.continent ON serse.continent.continent_id = serse.pays.continent_id "
 				+ "WHERE continent_nom=? "
 				+ "ORDER BY ville_nom;");
 		statement.setString(1, continentNom);
@@ -156,7 +156,7 @@ public class OptionsController {
 		PreparedStatement statement = bdd.getConnection().prepareStatement(
 				"SELECT ville_nom "
 				+ "FROM serse.ville "
-				+ "INNER JOIN serse.pays ON serse.pays.ville_id = serse.ville.ville_id "
+				+ "INNER JOIN serse.pays ON serse.pays.pays_id = serse.ville.pays_id "
 				+ "WHERE pays_nom=? "
 				+ "ORDER BY ville_nom;");
 		statement.setString(1, paysNom);
@@ -311,7 +311,8 @@ public class OptionsController {
 		PreparedStatement statement = bdd.getConnection().prepareStatement(
 				"SELECT entreprise_nom "
 				+ "FROM serse.entreprise "
-				+ "INNER JOIN serse.pays ON serse.pays.pays_id = serse.entreprise.pays_id "
+				+ "INNER JOIN serse.entreprise_pays ON serse.entreprise_pays.entreprise_id = serse.entreprise.entreprise_id "
+				+ "INNER JOIN serse.pays ON serse.pays.pays_id = serse.entreprise_pays.pays_id "
 				+ "INNER JOIN serse.continent ON serse.continent.continent_id = serse.pays.continent_id "
 				+ "WHERE continent_nom=?"
 				+ "ORDER BY entreprise_nom;");
@@ -341,7 +342,8 @@ public class OptionsController {
 		PreparedStatement statement = bdd.getConnection().prepareStatement(
 				"SELECT entreprise_nom "
 				+ "FROM serse.entreprise "
-				+ "INNER JOIN serse.pays ON serse.pays.pays_id = serse.entreprise.pays_id "
+				+ "INNER JOIN serse.entreprise_pays ON serse.entreprise_pays.entreprise_id = serse.entreprise.entreprise_id "
+				+ "INNER JOIN serse.pays ON serse.pays.pays_id = serse.entreprise_pays.pays_id "
 				+ "WHERE pays_nom=?"
 				+ "ORDER BY entreprise_nom;");
 		statement.setString(1, paysNom);
@@ -370,7 +372,8 @@ public class OptionsController {
 		PreparedStatement statement = bdd.getConnection().prepareStatement(
 				"SELECT entreprise_nom "
 				+ "FROM serse.entreprise "
-				+ "INNER JOIN serse.pays ON serse.pays.pays_id = serse.entreprise.pays_id "
+				+ "INNER JOIN serse.entreprise_pays ON serse.entreprise_pays.entreprise_id = serse.entreprise.entreprise_id "
+				+ "INNER JOIN serse.pays ON serse.pays.pays_id = serse.entreprise_pays.pays_id "
 				+ "INNER JOIN serse.ville ON serse.ville.pays_id = serse.pays.pays_id "
 				+ "WHERE vill_nom=?"
 				+ "ORDER BY entreprise_nom;");

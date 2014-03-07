@@ -18,11 +18,14 @@
 		<script type="text/javascript" src="scripts/jquery-1.10.2.min.js"></script>
 		
 		<script type="text/javascript" src="scripts/OptionsRemplissage.js"></script>
-		<script type="text/javascript" src="scripts/Recherche.js"></script>
 		<script type="text/javascript" src="scripts/RecherchePageInitialisation.js"></script>
-		<script type="text/javascript" src="scripts/RechercheFiltresAction.js"></script>
-		<script type="text/javascript" src="scripts/RechercheMobilityManager.js"></script>
+		
 		<script type="text/javascript" src="scripts/GeographyManager.js"></script>
+		<script type="text/javascript" src="scripts/RechercheSejourManager.js"></script>
+		<script type="text/javascript" src="scripts/RechercheMobiliteManager.js"></script>
+		<script type="text/javascript" src="scripts/RechercheFiltresAction.js"></script>
+		
+		<script type="text/javascript" src="scripts/Recherche.js"></script>
 		
 	</head>
 
