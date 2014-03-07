@@ -82,4 +82,83 @@
     <servlet-name>OptionsRestreintesServlet</servlet-name>
     <url-pattern>/OptionsRestreintesServlet</url-pattern>
   </servlet-mapping>
+   <servlet>
+    <display-name>AccueilDriServlet</display-name>
+    <servlet-name>AccueilDriServlet</servlet-name>
+    <servlet-class>org.ecn.serse.servlets.AccueilDriServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AccueilDriServlet</servlet-name>
+    <url-pattern>/AccueilDri</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+    <display-name>AccueilAdminServlet</display-name>
+    <servlet-name>AccueilAdminServlet</servlet-name>
+    <servlet-class>org.ecn.serse.servlets.AccueilAdminServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AccueilAdminServlet</servlet-name>
+    <url-pattern>/AccueilAdmin</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <display-name>ValidationRapportServlet</display-name>
+    <servlet-name>ValidationRapportServlet</servlet-name>
+    <servlet-class>org.ecn.serse.servlets.ValidationRapportServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ValidationRapportServlet</servlet-name>
+    <url-pattern>/ValidationRapport</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <display-name>GestionRapportServlet</display-name>
+    <servlet-name>GestionRapportServlet</servlet-name>
+    <servlet-class>org.ecn.serse.servlets.GestionRapportServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GestionRapportServlet</servlet-name>
+    <url-pattern>/GestionRapport</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <display-name>PreferencesDriServlet</display-name>
+    <servlet-name>PreferencesDriServlet</servlet-name>
+    <servlet-class>org.ecn.serse.servlets.PreferencesDriServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PreferencesDriServlet</servlet-name>
+    <url-pattern>/PreferencesDri</url-pattern>
+  </servlet-mapping>  
+
+  <servlet>
+    <display-name>ValidationOptionServlet</display-name>
+    <servlet-name>ValidationOptionServlet</servlet-name>
+    <servlet-class>org.ecn.serse.servlets.ValidationOptionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ValidationOptionServlet</servlet-name>
+    <url-pattern>/ValidationOption</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <display-name>GestionOptionServlet</display-name>
+    <servlet-name>GestionOptionServlet</servlet-name>
+    <servlet-class>org.ecn.serse.servlets.GestionOptionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GestionOptionServlet</servlet-name>
+    <url-pattern>/GestionOption</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+    <display-name>PreferencesAdminServlet</display-name>
+    <servlet-name>PreferencesAdminServlet</servlet-name>
+    <servlet-class>org.ecn.serse.servlets.PreferencesAdminServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PreferencesAdminServlet</servlet-name>
+    <url-pattern>/PreferencesAdmin</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -12,18 +12,18 @@
 	<head>
 		<meta charset="utf-8" />
 		<title>SERSE Soumission de Rapports</title>
-		<LINK type="text/css/html" rel="stylesheet" media="all" title="CSS" href="StyleSheet.css" />
+		<LINK type="text/css/html" rel="stylesheet" media="all" title="CSS" href="styles/StyleSheet.css" />
 	</head>
 
 	<body>
 		<!-- Onglets du menu de navigation -->
 			<div id="menu">
 				 <ul id="onglets">
-				<li class="active"><a href="AccueilAdmin.html"> Accueil </a></li>
-				<li><a href="AccesRapportAdmin.html"> Acces aux rapports </a></li>
-				<li><a href="ValidationOptionsAdmin.html"> Options a valider </a></li>
-				<li><a href="ModificationOptionsAdmin.html"> Gerer les options </a></li>
-				<li><a href="AboDesaboAdmin.html"> Preferences </a></li>
+				<li class="active"><a href="/AccueilAdmin"> Accueil </a></li>
+				<li><a href="/AccueilAdmin"> Acces aux rapports </a></li>
+				<li><a href="/AccueilAdmin"> Options a valider </a></li>
+				<li><a href="/AccueilAdmin"> Gerer les options </a></li>
+				<li><a href="/AccueilAdmin"> Preferences </a></li>
 				</ul>
 			</div>
 			
@@ -35,7 +35,12 @@
 			<div class="textWelcome">
 				<div class="textWelcome">  Vous avez : </div>	
 				<br/>
-				<div class="textWelcome">5 options a valider </div>	
+				<div class="textWelcome">
+					<% 
+						Integer nbrOption = (Integer) request.getAttribute("nbrOptionsValider");
+						out.println( nbrOption + " ");
+					%>
+				options a valider </div>	
 				
 			</div>		
 			</fieldset>

@@ -13,7 +13,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<title>SERSE Soumission de Rapports</title>
-		<LINK type="text/css/html" rel="stylesheet" media="all" title="CSS" href="StyleSheet.css" />
+		<LINK type="text/css/html" rel="stylesheet" media="all" title="CSS" href="styles/StyleSheet.css" />
 	</head>
 
 	<body>
@@ -53,7 +53,7 @@
 							<table id="tableau" align="center">
 				<thead>
 					<tr>
-						<th height="8" id="tableau" width="25%"> Pays<img src="iconeCroissantDecroissant.png" align="center" class="imageflottante"></th>
+						<th height="8" id="tableau" width="25%"> Pays<img src="images/iconeCroissantDecroissant.png" align="center" class="imageflottante"></th>
 						<th height="8" id="tableau" width="25%"></th>
 					</tr>
 				</thead>

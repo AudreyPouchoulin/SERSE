@@ -12,7 +12,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<title>SERSE Soumission de Rapports</title>
-		<LINK type="text/css/html" rel="stylesheet" media="all" title="CSS" href="StyleSheet.css" />
+		<LINK type="text/css/html" rel="stylesheet" media="all" title="CSS" href="styles/StyleSheet.css" />
 	</head>
 
 	<body>
@@ -44,10 +44,10 @@
 				<table id="tableau" align="center">
 				<thead>
 					<tr>
-						<th height="10" id="tableau" width="20%">Categorie <img src="iconeCroissantDecroissant.png" align="center" class="imageflottante"></th>
-						<th id="tableau" width="15%">Propose par<img src="iconeCroissantDecroissant.png" align="center" class="imageflottante"></th>
-						<th id="tableau" width="15%">Date proposition<img src="iconeCroissantDecroissant.png" align="center" class="imageflottante"></th>
-						<th id="tableau" width="20%">Nouvelle valeur proposee<img src="iconeCroissantDecroissant.png" align="center" class="imageflottante"></th>
+						<th height="10" id="tableau" width="20%">Categorie <img src="images/iconeCroissantDecroissant.png" align="center" class="imageflottante"></th>
+						<th id="tableau" width="15%">Propose par<img src="images/iconeCroissantDecroissant.png" align="center" class="imageflottante"></th>
+						<th id="tableau" width="15%">Date proposition<img src="images/iconeCroissantDecroissant.png" align="center" class="imageflottante"></th>
+						<th id="tableau" width="20%">Nouvelle valeur proposee<img src="images/iconeCroissantDecroissant.png" align="center" class="imageflottante"></th>
 						<th id="tableau" width="40%"></th>
 					</tr>
 				</thead>
