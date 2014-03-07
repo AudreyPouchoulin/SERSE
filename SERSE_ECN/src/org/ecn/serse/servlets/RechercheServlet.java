@@ -2,7 +2,7 @@ package org.ecn.serse.servlets;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.Map;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -13,6 +13,7 @@ import org.ecn.serse.controllers.BddController;
 import org.ecn.serse.controllers.RechercheController;
 //
 import org.ecn.serse.exceptions.DatabaseException;
+import org.ecn.serse.models.Rapport;
 
 import com.google.gson.Gson;
 /**
@@ -53,7 +54,7 @@ public class RechercheServlet extends HttpServlet {
 			try {
 				bddController = new BddController();
 				RechercheController rechercheController = new RechercheController(bddController);
-				Map<String, String> listeRapports = rechercheController.getRapports(continentNom, paysNom, villeNom, 
+				ArrayList<Rapport> listeRapports = rechercheController.getRapports(continentNom, paysNom, villeNom, 
 						universite, entreprise, professionnel, academique, 
 						CME, STING, TFE, semestre, annee, cesure, doubleDiplome,
 						universiteNom, entrepriseNom, langueNom, domaineActiviteNom, date);

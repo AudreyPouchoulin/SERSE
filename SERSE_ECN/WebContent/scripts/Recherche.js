@@ -86,15 +86,19 @@ function preparationParametresRecherche(){
 function fillResults(responseJson){
 	$("#contenuTableauResultats").find('tr').remove();
 	$("#contenuTableauResultats").find('td').remove();
-	alert("filling results 1");
+	if (responseJson==null){
+		$("#contenuTableauResultats").append("<tr> Pas de résultats correspondants aux critères </tr>");
+	}
 	$.each(responseJson, function(key, value) {
-		if (key=='rapport_nom'){
-			$("#contenuTableauResultats").append("<tr>");
-		}
-		$("#contenuTableauResultats").append("<td>" + value + "</td>");
-		if (key=='rapport_langue'){
-			$("#contenuTableauResultats").append("</tr>");	
-		}
+		$("#contenuTableauResultats").append("<tr>");
+		$("#contenuTableauResultats").append("<td>" + value.nom + "</td>");
+		$("#contenuTableauResultats").append("<td>" + value.date + "</td>");
+		$("#contenuTableauResultats").append("<td>" + value.pays + "</td>");
+		$("#contenuTableauResultats").append("<td>" + value.ville + "</td>");
+		$("#contenuTableauResultats").append("<td>" + value.lieux + "</td>");
+		$("#contenuTableauResultats").append("<td>" + value.domaine + "</td>");
+		$("#contenuTableauResultats").append("<td>" + value.mobilite + "</td>");
+		$("#contenuTableauResultats").append("<td>" + value.langue + "</td>");
+		$("#contenuTableauResultats").append("</tr>");	
 	});
-	alert("filling results 2");
 }

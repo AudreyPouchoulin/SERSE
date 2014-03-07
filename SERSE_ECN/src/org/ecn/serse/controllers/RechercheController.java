@@ -8,10 +8,10 @@ package org.ecn.serse.controllers;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
 
 import org.ecn.serse.exceptions.DatabaseException;
+import org.ecn.serse.models.Rapport;
 
 /**
  * @author Audrey
@@ -36,14 +36,14 @@ public class RechercheController {
 	 * @throws DatabaseException
 	 * @throws SQLException
 	 */
-	public Map<String, String> getRapports(String continentNom, String paysNom, String villeNom, 
+	public ArrayList<Rapport> getRapports(String continentNom, String paysNom, String villeNom, 
 			boolean universite, boolean entreprise, boolean professionnel, boolean academique, 
 			boolean CME, boolean STING, boolean TFE, boolean semestre, boolean annee, boolean cesure, boolean doubleDiplome,
 			String universiteNom, String entrepriseNom, String langueNom, String domaineActiviteNom, String date) 
 					throws DatabaseException, SQLException{
-		Map<String, String> listeRapports = new HashMap<String, String>();
+		ArrayList<Rapport> listeRapports = new ArrayList<Rapport>();
 		PreparedStatement statement = bdd.getConnection().prepareStatement(
-				"SELECT rapport_nom, rapport_datedebut, rapport_datefin, pays_nom, ville_nom, domaineActivite_libelle, typeMobilite_libelle, langue_nom "
+				"SELECT rapport_nom, rapport_datedebut, rapport_datefin, pays_nom, ville_nom, universite_nom, entreprise_nom, domaineActivite_libelle, typeMobilite_libelle, langue_nom "
 				+ "FROM serse.rapport "
 				+ "LEFT JOIN serse.lieuSejour ON serse.rapport.lieuSejour_id = serse.lieuSejour.lieuSejour_id "
 				+ "LEFT JOIN serse.ville ON serse.lieuSejour.ville_id = serse.ville.ville_id "
@@ -64,17 +64,25 @@ public class RechercheController {
 		
 		if (statement.execute()){
 			ResultSet resultSet = statement.getResultSet();
-			if (resultSet==null){
-				listeRapports.put("erreur", "Pas de résultats correspondants aux critères");
-			}
 			while(resultSet.next()){
-				listeRapports.put("rapport_nom", resultSet.getString(1));
-				listeRapports.put("rapport_date", resultSet.getString(2) + " - " + resultSet.getString(3));
-				listeRapports.put("rapport_pays", resultSet.getString(4));
-				listeRapports.put("rapport_ville", resultSet.getString(5));
-				listeRapports.put("rapport_domaine", resultSet.getString(6));
-				listeRapports.put("rapport_mobilite", resultSet.getString(7));
-				listeRapports.put("rapport_langue", resultSet.getString(8));
+				String universiteEntreprise;
+				if (resultSet.getString(6)==null && resultSet.getString(7)==null){
+					universiteEntreprise = null;
+				} else if (resultSet.getString(6)==null){
+					universiteEntreprise = resultSet.getString(7);
+				} else {
+					universiteEntreprise = resultSet.getString(6);
+				}
+				Rapport rapportTrouve = new Rapport(
+						resultSet.getString(1), 
+						resultSet.getDate(2) + " - " + resultSet.getDate(3), 
+						resultSet.getString(4),
+						resultSet.getString(5),
+						universiteEntreprise,
+						resultSet.getString(8),
+						resultSet.getString(9),
+						resultSet.getString(10));
+				listeRapports.add(rapportTrouve);
 			}
 		}
 		
