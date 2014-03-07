@@ -13,19 +13,19 @@
  * - ville
  */
 
-function updatePaysAccordingToContinent(){
+function updatePaysAccordingToContinent(avecAutre){
 	if($("#continent").val()!='defaut'){
 		var $argumentsJson = {nom_liste:'pays', message_defaut:$("#pays option[value='defaut']").text(), continent:$("#continent").val()};
 		var $liste = $('#pays');
-		update($liste, $argumentsJson);
+		update($liste, $argumentsJson, avecAutre);
 	}
 }
 
-function updateVilleAccordingToContinent(){
+function updateVilleAccordingToContinent(avecAutre){
 	if ($("#continent").val()!='defaut'){
 		var $argumentsJson = {nom_liste:'ville', message_defaut:$("#ville option[value='defaut']").text(), continent:$("#continent").val()};
 		var $liste = $('#ville');
-		update($liste, $argumentsJson);
+		update($liste, $argumentsJson, avecAutre);
 	}
 }
 
@@ -33,7 +33,7 @@ function updateVilleAccordingToPays(){
 	if ($("#pays").val()!='defaut'){
 		var $argumentsJson = {nom_liste:'ville', message_defaut:$("#ville option[value='defaut']").text(), pays:$("#pays").val()};
 		var $liste = $('#ville');
-		update($liste, $argumentsJson);
+		update($liste, $argumentsJson, avecAutre);
 	}
 }
 
@@ -41,7 +41,7 @@ function updateUniversiteAccordingToContinent(){
 	if($("#continent").val()!='defaut'){
 		var $argumentsJson = {nom_liste:'universite', message_defaut:$("#universite_entreprise option[value='defaut']").text(), continent:$("#continent").val()};
 		var $liste = $('#universiteGroup');
-		update($liste, $argumentsJson);
+		update($liste, $argumentsJson, avecAutre);
 	}
 }
 
@@ -57,7 +57,7 @@ function updateEntrepriseAccordingToContinent(){
 	if($("#continent").val()!='defaut'){
 		var $argumentsJson = {nom_liste:'entreprise', message_defaut:$("#universite_entreprise option[value='defaut']").text(), continent:$("#continent").val()};
 		var $liste = $('#entrepriseGroup');
-		update($liste, $argumentsJson);
+		update($liste, $argumentsJson, avecAutre);
 	}
 }
 
@@ -69,8 +69,11 @@ function updateEntrepriseAccordingToVille(){
 	
 }
 
-function update(liste, argumentsJson){
+function update(liste, argumentsJson, avecAutre){
 	$.post('OptionsRestreintesServlet',argumentsJson, function(responseJson) {  
         fillOptions(liste, responseJson);
+        if (avecAutre){
+        	addOptionAutre(liste);
+        }
 	});
 }

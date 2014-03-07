@@ -13,6 +13,11 @@
 		<meta charset="utf-8" />
 		<title>SERSE Soumission de Rapports</title>
 		<link rel="stylesheet" type="text/css" href="styles/StyleSheet1.css"/>
+		
+		<!--  <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.10/jquery-ui.min.js"></script>
+		<link href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.10/themes/ui-lightness/jquery-ui.css" rel="stylesheet" type="text/css" />
+		-->
+		
 		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <!--  alternative quand pas d'accès internet-->
 		<script type="text/javascript" src="scripts/jquery-1.10.2.min.js"></script>
@@ -20,6 +25,7 @@
 		<script type="text/javascript" src="scripts/OptionsRemplissage.js"></script>
 		<script type="text/javascript" src="scripts/SoumissionPageInitialisation.js"></script>
 		<script type="text/javascript" src="scripts/SoumissionChampsAutre.js"></script>
+		<script type="text/javascript" src="scripts/GeographyManager.js"></script>
 		<script type="text/javascript" src="scripts/SoumissionFiltresAction.js"></script>
 		<script type="text/javascript" src="scripts/Soumission.js"></script>
 	</head>
@@ -49,7 +55,7 @@
 					
 					<tr>
 						<td>Date de début de séjour</td>
-						<td><input type="text" id="dateDebut" placeholder="jj/mm/aaaa"><img src="images/iconeCalendrier.png" width="10%" height="20%"/></td>
+						<td><input type="text" id="dateDebut"><img src="images/iconeCalendrier.png" width="10%" height="20%"/></td>
 					</tr>
 					
 					<tr>

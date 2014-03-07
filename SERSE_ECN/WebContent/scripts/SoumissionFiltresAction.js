@@ -8,27 +8,32 @@
 
 $(document).ready(function() {
 	
+	
+/** Dates de début et de fin **/
+	//$('#dateDebut').datepicker();
+
+	
 /** Géographie */
 	$('#continent').change(function() {
 		if ($('#continent').val() !='defaut'){
-			updatePaysAccordingToContinent();
-			updateVilleAccordingToContinent();
-			updateUniversiteAccordingToContinent();
+			updatePaysAccordingToContinent(true);
+			updateVilleAccordingToContinent(true);
+			updateUniversiteAccordingToContinent(true);
 		}
 	});
 	
 	$('#pays').change(function() {
 		gestionAutre($('#pays'), $('#autrePays'));
 		if ($('#pays').val() != 'Autre' && $('#pays').val() !='defaut'){
-			updateVilleAccordingToPays();
-			updateUniversiteAccordingToPays();
+			updateVilleAccordingToPays(true);
+			updateUniversiteAccordingToPays(true);
 		}
 	});
 	
 	$('#ville').change(function() {
 		gestionAutre($('#ville'), $('#autreVille'));
 		if ($('#ville').val() != 'Autre' && $('#ville').val() !='defaut'){
-			updateUniversiteAccordingToVille();
+			updateUniversiteAccordingToVille(true);
 		}
 	});
 	
@@ -90,5 +95,21 @@ $(document).ready(function() {
 /** adresse et coordonnées GPS*/
 
 /** chemin du fichier */
+
+/** Bouton valider */
+	$('#valider').click(function(){
+		var $messageErreur = verifierEntrees();
+		if ($messageErreur !=null){
+			alert ($messageErreur);
+		} else {
+			var $argumentsJson = recupererArguments();
+			alert("Page de validation" + $argumentsJson);
+		}
+	});
+
+/** Bouton reset */
+	$('#reset').click(function(){
+		resetFormulaire();
+	});
 	
 });

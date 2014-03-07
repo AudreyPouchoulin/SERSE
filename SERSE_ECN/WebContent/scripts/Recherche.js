@@ -15,8 +15,6 @@ function recherche(){
     });
 }
 
-/** 
- */
 function preparationParametresRecherche(){
 
 	// regroupement de cases à cocher : semestre, année, césure

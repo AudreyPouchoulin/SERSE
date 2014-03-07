@@ -19,22 +19,22 @@ $(document).ready(function() {
 	
 /** Géographie */
 	$('#continent').change(function() {
-		updatePaysAccordingToContinent();
-		updateVilleAccordingToContinent();
-		updateUniversiteAccordingToContinent();
-		updateEntrepriseAccordingToContinent();
+		updatePaysAccordingToContinent(false);
+		updateVilleAccordingToContinent(false);
+		updateUniversiteAccordingToContinent(false);
+		updateEntrepriseAccordingToContinent(false);
 		recherche();
 	});
 	
 	$('#pays').change(function() {
-		updateVilleAccordingToPays();
-		updateUniversiteAccordingToPays();
-		updateEntrepriseAccordingToPays();
+		updateVilleAccordingToPays(false);
+		updateUniversiteAccordingToPays(false);
+		updateEntrepriseAccordingToPays(false);
 		recherche();
 	});
 	$('#ville').change(function() {
-		updateUniversiteAccordingToVille();
-		updateEntrepriseAccordingToVille();
+		updateUniversiteAccordingToVille(false);
+		updateEntrepriseAccordingToVille(false);
 		recherche();
 	});
 	
