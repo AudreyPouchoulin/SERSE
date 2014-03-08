@@ -21,6 +21,7 @@ public class RechercheController {
 
 	/** Controleur de base de données */
 	protected BddController bdd;
+	private boolean isPremierCritere;
 	
 	/**
 	 * Initialise un controlleur d'options
@@ -42,8 +43,9 @@ public class RechercheController {
 			String universiteNom, String entrepriseNom, String langueNom, String domaineActiviteNom, String date) 
 					throws DatabaseException, SQLException{
 		ArrayList<Rapport> listeRapports = new ArrayList<Rapport>();
-		PreparedStatement statement = bdd.getConnection().prepareStatement(
-				"SELECT rapport_nom, rapport_datedebut, rapport_datefin, pays_nom, ville_nom, universite_nom, entreprise_nom, domaineActivite_libelle, typeMobilite_libelle, langue_nom "
+		ArrayList<String> listeCriteres= new ArrayList<String>();
+		this.isPremierCritere = true;
+		String requete = "SELECT rapport_nom, rapport_datedebut, rapport_datefin, pays_nom, ville_nom, universite_nom, entreprise_nom, domaineActivite_libelle, typeMobilite_libelle, langue_nom "
 				+ "FROM serse.rapport "
 				+ "LEFT JOIN serse.lieuSejour ON serse.rapport.lieuSejour_id = serse.lieuSejour.lieuSejour_id "
 				+ "LEFT JOIN serse.ville ON serse.lieuSejour.ville_id = serse.ville.ville_id "
@@ -56,12 +58,19 @@ public class RechercheController {
 				+ "LEFT JOIN serse.rapport_langue ON serse.rapport.rapport_id = serse.rapport_langue.rapport_id "
 				+ "LEFT JOIN serse.langue ON serse.rapport_langue.langue_id = serse.langue.langue_id "
 				+ "LEFT JOIN serse.universite ON serse.rapport.universite_id = serse.universite.universite_id "
-				+ "LEFT JOIN serse.entreprise ON serse.rapport.entreprise_id = serse.entreprise.entreprise_id "
-				+ "WHERE continent_nom = ?"
-				+ "ORDER BY rapport_nom;");
-	
-		statement.setString(1, continentNom);
+				+ "LEFT JOIN serse.entreprise ON serse.rapport.entreprise_id = serse.entreprise.entreprise_id ";
 		
+		if(continentNom !=""){
+			requete = addCritereRechercheToRequete("continent_nom = ? ", requete);
+			listeCriteres.add(continentNom);
+		}
+		requete = requete +  "ORDER BY rapport_nom;";
+		
+		PreparedStatement statement = bdd.getConnection().prepareStatement(requete);
+		for (int i=0; i<listeCriteres.size(); i++){
+			statement.setString(i+1, listeCriteres.get(i));
+		}
+			
 		if (statement.execute()){
 			ResultSet resultSet = statement.getResultSet();
 			while(resultSet.next()){
@@ -85,7 +94,16 @@ public class RechercheController {
 				listeRapports.add(rapportTrouve);
 			}
 		}
-		
 		return listeRapports;
+	}
+	
+	private String addCritereRechercheToRequete(String nouvelleRestriction, String requete){
+		if (this.isPremierCritere){
+			this.isPremierCritere = false;
+			requete = requete + "WHERE " + nouvelleRestriction;
+		} else {
+			requete = requete + "AND " + nouvelleRestriction;
+		}
+		return requete;
 	}
 }

@@ -41,7 +41,7 @@
 				<p>
 					<fieldset>
 						<img src="images/iconeInformation.jpg" height="7%" width="3%" align="right" class="imageflottante">
-						<h3> Continent Pays, Ville</h3>
+						<h3> Continent, Pays, Ville</h3>
 <!-- "Continent"-->
 						<p>
 							<select name="continent" id="continent">

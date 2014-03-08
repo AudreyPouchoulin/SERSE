@@ -29,7 +29,7 @@ function updateVilleAccordingToContinent(avecAutre){
 	}
 }
 
-function updateVilleAccordingToPays(){
+function updateVilleAccordingToPays(avecAutre){
 	if ($("#pays").val()!='defaut'){
 		var $argumentsJson = {nom_liste:'ville', message_defaut:$("#ville option[value='defaut']").text(), pays:$("#pays").val()};
 		var $liste = $('#ville');
@@ -37,7 +37,7 @@ function updateVilleAccordingToPays(){
 	}
 }
 
-function updateUniversiteAccordingToContinent(){
+function updateUniversiteAccordingToContinent(avecAutre){
 	if($("#continent").val()!='defaut'){
 		var $argumentsJson = {nom_liste:'universite', message_defaut:$("#universite_entreprise option[value='defaut']").text(), continent:$("#continent").val()};
 		var $liste = $('#universiteGroup');
@@ -45,15 +45,15 @@ function updateUniversiteAccordingToContinent(){
 	}
 }
 
-function updateUniversiteAccordingToPays(){
+function updateUniversiteAccordingToPays(avecAutre){
 	
 }
 
-function updateUniversiteAccordingToVille(){
+function updateUniversiteAccordingToVille(avecAutre){
 	
 }
 
-function updateEntrepriseAccordingToContinent(){
+function updateEntrepriseAccordingToContinent(avecAutre){
 	if($("#continent").val()!='defaut'){
 		var $argumentsJson = {nom_liste:'entreprise', message_defaut:$("#universite_entreprise option[value='defaut']").text(), continent:$("#continent").val()};
 		var $liste = $('#entrepriseGroup');
@@ -61,11 +61,11 @@ function updateEntrepriseAccordingToContinent(){
 	}
 }
 
-function updateEntrepriseAccordingToPays(){
+function updateEntrepriseAccordingToPays(avecAutre){
 	
 }
 
-function updateEntrepriseAccordingToVille(){
+function updateEntrepriseAccordingToVille(avecAutre){
 	
 }
 

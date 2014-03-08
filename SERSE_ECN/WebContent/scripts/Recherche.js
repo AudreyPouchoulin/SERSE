@@ -39,22 +39,22 @@ function preparationParametresRecherche(){
 		var $domaineActivite = null;
 		var $date = null;
 
-		if ($('#continent').val() != 'Tous les continents'){
+		if ($('#continent').val() != 'defaut'){
 			$continent = $('#continent').val();
 		}
-		if ($('#pays').val() != "Tous les pays"){
+		if ($('#pays').val() != "defaut"){
 			$pays = $('#pays').val();
 		}
-		if ($('#ville').val() != "Toutes les villes"){
+		if ($('#ville').val() != "defaut"){
 			$ville = $('#ville').val();
 		}
-		if ($('#langue').val() != "Toutes les langues"){
+		if ($('#langue').val() != "defaut"){
 			$langue = $('#langue').val();
 		}
-		if ($('#domaine').val() != "Tous les domaines d'activité"){
+		if ($('#domaine').val() != "defaut"){
 			$domaineActivite = $('#domaine').val();
 		}
-		if ($('#date').val() != "Toutes les rapports"){
+		if ($('#date').val() != "defaut"){
 			$date = $('#date').val();
 		}
 
@@ -84,8 +84,8 @@ function preparationParametresRecherche(){
 function fillResults(responseJson){
 	$("#contenuTableauResultats").find('tr').remove();
 	$("#contenuTableauResultats").find('td').remove();
-	if (responseJson==null){
-		$("#contenuTableauResultats").append("<tr> Pas de résultats correspondants aux critères </tr>");
+	if (responseJson.length==0){
+		$("#contenuTableauResultats").append("<tr> <td colspan='8'>Pas de résultats correspondants aux critères </td></tr>");
 	}
 	$.each(responseJson, function(key, value) {
 		$("#contenuTableauResultats").append("<tr>");
