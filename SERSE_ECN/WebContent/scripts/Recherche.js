@@ -16,28 +16,13 @@ function recherche(){
 }
 
 function preparationParametresRecherche(){
-
-	// regroupement de cases à cocher : semestre, année, césure
-		var $semestre = false;
-		var $annee = false;
-		var $cesure = false;
-		if ($('#aSemestre').prop('checked') || $('#pSemestre').prop('checked')){
-			$semestre = true;
-		}
-		if ($('#aAnnee').prop('checked') || $('#pAnnee').prop('checked')){
-			$annee = true;
-		}
-		if ($('#aCesure').prop('checked') || $('#pCesure').prop('checked')){
-			$cesure = true;
-		}
-		
 	// tests si une option a été sélectionnée dans une liste déroulante
-		var $continent = null;
-		var $pays = null;
-		var $ville = null;
-		var $langue= null;
-		var $domaineActivite = null;
-		var $date = null;
+		var $continent = '';
+		var $pays = '';
+		var $ville = '';
+		var $langue= '';
+		var $domaineActivite = '';
+		var $date = '';
 
 		if ($('#continent').val() != 'defaut'){
 			$continent = $('#continent').val();
@@ -57,27 +42,27 @@ function preparationParametresRecherche(){
 		if ($('#date').val() != "defaut"){
 			$date = $('#date').val();
 		}
-
 	var $arguments = {continent:$continent, 
 					pays:$pays,
 					ville:$ville,
-					universite:$('#universite').prop('checked'),
-					entreprise:$('#entreprise').prop('checked'),
+					universite:$('#sejourUniversite').prop('checked'),
+					entreprise:$('#sejourEntreprise').prop('checked'),
 					professionnel:$('#cadreProfessionnel').prop('checked'),
 					academique:$('#cadreAcademique').prop('checked'),
 					CME:$('#pCME').prop('checked'),
 					STING:$('#pSTING').prop('checked'),
 					TFE:$('#pTFE').prop('checked'),
-					semestre:$semestre,
-					annee:$annee,
-					cesure:$cesure,
+					pSemestre:$('#pSemestre').prop('checked'),
+					pCesure:$('#pCesure').prop('checked'),
+					aSemestre:$('#aSemestre').prop('checked'),
+					aCesure:$('#aCesure').prop('checked'),
+					annee:$('#aAnnee').prop('checked'),
 					doubleDiplome:$('#aDoubleDiplome').prop('checked'),
 					universiteNom:$('#universiteGroup>option:selected').val(),
 					entrepriseNom:$('#entrepriseGroup>option:selected').val(),
 					langue:$langue,
 					domaineActivite:$domaineActivite,
 					date:$date};
-
 	return $arguments;
 }
 

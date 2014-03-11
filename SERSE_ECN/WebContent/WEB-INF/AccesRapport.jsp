@@ -91,11 +91,11 @@
 							<td id="invisibleTable">
 								<input type="checkbox" id="cadreProfessionnel" checked="checked"/><label for="cadreProfessionnel">Professionnel</label>
 								<ul id='casesCadreProfessionnel' style="list-style: none">
-								    <li><input type='checkbox' style="list-style:none" id='pCME' checked="checked"/>CME</li>
-								    <li><input type='checkbox' style="list-style:none" id='pSTING' checked="checked"/>STING</li>
-								    <li><input type='checkbox' style="list-style:none" id='pTFE' checked="checked"/>TFE</li>
-								    <li><input type='checkbox' style="list-style:none" id='pCesure' checked="checked"/>Césure</li>
-								    <li><input type='checkbox' style="list-style:none" id='pSemestre' checked="checked"/>Semestre</li>	    
+								    <li><input type='checkbox' id='pCME' checked="checked"/>CME</li>
+								    <li><input type='checkbox' id='pSTING' checked="checked"/>STING</li>
+								    <li><input type='checkbox' id='pTFE' checked="checked"/>TFE</li>
+								    <li><input type='checkbox' id='pCesure' checked="checked"/>Césure</li>
+								    <li><input type='checkbox' id='pSemestre' checked="checked"/>Semestre</li>	    
 								</ul>
 							</td>
 							<td id="invisibleTable">

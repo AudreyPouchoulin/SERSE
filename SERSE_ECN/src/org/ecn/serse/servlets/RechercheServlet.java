@@ -38,16 +38,27 @@ public class RechercheServlet extends HttpServlet {
 			boolean CME = Boolean.valueOf(request.getParameter("CME"));
 			boolean STING = Boolean.valueOf(request.getParameter("STING"));
 			boolean TFE = Boolean.valueOf(request.getParameter("TFE"));
-			boolean semestre = Boolean.valueOf(request.getParameter("semestre"));
+			boolean pSemestre = Boolean.valueOf(request.getParameter("pSemestre"));
+			boolean pCesure = Boolean.valueOf(request.getParameter("pCesure"));
+			boolean aSemestre = Boolean.valueOf(request.getParameter("aSemestre"));
+			boolean aCesure = Boolean.valueOf(request.getParameter("aCesure"));
 			boolean annee = Boolean.valueOf(request.getParameter("annee"));
-			boolean cesure = Boolean.valueOf(request.getParameter("cesure"));
 			boolean doubleDiplome = Boolean.valueOf(request.getParameter("doubleDiplome"));
 			String universiteNom = request.getParameter("universiteNom");
 			String entrepriseNom = request.getParameter("entrepriseNom");
-			String langueNom = request.getParameter("langueNom");
-			String domaineActiviteNom = request.getParameter("domaineActiviteNom");
+			String langueNom = request.getParameter("langue");
+			String domaineActiviteNom = request.getParameter("domaineActivite");
 			String date = request.getParameter("date");
-
+			
+			//DEBUG
+			System.out.println("Géographie: " + continentNom + paysNom + villeNom);
+			System.out.println("Université-entreprise: " + universite + entreprise);
+			System.out.println("Professionnel-académique: " + professionnel + academique);
+			System.out.println("Professionnel critères : " + CME + STING + TFE + pSemestre + pCesure);
+			System.out.println("Académique critères : " + aSemestre + aCesure + annee + doubleDiplome);
+			System.out.println("université-entreprise nom : " + universiteNom + entrepriseNom);
+			System.out.println("langue : " + langueNom);
+			System.out.println("domaine d'activité : " + domaineActiviteNom);
 			
 		// Recherche des rapports correspondants aux critères
 			BddController bddController;
@@ -56,7 +67,8 @@ public class RechercheServlet extends HttpServlet {
 				RechercheController rechercheController = new RechercheController(bddController);
 				ArrayList<Rapport> listeRapports = rechercheController.getRapports(continentNom, paysNom, villeNom, 
 						universite, entreprise, professionnel, academique, 
-						CME, STING, TFE, semestre, annee, cesure, doubleDiplome,
+						CME, STING, TFE, pSemestre, pCesure,
+						aSemestre, aCesure, doubleDiplome, annee,
 						universiteNom, entrepriseNom, langueNom, domaineActiviteNom, date);
 				String jsonResponse = new Gson().toJson(listeRapports);
 				response.setContentType("application/json");
