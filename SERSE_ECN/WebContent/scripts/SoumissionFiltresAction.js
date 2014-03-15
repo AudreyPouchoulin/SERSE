@@ -10,8 +10,17 @@ $(document).ready(function() {
 	
 	
 /** Dates de début et de fin **/
-	//$('#dateDebut').datepicker();
-
+	$('#dateDebut').datepicker({
+	      showOn: "button",
+	      buttonImage: "images/iconeCalendrier-3.png",
+	      buttonImageOnly: true
+	});
+	
+	$('#dateFin').datepicker({
+	      showOn: "button",
+	      buttonImage: "images/iconeCalendrier-3.png",
+	      buttonImageOnly: true
+	});
 	
 /** Géographie */
 	$('#continent').change(function() {
