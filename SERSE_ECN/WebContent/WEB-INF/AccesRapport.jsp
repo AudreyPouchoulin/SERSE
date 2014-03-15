@@ -75,7 +75,7 @@
 					<h2> Séjour </h2>
 					<table id="invisibleTable">
 						<tr id="invisibleTable">
-							<td id="invisibleTable"><input type="checkbox" id="sejourUniversite" checked="checked"/> <label for="sejourUniversite">Universite</label></td>
+							<td id="invisibleTable"><input type="checkbox" id="sejourUniversite" checked="checked"/> <label for="sejourUniversite">Université</label></td>
 							<td id="invisibleTable"><input type="checkbox" id="sejourEntreprise" checked="checked"/> <label for="sejourEntreprise">Entreprise</label></td>
 						</tr>
 					</table>		
@@ -120,9 +120,9 @@
 <!-- Universites/Entreprises -->
 						<select id="universite_entreprise">
 							<option value="defaut" selected="selected">Toutes les universités et entreprises</option>
-							<optgroup id="universiteGroup" label="Universite">Université</optgroup>
+							<optgroup id="universiteGroup" label="Université"></optgroup>
 								<!-- available options are filled by AJAJ -->	
-							<optgroup id="entrepriseGroup" label="Entreprise">Entreprise</optgroup>
+							<optgroup id="entrepriseGroup" label="Entreprise"></optgroup>
 								<!-- available options are filled by AJAJ -->						
 						</select>
 					</p>

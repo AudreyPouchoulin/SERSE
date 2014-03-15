@@ -3,8 +3,6 @@ package org.ecn.serse.servlets;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -14,8 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.ecn.serse.controllers.BddController;
 import org.ecn.serse.controllers.OptionsController;
 import org.ecn.serse.exceptions.DatabaseException;
-
-import com.google.gson.Gson;
 
 /**
  * Servlet implementation class OptionsRestreintesServlet
@@ -39,48 +35,19 @@ public class OptionsRestreintesServlet extends HttpServlet {
 			String ville = request.getParameter("ville");
 			switch (nomListe){
 				case "pays":
-					ArrayList<String> listePays = optionsController.getPaysByContinent(continent);
-					ServletUtil.sendOptions(listePays, messageDefaut, response);
+					updatePays(optionsController, continent, messageDefaut, response);
 					break;
 				case "ville":
-					ArrayList<String> listeVilles = new ArrayList<String>();
-					if (pays!=null){
-						listeVilles = optionsController.getVillesByPays(pays);
-					} else if (continent!=null){
-						listeVilles = optionsController.getVillesByContinent(continent);
-					}
-					ServletUtil.sendOptions(listeVilles, messageDefaut, response);
+					updateVille(optionsController, pays, continent, messageDefaut, response);
 					break;
 				case "universite":
-					ArrayList<String> listeUniversites = new ArrayList<String>();
-					if (ville!=null){
-						listeUniversites = optionsController.getUniversitesByVille(ville);
-					} else if (pays!=null){
-						listeUniversites = optionsController.getUniversitesByPays(pays);
-					} else {
-						listeUniversites = optionsController.getUniversitesByContinent(continent);
-					}
-					ServletUtil.sendOptions(listeUniversites, null, response);
+					updateUniversite(optionsController, ville, pays, continent, messageDefaut, response);
 					break;
 				case "entreprise":
-					ArrayList<String> listeEntreprises = new ArrayList<String>();
-					if (ville!=null){
-						listeEntreprises = optionsController.getEntreprisesByVille(ville);
-					} else if (pays!=null){
-						listeEntreprises = optionsController.getEntreprisesByPays(pays);
-					} else {
-						listeEntreprises = optionsController.getEntreprisesByContinent(continent);
-					}
-					ServletUtil.sendOptions(listeEntreprises, null, response);
+					updateEntreprise(optionsController, ville, pays, continent, messageDefaut, response);
 					break;
 				default:
-					Map<String, String> erreur = new LinkedHashMap<String, String>();
-					erreur.put("erreur", "Problem when calling for updating the lists");
-					String jsonResponse = new Gson().toJson(erreur);
-					response.setContentType("application/json");
-				    response.setCharacterEncoding("UTF-8");
-				    response.getWriter().write(jsonResponse);
-					
+					ServletUtil.sendNoOption("Problem when calling for updating the lists", messageDefaut, response);
 			}
 		} catch (DatabaseException e) {
 			// TODO Auto-generated catch block
@@ -89,6 +56,81 @@ public class OptionsRestreintesServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 	}
+	
+	private void updatePays(OptionsController optionsController, String continent, String messageDefaut, HttpServletResponse response) throws DatabaseException, SQLException, IOException{
+		ArrayList<String> listePays = optionsController.getPaysByContinent(continent);
+		if (listePays.size()==0){
+			ServletUtil.sendNoOption("Pas de pays dans ce continent", messageDefaut, response);
+		} else {
+			ServletUtil.sendOptions(listePays, messageDefaut, response);
+		}
+	}
+	
+	private void updateVille(OptionsController optionsController, String pays, String continent, String messageDefaut, HttpServletResponse response) throws DatabaseException, SQLException, IOException{
+		ArrayList<String> listeVilles = new ArrayList<String>();
+		if (pays!=null){
+			listeVilles = optionsController.getVillesByPays(pays);
+		} else if (continent!=null){
+			listeVilles = optionsController.getVillesByContinent(continent);
+		}
+		if (listeVilles.size()==0){
+			if (pays!=null){
+				ServletUtil.sendNoOption("Pas de ville dans ce pays", messageDefaut, response);
+			} else {
+				ServletUtil.sendNoOption("Pas de ville dans ce continent", messageDefaut, response);
+			}
+		} else {
+			ServletUtil.sendOptions(listeVilles, messageDefaut, response);
+		}
+	}
+	
+	private void updateUniversite(OptionsController optionsController, String ville, String pays, String continent, String messageDefaut, HttpServletResponse response) throws DatabaseException, SQLException, IOException{
+		ArrayList<String> listeUniversites = new ArrayList<String>();
+		if (ville!=null){
+			listeUniversites = optionsController.getUniversitesByVille(ville);
+		} else if (pays!=null){
+			listeUniversites = optionsController.getUniversitesByPays(pays);
+		} else {
+			listeUniversites = optionsController.getUniversitesByContinent(continent);
+		}
+		if (listeUniversites.size()==0){
+			if (ville!=null){
+				ServletUtil.sendNoOption("Pas d'université dans cette ville", null, response);
+			} else if (pays!=null){
+				ServletUtil.sendNoOption("Pas d'université dans ce pays", null, response);
+			} else {
+				ServletUtil.sendNoOption("Pas d'université dans ce continent", null, response);
+			}
+		} else {
+			ServletUtil.sendOptions(listeUniversites, null, response);
+		}	
+	}
+	
+	private void updateEntreprise(OptionsController optionsController, String ville, String pays, String continent, String messageDefaut, HttpServletResponse response) throws DatabaseException, SQLException, IOException{
+		ArrayList<String> listeEntreprises = new ArrayList<String>();
+		if (ville!=null){
+			listeEntreprises = optionsController.getEntreprisesByVille(ville);
+		} else if (pays!=null){
+			listeEntreprises = optionsController.getEntreprisesByPays(pays);
+		} else {
+			listeEntreprises = optionsController.getEntreprisesByContinent(continent);
+		}
+		if (listeEntreprises.size()==0){
+			if (ville!=null){
+				ServletUtil.sendNoOption("Pas d'entreprise dans cette ville", null, response);
+			} else if (pays!=null){
+				ServletUtil.sendNoOption("Pas d'entreprise dans ce pays", null, response);
+			} else {
+				ServletUtil.sendNoOption("Pas d'entreprise dans ce continent", null, response);
+			}
+		} else {
+			ServletUtil.sendOptions(listeEntreprises, null, response);
+		}	
+	}
+	
+
+	
+	
+	
 }

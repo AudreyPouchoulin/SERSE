@@ -34,5 +34,18 @@ public class ServletUtil {
 	    response.setCharacterEncoding("UTF-8");
 	    response.getWriter().write(jsonResponse);
 	}
+	
+	public static void sendNoOption(String messageNoOption, String messageDefaut, HttpServletResponse response) throws IOException  {
+		Map<String, String> listeOptions = new LinkedHashMap<>();
+		if (messageDefaut!=null){
+			listeOptions.put("defaut", messageDefaut);
+		}
+		listeOptions.put("noOption", messageNoOption);
+		
+		String jsonResponse = new Gson().toJson(listeOptions);
+		response.setContentType("application/json");
+	    response.setCharacterEncoding("UTF-8");
+	    response.getWriter().write(jsonResponse);
+	}
 
 }

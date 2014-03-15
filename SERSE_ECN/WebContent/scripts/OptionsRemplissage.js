@@ -126,8 +126,13 @@
  */
 	function fillOptions(liste, responseJson){
 		liste.find('option').remove();
-     	$.each(responseJson, function(key, value) {  
-         	$('<option>').val(key).text(value).appendTo(liste); 
+     	$.each(responseJson, function(key, value) { 
+     		if (key!='noOption'){
+     			$('<option>').val(key).text(value).appendTo(liste); 
+     		} else {
+     			$('<option>').val(key).text(value).appendTo(liste).prop('disabled', true); 
+     		}
+         	
       });
 	}
 	

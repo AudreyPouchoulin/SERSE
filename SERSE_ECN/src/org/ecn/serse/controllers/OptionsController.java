@@ -86,9 +86,6 @@ public class OptionsController {
 		
 		if (statement.execute()){
 			ResultSet resultSet = statement.getResultSet();
-			if (resultSet==null){
-				listePays.add("Pas de pays dans ce continent");
-			}
 			while(resultSet.next()){
 				listePays.add(resultSet.getString(1));
 			}
@@ -134,9 +131,6 @@ public class OptionsController {
 		
 		if (statement.execute()){
 			ResultSet resultSet = statement.getResultSet();
-			if (resultSet==null){
-				listeVilles.add("Pas de ville dans ce continent");
-			}
 			while(resultSet.next()){
 				listeVilles.add(resultSet.getString(1));
 			}
@@ -163,9 +157,6 @@ public class OptionsController {
 		
 		if (statement.execute()){
 			ResultSet resultSet = statement.getResultSet();
-			if (resultSet==null){
-				listeVilles.add("Pas de ville dans ce continent");
-			}
 			while(resultSet.next()){
 				listeVilles.add(resultSet.getString(1));
 			}
@@ -212,9 +203,6 @@ public class OptionsController {
 		
 		if (statement.execute()){
 			ResultSet resultSet = statement.getResultSet();
-			if (resultSet==null){
-				listeUniversites.add("Pas d'universités dans ce continent");
-			}
 			while(resultSet.next()){
 				listeUniversites.add(resultSet.getString(1));
 			}
@@ -242,9 +230,6 @@ public class OptionsController {
 		
 		if (statement.execute()){
 			ResultSet resultSet = statement.getResultSet();
-			if (resultSet==null){
-				listeUniversites.add("Pas d'universités dans ce pays");
-			}
 			while(resultSet.next()){
 				listeUniversites.add(resultSet.getString(1));
 			}
@@ -271,9 +256,6 @@ public class OptionsController {
 		
 		if (statement.execute()){
 			ResultSet resultSet = statement.getResultSet();
-			if (resultSet==null){
-				listeUniversites.add("Pas d'universités dans cette ville");
-			}
 			while(resultSet.next()){
 				listeUniversites.add(resultSet.getString(1));
 			}
@@ -320,9 +302,6 @@ public class OptionsController {
 		
 		if (statement.execute()){
 			ResultSet resultSet = statement.getResultSet();
-			if (resultSet==null){
-				listeEntreprises.add("Pas d'entreprises dans ce continent");
-			}
 			while(resultSet.next()){
 				listeEntreprises.add(resultSet.getString(1));
 			}
@@ -350,9 +329,6 @@ public class OptionsController {
 		
 		if (statement.execute()){
 			ResultSet resultSet = statement.getResultSet();
-			if (resultSet==null){
-				listeEntreprises.add("Pas d'entreprises dans ce pays");
-			}
 			while(resultSet.next()){
 				listeEntreprises.add(resultSet.getString(1));
 			}
@@ -375,15 +351,12 @@ public class OptionsController {
 				+ "INNER JOIN serse.entreprise_pays ON serse.entreprise_pays.entreprise_id = serse.entreprise.entreprise_id "
 				+ "INNER JOIN serse.pays ON serse.pays.pays_id = serse.entreprise_pays.pays_id "
 				+ "INNER JOIN serse.ville ON serse.ville.pays_id = serse.pays.pays_id "
-				+ "WHERE vill_nom=?"
+				+ "WHERE ville_nom=?"
 				+ "ORDER BY entreprise_nom;");
 		statement.setString(1, villeNom);
 		
 		if (statement.execute()){
 			ResultSet resultSet = statement.getResultSet();
-			if (resultSet==null){
-				listeEntreprises.add("Pas d'entreprises dans le pays correspondant à cette ville");
-			}
 			while(resultSet.next()){
 				listeEntreprises.add(resultSet.getString(1));
 			}

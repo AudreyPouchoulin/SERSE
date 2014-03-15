@@ -195,7 +195,7 @@ public class RechercheController {
 		
 		String requete = requeteDeBase + requeteCriteres + requeteCriteresProfessionnelEtAcadémique +  "ORDER BY rapport_nom;";
 		// DEBUG
-		System.out.println(requeteCriteres + requeteCriteresProfessionnelEtAcadémique);
+		/*System.out.println(requeteCriteres + requeteCriteresProfessionnelEtAcadémique);*/
 		
 		PreparedStatement statement = bdd.getConnection().prepareStatement(requete);
 		

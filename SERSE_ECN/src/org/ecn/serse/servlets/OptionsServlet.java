@@ -4,8 +4,6 @@ package org.ecn.serse.servlets;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -15,8 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.ecn.serse.controllers.BddController;
 import org.ecn.serse.controllers.OptionsController;
 import org.ecn.serse.exceptions.DatabaseException;
-
-import com.google.gson.Gson;
 
 /**
  * Servlet implementation class ContinentServlet
@@ -77,12 +73,7 @@ public class OptionsServlet extends HttpServlet {
 					ServletUtil.sendOptions(experiences, messageDefaut, response);
 					break;
 				default:
-					Map<String, String> erreur = new LinkedHashMap<String, String>();
-					erreur.put("erreur", "Problem when calling for filling the lists");
-					String jsonResponse = new Gson().toJson(erreur);
-					response.setContentType("application/json");
-				    response.setCharacterEncoding("UTF-8");
-				    response.getWriter().write(jsonResponse);
+					ServletUtil.sendNoOption("Problem when calling for updating the lists", messageDefaut, response);
 			}
 		} catch (DatabaseException e) {
 			// TODO Auto-generated catch block

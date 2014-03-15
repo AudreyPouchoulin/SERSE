@@ -51,14 +51,14 @@ public class RechercheServlet extends HttpServlet {
 			String date = request.getParameter("date");
 			
 			//DEBUG
-			System.out.println("Géographie: " + continentNom + paysNom + villeNom);
+			/*System.out.println("Géographie: " + continentNom + paysNom + villeNom);
 			System.out.println("Université-entreprise: " + universite + entreprise);
 			System.out.println("Professionnel-académique: " + professionnel + academique);
 			System.out.println("Professionnel critères : " + CME + STING + TFE + pSemestre + pCesure);
 			System.out.println("Académique critères : " + aSemestre + aCesure + annee + doubleDiplome);
 			System.out.println("université-entreprise nom : " + universiteNom + entrepriseNom);
 			System.out.println("langue : " + langueNom);
-			System.out.println("domaine d'activité : " + domaineActiviteNom);
+			System.out.println("domaine d'activité : " + domaineActiviteNom);*/
 			
 		// Recherche des rapports correspondants aux critères
 			BddController bddController;
