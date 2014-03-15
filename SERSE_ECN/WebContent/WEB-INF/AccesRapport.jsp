@@ -102,8 +102,8 @@
 								<input type="checkbox" id="cadreAcademique" checked="checked"><label for="cadreAcademique">Académique</label>
 								<ul id='casesCadreAcademique' style="list-style: none">
 								    <li><input type='checkbox' id='aSemestre' checked="checked"/>Semestre</li>
-								    <li><input type='checkbox' id='aAnnee' checked="checked"/>Annee</li>
-								    <li><input type='checkbox' id='aDoubleDiplome' checked="checked"/>Double Diplome</li>
+								    <li><input type='checkbox' id='aAnnee' checked="checked"/>Année</li>
+								    <li><input type='checkbox' id='aDoubleDiplome' checked="checked"/>Double Diplême</li>
 								    <li><input type='checkbox' id='aCesure' checked="checked"/>Césure</li>	    
 								</ul>
 							</td>

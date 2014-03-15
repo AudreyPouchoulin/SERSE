@@ -36,6 +36,7 @@ function cocheDecocheCaseAcademique() {
 	;
 }
 
+
 /**
  * si décochage de toutes les sous-cases, décochage de Professionel si cochage
  * d'une case sous professionel, cochage de Professionel
@@ -47,7 +48,12 @@ function cocheDecochePro(caseClic) {
 	} else if (!($('#pCME').prop('checked')) & !($('#pSTING').prop('checked'))
 			& !($('#pTFE').prop('checked')) & !($('#pCesure').prop('checked'))
 			& !($('#pSemestre').prop('checked'))) {
-		$('#cadreProfessionnel').prop('checked', false);
+		if (!($('#cadreAcademique').prop('checked'))){
+			alert('Une des 2 cases au moins doit être cochée (académique et/ou professionnel) pour que la recherche soit possible.');
+			caseClic.checked = true;
+		} else {
+			$('#cadreProfessionnel').prop('checked', false);
+		}
 	}
 	;
 }
@@ -63,7 +69,14 @@ function cocheDecocheAca(caseClic) {
 			& !($('#aAnnee').prop('checked'))
 			& !($('#aDoubleDiplome').prop('checked'))
 			& !($('#aCesure').prop('checked'))) {
-		$('#cadreAcademique').prop('checked', false);
+		if (!($('#cadreProfessionnel').prop('checked'))){
+			alert('Une des 2 cases au moins doit être cochée (académique et/ou professionnel) pour que la recherche soit possible.');
+			caseClic.checked = true;
+		} else {
+			$('#cadreAcademique').prop('checked', false);
+		}
+		
 	}
 	;
 }
+
