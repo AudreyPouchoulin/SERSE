@@ -147,9 +147,9 @@
 					<p>
 						<select id="date">
 							<option value="defaut" selected="selected">Tous les rapports</option>
-							<option value="2013-2014">2013-2014</option>
-							<option value="2011-2012">2011-2012</option>	
-							<option value="2009-2010">2009-2010</option>		
+							<option value="2014">Rapports après 2014</option>
+							<option value="2013">Rapports après 2013</option>
+							<option value="2012">Rapports après 2012</option>	
 						</select>
 					</p>
 				</fieldset>

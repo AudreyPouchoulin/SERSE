@@ -10,7 +10,12 @@ function cocheDecocheCaseProfessionnel() {
 	if ($('#cadreProfessionnel').prop('checked')) {
 		cases.prop('checked', true);
 	} else {
-		cases.prop('checked', false);
+		if (!($('#cadreAcademique').prop('checked'))){
+			alert('Une des 2 cases au moins doit être cochée (académique et/ou professionnel) pour que la recherche soit possible.');
+			$('#cadreProfessionnel').prop('checked', true);
+		} else {
+			cases.prop('checked', false);
+		}
 	}
 	;
 }
@@ -21,7 +26,12 @@ function cocheDecocheCaseAcademique() {
 	if ($('#cadreAcademique').prop('checked')) {
 		cases.prop('checked', true);
 	} else {
-		cases.prop('checked', false);
+		if (!($('#cadreProfessionnel').prop('checked'))){
+			alert('Une des 2 cases au moins doit être cochée (académique et/ou professionnel) pour que la recherche soit possible.');
+			$('#cadreAcademique').prop('checked', true);
+		} else {
+			cases.prop('checked', false);
+		}
 	}
 	;
 }

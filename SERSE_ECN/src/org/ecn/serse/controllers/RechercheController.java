@@ -5,10 +5,13 @@
  */
 package org.ecn.serse.controllers;
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 import org.ecn.serse.exceptions.DatabaseException;
 import org.ecn.serse.models.Rapport;
@@ -80,12 +83,13 @@ public class RechercheController {
 			}
 		}
 		
+		boolean isTousCriteresProfessionnels = false;
+		boolean isTousCriteresAcademiques = false;
 		// critères de type d'expérience et de mobilité
 		if (!(academique && professionnel && CME && STING && TFE && pSemestre && pCesure && aSemestre && aCesure && annee && doubleDiplome)){
 			requeteDeBase = requeteDeBase + "LEFT JOIN serse.typeExperience ON serse.rapport.typeExperience_id = serse.typeExperience.typeExperience_id ";
 			if (professionnel && CME && STING && TFE && pSemestre && pCesure){ // tous les sous critères de professionnel sont cochés
-				listeRequeteCriteres.add("typeexperience_libelle = ? ");
-				listeCriteres.add("professionnel");
+				isTousCriteresProfessionnels = true;
 			} else if (professionnel && !(CME && STING && TFE && pSemestre && pCesure)){
 				if (CME){
 					listeRequeteCriteresProfessionnel.add("typemobilite_libelle = ? ");
@@ -109,8 +113,7 @@ public class RechercheController {
 				}
 			}
 			if (academique && aSemestre && aCesure && annee && doubleDiplome){ // tous les sous critères de académique sont cochés
-				listeRequeteCriteres.add("typeexperience_libelle = ? ");
-				listeCriteresProfessionnelAcademique.add("académique");
+				isTousCriteresAcademiques = true ;
 			} else if (academique && !(aSemestre && aCesure && annee && doubleDiplome)){
 				if (aCesure){
 					listeRequeteCriteresAcademique.add("typemobilite_libelle = ? ");
@@ -147,7 +150,12 @@ public class RechercheController {
 		}
 		if(domaineActiviteNom !=""){
 			listeRequeteCriteres.add("domaineactivite_libelle = ? ");
-			listeCriteres.add(continentNom);
+			listeCriteres.add(domaineActiviteNom);
+		}
+		
+		// critere de date
+		if(date != ""){
+			listeRequeteCriteres.add("rapport_datedebut > '01-01-" + date + "' ");
 		}
 		
 		String requeteCriteres = "";
@@ -158,48 +166,44 @@ public class RechercheController {
 			}
 		}
 		
-		String requeteCriteresProfessionnel = "";
-		if (listeRequeteCriteresProfessionnel.size() !=0){
-			if (requeteCriteres ==""){
-				requeteCriteresProfessionnel = "WHERE ";
-			} else {
-				requeteCriteresProfessionnel = "AND ";
-			}
-			requeteCriteresProfessionnel = requeteCriteresProfessionnel + "(typeexperience_libelle = 'professionnel' AND (" + listeRequeteCriteresProfessionnel.get(0);
+		String requeteCriteresProfessionnelEtAcadémique = "";
+		if (isTousCriteresProfessionnels){
+			requeteCriteresProfessionnelEtAcadémique = beginWithWhereOrAnd(requeteCriteres);
+			requeteCriteresProfessionnelEtAcadémique = requeteCriteresProfessionnelEtAcadémique + "typeexperience_libelle = 'professionnelle' ";
+		} else if (listeRequeteCriteresProfessionnel.size() !=0){
+			requeteCriteresProfessionnelEtAcadémique = beginWithWhereOrAnd(requeteCriteres);
+			requeteCriteresProfessionnelEtAcadémique = requeteCriteresProfessionnelEtAcadémique + "(typeexperience_libelle = 'professionnelle' AND (" + listeRequeteCriteresProfessionnel.get(0);
 			for (int i=1; i<listeRequeteCriteresProfessionnel.size(); i++){
-				requeteCriteresProfessionnel = requeteCriteresProfessionnel + "OR " + listeRequeteCriteresProfessionnel.get(i);
+				requeteCriteresProfessionnelEtAcadémique = requeteCriteresProfessionnelEtAcadémique + "OR " + listeRequeteCriteresProfessionnel.get(i);
 			}
-			requeteCriteresProfessionnel = requeteCriteresProfessionnel + ")) ";
+			requeteCriteresProfessionnelEtAcadémique = requeteCriteresProfessionnelEtAcadémique + "))";
 		}
-		
-		String requeteCriteresAcademique = "";
-		if (listeRequeteCriteresAcademique.size() !=0){
-			if (requeteCriteres =="" && requeteCriteresProfessionnel == ""){
-				requeteCriteresAcademique = "WHERE ";
-			} else {
-				requeteCriteresAcademique = "AND ";
-			}
-			requeteCriteresAcademique = requeteCriteresAcademique + "(typeexperience_libelle = 'académique' AND (" + listeRequeteCriteresProfessionnel.get(0);
+		if (isTousCriteresAcademiques){
+			requeteCriteresProfessionnelEtAcadémique = requeteCriteresProfessionnelEtAcadémique + beginWithWhereOrAndOrOr(requeteCriteres, requeteCriteresProfessionnelEtAcadémique);
+			requeteCriteresProfessionnelEtAcadémique =  requeteCriteresProfessionnelEtAcadémique + "typeexperience_libelle = 'académique' ";
+		} else if (listeRequeteCriteresAcademique.size() !=0){
+			requeteCriteresProfessionnelEtAcadémique = requeteCriteresProfessionnelEtAcadémique + beginWithWhereOrAndOrOr(requeteCriteres, requeteCriteresProfessionnelEtAcadémique);
+			requeteCriteresProfessionnelEtAcadémique = requeteCriteresProfessionnelEtAcadémique + "(typeexperience_libelle = 'académique' AND (" + listeRequeteCriteresAcademique.get(0);
 			for (int i=1; i<listeRequeteCriteresAcademique.size(); i++){
-				requeteCriteresAcademique = requeteCriteresAcademique + "OR " + listeRequeteCriteresAcademique.get(i);
+				requeteCriteresProfessionnelEtAcadémique = requeteCriteresProfessionnelEtAcadémique + "OR " + listeRequeteCriteresAcademique.get(i);
 			}
-			requeteCriteresAcademique = requeteCriteresAcademique + ")) ";
+			requeteCriteresProfessionnelEtAcadémique = requeteCriteresProfessionnelEtAcadémique + "))";
+		}
+		if (requeteCriteresProfessionnelEtAcadémique !=""){
+			requeteCriteresProfessionnelEtAcadémique = requeteCriteresProfessionnelEtAcadémique + ") ";
 		}
 		
-		String requete = requeteDeBase + requeteCriteres + requeteCriteresProfessionnel + requeteCriteresAcademique +  "ORDER BY rapport_nom;";
+		String requete = requeteDeBase + requeteCriteres + requeteCriteresProfessionnelEtAcadémique +  "ORDER BY rapport_nom;";
 		// DEBUG
-		System.out.println(requeteCriteres + requeteCriteresProfessionnel + requeteCriteresAcademique);
+		System.out.println(requeteCriteres + requeteCriteresProfessionnelEtAcadémique);
 		
 		PreparedStatement statement = bdd.getConnection().prepareStatement(requete);
 		
 		for (int i=0; i<listeCriteres.size(); i++){
 			statement.setString(i+1, listeCriteres.get(i));
 		}
-		// DEBUG
-		//System.out.println(listeCriteres.size());
-		//System.out.println(listeCriteresProfessionnelAcademique.size());
-		for (int j=listeCriteres.size(); j<(listeCriteres.size() + listeCriteresProfessionnelAcademique.size()); j++){
-			statement.setString(j+1, listeCriteresProfessionnelAcademique.get(j));
+		for (int j=0; j<listeCriteresProfessionnelAcademique.size(); j++){
+			statement.setString(listeCriteres.size()+1+j, listeCriteresProfessionnelAcademique.get(j));
 		}
 			
 		if (statement.execute()){
@@ -237,7 +241,7 @@ public class RechercheController {
 		}
 		Rapport rapportTrouve = new Rapport(
 				resultSet.getString(1), 
-				resultSet.getDate(2) + " - " + resultSet.getDate(3), 
+				getPeriod(resultSet), 
 				resultSet.getString(4),
 				resultSet.getString(5),
 				universiteEntreprise,
@@ -246,4 +250,46 @@ public class RechercheController {
 				resultSet.getString(10));
 		return rapportTrouve;
 	}
+	
+	private String beginWithWhereOrAnd(String requeteCriteres){
+		String suiteRequeteCriteres ="";
+		if (requeteCriteres ==""){
+			suiteRequeteCriteres = "WHERE (";
+		} else {
+			suiteRequeteCriteres = "AND (";
+		}
+		return suiteRequeteCriteres;
+	}
+	
+	private String beginWithWhereOrAndOrOr(String requeteCriteres, String requeteCriteresOr){
+		String suiteRequeteCriteres ="";
+		if (requeteCriteresOr == "") {
+			if (requeteCriteres == ""){
+				suiteRequeteCriteres = "WHERE (";
+			} else {
+				suiteRequeteCriteres = "AND (";
+			}
+		} else {
+			suiteRequeteCriteres = "OR ";
+		}
+		return suiteRequeteCriteres;
+	}
+	
+	private String getPeriod(ResultSet resultSet) throws SQLException{
+		String year;
+		Date date1 = resultSet.getDate(2);
+		Date date2 = resultSet.getDate(3);
+		GregorianCalendar calendar = new GregorianCalendar();
+		calendar.setTime(date1);
+		String year1 =  Integer.toString(calendar.get(Calendar.YEAR));
+		calendar.setTime(date2);
+		String year2 =  Integer.toString(calendar.get(Calendar.YEAR));
+		if (year1.equals(year2)){
+			year = year1;
+		} else {
+			year = year1 + " - " + year2;
+		}
+		return year;
+	}
 }
+
