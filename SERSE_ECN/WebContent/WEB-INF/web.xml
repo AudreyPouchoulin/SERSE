@@ -82,7 +82,7 @@
     <servlet-name>OptionsRestreintesServlet</servlet-name>
     <url-pattern>/OptionsRestreintesServlet</url-pattern>
   </servlet-mapping>
-   <servlet>
+  <servlet>
     <display-name>AccueilDriServlet</display-name>
     <servlet-name>AccueilDriServlet</servlet-name>
     <servlet-class>org.ecn.serse.servlets.AccueilDriServlet</servlet-class>
@@ -91,8 +91,7 @@
     <servlet-name>AccueilDriServlet</servlet-name>
     <url-pattern>/AccueilDri</url-pattern>
   </servlet-mapping>
-  
-   <servlet>
+  <servlet>
     <display-name>AccueilAdminServlet</display-name>
     <servlet-name>AccueilAdminServlet</servlet-name>
     <servlet-class>org.ecn.serse.servlets.AccueilAdminServlet</servlet-class>
@@ -101,7 +100,6 @@
     <servlet-name>AccueilAdminServlet</servlet-name>
     <url-pattern>/AccueilAdmin</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <display-name>ValidationRapportServlet</display-name>
     <servlet-name>ValidationRapportServlet</servlet-name>
@@ -111,7 +109,6 @@
     <servlet-name>ValidationRapportServlet</servlet-name>
     <url-pattern>/ValidationRapport</url-pattern>
   </servlet-mapping>
-
   <servlet>
     <display-name>GestionRapportServlet</display-name>
     <servlet-name>GestionRapportServlet</servlet-name>
@@ -121,7 +118,6 @@
     <servlet-name>GestionRapportServlet</servlet-name>
     <url-pattern>/GestionRapport</url-pattern>
   </servlet-mapping>
-
   <servlet>
     <display-name>PreferencesDriServlet</display-name>
     <servlet-name>PreferencesDriServlet</servlet-name>
@@ -130,8 +126,7 @@
   <servlet-mapping>
     <servlet-name>PreferencesDriServlet</servlet-name>
     <url-pattern>/PreferencesDri</url-pattern>
-  </servlet-mapping>  
-
+  </servlet-mapping>
   <servlet>
     <display-name>ValidationOptionServlet</display-name>
     <servlet-name>ValidationOptionServlet</servlet-name>
@@ -141,7 +136,6 @@
     <servlet-name>ValidationOptionServlet</servlet-name>
     <url-pattern>/ValidationOption</url-pattern>
   </servlet-mapping>
-
   <servlet>
     <display-name>GestionOptionServlet</display-name>
     <servlet-name>GestionOptionServlet</servlet-name>
@@ -151,8 +145,7 @@
     <servlet-name>GestionOptionServlet</servlet-name>
     <url-pattern>/GestionOption</url-pattern>
   </servlet-mapping>
-  
-   <servlet>
+  <servlet>
     <display-name>PreferencesAdminServlet</display-name>
     <servlet-name>PreferencesAdminServlet</servlet-name>
     <servlet-class>org.ecn.serse.servlets.PreferencesAdminServlet</servlet-class>
@@ -160,5 +153,29 @@
   <servlet-mapping>
     <servlet-name>PreferencesAdminServlet</servlet-name>
     <url-pattern>/PreferencesAdmin</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DownloadServlet</display-name>
+    <servlet-name>DownloadServlet</servlet-name>
+    <servlet-class>org.ecn.serse.servlets.DownloadServlet</servlet-class>
+    <init-param>
+      <param-name>chemin</param-name>
+      <param-value>/files/</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DownloadServlet</servlet-name>
+    <url-pattern>/files/*</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UploadServlet</display-name>
+    <servlet-name>UploadServlet</servlet-name>
+    <servlet-class>org.ecn.serse.servlets.UploadServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UploadServlet</servlet-name>
+    <url-pattern>/UploadServlet</url-pattern>
   </servlet-mapping>
 </web-app>

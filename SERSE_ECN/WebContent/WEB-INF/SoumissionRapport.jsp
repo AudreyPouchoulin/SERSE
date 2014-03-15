@@ -200,8 +200,7 @@
 <!--Chemin du fichier-->
 					<tr>
 						<td>Rapport</td>
-						<td><input id="cheminFichier" type="text" placeholder="Chemin du fichier"></td>
-						<td><input type="button" value="Parcourir"></td>
+						<td><input id="cheminFichier" type="file" value="Parcourir"></td>
 					</tr>
 					
 <!--Reset et soumettre le rapport-->	

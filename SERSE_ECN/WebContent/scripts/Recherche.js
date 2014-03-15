@@ -74,7 +74,7 @@ function fillResults(responseJson){
 	}
 	$.each(responseJson, function(key, value) {
 		$("#contenuTableauResultats").append("<tr>");
-		$("#contenuTableauResultats").append("<td>" + value.nom + "</td>");
+		$("#contenuTableauResultats").append("<td> <a href='http://localhost:8080/SERSE_ECN/files/"+ value.nom + ".pdf'>" + value.nom + "</a></td>");
 		$("#contenuTableauResultats").append("<td>" + value.date + "</td>");
 		$("#contenuTableauResultats").append("<td>" + value.pays + "</td>");
 		$("#contenuTableauResultats").append("<td>" + value.ville + "</td>");
