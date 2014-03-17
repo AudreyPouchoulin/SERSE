@@ -161,7 +161,7 @@
     <servlet-class>org.ecn.serse.servlets.DownloadServlet</servlet-class>
     <init-param>
       <param-name>chemin</param-name>
-      <param-value>/files/</param-value>
+      <param-value>/Users/Audrey/git/SERSE/SERSE_ECN/WebContent/rapports</param-value>
     </init-param>
   </servlet>
   <servlet-mapping>

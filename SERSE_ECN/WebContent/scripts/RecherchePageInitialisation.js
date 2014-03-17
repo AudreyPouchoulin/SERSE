@@ -14,7 +14,5 @@
 		remplissageEntreprise(false);
 		remplissageDomaineActivite(false);
 		remplissageLangue(false);
-		$("#myTable").tablesorter(); 
-		recherche();
-			        
+		recherche();		        
 	});
