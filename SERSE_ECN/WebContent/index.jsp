@@ -8,6 +8,9 @@
 	
 	<body>
 		<!-- en-tête-->
+		<div id=icone>
+			<img src="images/icone_serse.png">
+		</div>
 		<p> Connexion à SERSE </p>
 		<p> Application de Soumission Electronique de Rapports de Séjours à l'Etranger </p>
 

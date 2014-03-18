@@ -5,17 +5,14 @@
 <html>
 
 <body>
-
 		<p>
+			<img id="icone" src="images/icone_serse.png">
 			<% 
 				String message = (String) request.getAttribute("message_bienvenue");
 				if (message!=null){
 					out.println(message);
 				}
 			%>
-		</p>
-		
-		
 			<div id="menu">
 				 <ul id="onglets">
 					 <!-- Liens a completer au fur et a mesure -->
@@ -24,5 +21,9 @@
 					<li><a href="MesRapports"> Mes Rapports </a></li>
 				 </ul>
 			</div>
+		</p>
+		
+		
+			
 </body>
 </html>

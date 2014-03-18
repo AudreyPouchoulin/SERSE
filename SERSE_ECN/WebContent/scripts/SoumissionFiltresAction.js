@@ -12,13 +12,13 @@ $(document).ready(function() {
 /** Dates de début et de fin **/
 	$('#dateDebut').datepicker({
 	      showOn: "button",
-	      buttonImage: "images/iconeCalendrier-3.png",
+	      buttonImage: "images/iconeCalendrier.png",
 	      buttonImageOnly: true
 	});
 	
 	$('#dateFin').datepicker({
 	      showOn: "button",
-	      buttonImage: "images/iconeCalendrier-3.png",
+	      buttonImage: "images/iconeCalendrier.png",
 	      buttonImageOnly: true
 	});
 	

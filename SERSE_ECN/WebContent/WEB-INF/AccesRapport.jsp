@@ -179,9 +179,9 @@
 						<th>Pays<img src="images/iconeCroissantDecroissant.png" class="imageflottante"></th>
 						<th>Ville<img src="images/iconeCroissantDecroissant.png"  class="imageflottante"></th>
 						<th>Lieux<img src="images/iconeCroissantDecroissant.png" class="imageflottante"></th>
-						<th id="tableau">Domaine<img src="images/iconeCroissantDecroissant.png" class="imageflottante"></th>
-						<th id="tableau">Mobilite<img src="images/iconeCroissantDecroissant.png" class="imageflottante"></th>
-						<th id="tableau">Langue<img src="images/iconeCroissantDecroissant.png" class="imageflottante"></th>
+						<th>Domaine<img src="images/iconeCroissantDecroissant.png" class="imageflottante"></th>
+						<th>Mobilite<img src="images/iconeCroissantDecroissant.png" class="imageflottante"></th>
+						<th>Langue<img src="images/iconeCroissantDecroissant.png" class="imageflottante"></th>
 					</tr>
 				</thead>
 				<tbody id="contenuTableauResultats">
