@@ -14,5 +14,6 @@
 		remplissageEntreprise(false);
 		remplissageDomaineActivite(false);
 		remplissageLangue(false);
-		recherche();		        
+		recherche();	
+		$('#tableauResultat').dataTable();
 	});

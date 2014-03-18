@@ -17,6 +17,7 @@
 
 		<script type="text/javascript" src="scripts/jquery/jquery-1.10.2.min.js"></script>
 		<script type="text/javascript" src="scripts/jquery/jquery-ui-1.10.4.custom.js"></script>
+		<script type="text/javascript" src="scripts/menu.js"></script>
 		
 		<script type="text/javascript" src="scripts/OptionsRemplissage.js"></script>
 		<script type="text/javascript" src="scripts/SoumissionPageInitialisation.js"></script>
