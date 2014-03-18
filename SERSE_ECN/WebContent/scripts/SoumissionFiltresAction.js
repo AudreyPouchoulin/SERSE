@@ -8,20 +8,6 @@
 
 $(document).ready(function() {
 	
-	
-/** Dates de début et de fin **/
-	$('#dateDebut').datepicker({
-	      showOn: "button",
-	      buttonImage: "images/iconeCalendrier.png",
-	      buttonImageOnly: true
-	});
-	
-	$('#dateFin').datepicker({
-	      showOn: "button",
-	      buttonImage: "images/iconeCalendrier.png",
-	      buttonImageOnly: true
-	});
-	
 /** Géographie */
 	$('#continent').change(function() {
 		if ($('#continent').val() !='defaut'){
@@ -107,13 +93,7 @@ $(document).ready(function() {
 
 /** Bouton valider */
 	$('#valider').click(function(){
-		var $messageErreur = verifierEntrees();
-		if ($messageErreur !=null){
-			alert ($messageErreur);
-		} else {
-			var $argumentsJson = recupererArguments();
-			alert("Page de validation" + $argumentsJson);
-		}
+		valider();
 	});
 
 /** Bouton reset */
