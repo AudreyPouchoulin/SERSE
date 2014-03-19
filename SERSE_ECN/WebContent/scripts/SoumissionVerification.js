@@ -118,36 +118,6 @@ function verifierEntrees() {
 
 }
 
-function recupererArguments() {
-	var $pays = recupererValeurAvecPossibiliteAutre($('#pays'), $('#valueAutrePays'));
-	var $ville = recupererValeurAvecPossibiliteAutre($('#ville'), $('#valueAutreVille'));
-	var $universite = recupererValeurAvecPossibiliteAutre($('#universite_entreprise'), $('#valueAutreUniversite'));
-	var $entreprise = recupererValeurAvecPossibiliteAutre($('#universite_entreprise'), $('#valueAutreEntreprise'));
-	var $langue = recupererValeurAvecPossibiliteAutre($('#langue'), $('#valueAutreLangue'));
-	var $domaine = recupererValeurAvecPossibiliteAutre($('#domaine'), $('#valueAutreDomaine'));
-	//TODO : ajouter la récupération du GPS
-
-	var arguments = {
-		Nom : $('#nom').text(),
-		Prenom : $('#prenom').text(),
-		Sexe : $('#sexe').text(),
-		DateDebut : $('#dateDebut').val(),
-		DateFin : $('#dateFin').val(),
-		Continent : $('#continent').val(),
-		Pays : $pays,
-		Ville : $ville,
-		Sejour : $('#typeSejour').val(),
-		Mobilite : $('#typeMobilite').val(),
-		Experience : $('#typeExperience').val(),
-		Universite : $universite,
-		Entreprise : $entreprise,
-		Langue : $langue,
-		Domaine : $domaine,
-		Adresse : $('#adresse').val(),
-		CheminFichier : $('#cheminFichier').val()
-	};
-	return arguments;
-}
 
 function testChampsDefaut(champs, messageErreur, messageListeErreurs) {
 	if (champs.val() == 'defaut') {
@@ -164,15 +134,6 @@ function testChampsDefautComplex(champs, autreChamps, messageErreur,
 	return messageListeErreurs;
 }
 
-function recupererValeurAvecPossibiliteAutre(champs, champsAutre) {
-	var valeur = '';
-	if (champs.val() == 'Autre') {
-		valeur = champsAutre.val();
-	} else {
-		valeur = champs.val();
-	}
-	return valeur;
-}
 /**
  * Vérifie que la date est bien saisie avec le format JJ/MM/AAAA
  * 
@@ -217,6 +178,7 @@ function initialiserDialogConfirmation(argumentsJson){
 	      modal: true,
 	      buttons: {
 	        "Soumettre le rapport": function() {
+	        	soumettre(argumentsJson);
 	          $( this ).dialog( "close" );
 	        },
 	        "Modifier les informations": function() {
