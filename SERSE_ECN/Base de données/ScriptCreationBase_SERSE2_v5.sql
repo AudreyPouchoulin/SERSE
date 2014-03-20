@@ -1,4 +1,4 @@
-﻿-- BASE DONNEES serse : création de la base
+-- BASE DONNEES serse : création de la base
 -- Auteurs : Clara Doucoure et Audrey Pouchoulin
 -- Date création : 30/01/2014
 -- Date dernière modification : 15/04/2014
@@ -14,6 +14,12 @@ CREATE TABLE serse.continent (
 
 
 ALTER SEQUENCE serse.continent_continent_id_seq OWNER TO "serse-ecn";
+
+CREATE TABLE serse.etatOption(
+	etatOption_id INTEGER NOT NULL,
+	etatOption_libelle VARCHAR(50),
+	CONSTRAINT etatOption_id_pk PRIMARY KEY (etatOption_id)
+);
 
 CREATE SEQUENCE serse.entreprise_entreprise_id_seq;
 
@@ -460,6 +466,81 @@ REFERENCES serse.fichier (fichier_id)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION
 NOT DEFERRABLE;
+
+ALTER TABLE serse.typeMobilite ADD COLUMN etatOption_id INTEGER;
+ALTER TABLE serse.ville ADD COLUMN etatOption_id INTEGER;
+ALTER TABLE serse.pays ADD COLUMN etatOption_id INTEGER;
+ALTER TABLE serse.continent ADD COLUMN etatOption_id INTEGER;
+ALTER TABLE serse.typeExperience ADD COLUMN etatOption_id INTEGER;
+ALTER TABLE serse.lieuSejour ADD COLUMN etatOption_id INTEGER;
+ALTER TABLE serse.universite ADD COLUMN etatOption_id INTEGER;
+ALTER TABLE serse.entreprise ADD COLUMN etatOption_id INTEGER;
+ALTER TABLE serse.langue ADD COLUMN etatOption_id INTEGER;
+
+ALTER TABLE serse.typeMobilite ADD CONSTRAINT etatOption_typeMobilite_fk
+FOREIGN KEY (etatOption_id)
+REFERENCES serse.etatOption (etatOption_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE serse.ville ADD CONSTRAINT etatOption_ville_fk
+FOREIGN KEY (etatOption_id)
+REFERENCES serse.etatOption (etatOption_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE serse.pays ADD CONSTRAINT etatOption_pays_fk
+FOREIGN KEY (etatOption_id)
+REFERENCES serse.etatOption (etatOption_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE serse.continent ADD CONSTRAINT etatOption_continent_fk
+FOREIGN KEY (etatOption_id)
+REFERENCES serse.etatOption (etatOption_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE serse.typeExperience ADD CONSTRAINT etatOption_typeExperience_fk
+FOREIGN KEY (etatOption_id)
+REFERENCES serse.etatOption (etatOption_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE serse.lieuSejour ADD CONSTRAINT etatOption_lieuSejour_fk
+FOREIGN KEY (etatOption_id)
+REFERENCES serse.etatOption (etatOption_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE serse.universite ADD CONSTRAINT etatOption_universite_fk
+FOREIGN KEY (etatOption_id)
+REFERENCES serse.etatOption (etatOption_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE serse.entreprise ADD CONSTRAINT etatOption_entreprise_fk
+FOREIGN KEY (etatOption_id)
+REFERENCES serse.etatOption (etatOption_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE serse.langue ADD CONSTRAINT etatOption_langue_fk
+FOREIGN KEY (etatOption_id)
+REFERENCES serse.etatOption (etatOption_id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+
 
 ALTER TABLE serse.administrateur OWNER TO "serse-ecn";
 ALTER TABLE serse.commentaire OWNER TO "serse-ecn";
