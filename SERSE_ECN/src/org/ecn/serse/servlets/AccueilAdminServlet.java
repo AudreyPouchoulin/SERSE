@@ -12,7 +12,6 @@ public class AccueilAdminServlet extends HttpServlet {
 public void doGet( HttpServletRequest request, HttpServletResponse response )   throws ServletException, IOException {
 		
 		Integer nbrOptionsValider = 3; // nombre d'option a valider
-		
 		request.setAttribute( "nbrOptionsValider", nbrOptionsValider);
 		this.getServletContext().getRequestDispatcher( "/WEB-INF/AccueilAdmin.jsp" ).forward( request, response );
 	}

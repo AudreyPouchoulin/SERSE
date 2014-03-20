@@ -19,11 +19,11 @@
 		<!-- Onglets du menu de navigation -->
 			<div id="menu">
 				 <ul id="onglets">
-				<li class="active"><a href="/AccueilAdmin"> Accueil </a></li>
+				<li class="active"><a href="AccueilAdmin"> Accueil </a></li>
 				<li><a href="/AccueilAdmin"> Acces aux rapports </a></li>
-				<li><a href="/AccueilAdmin"> Options a valider </a></li>
-				<li><a href="/AccueilAdmin"> Gerer les options </a></li>
-				<li><a href="/AccueilAdmin"> Preferences </a></li>
+				<li><a href="ValidationOption"> Options a valider </a></li>
+				<li><a href="GestionOption"> Gerer les options </a></li>
+				<li><a href="PreferencesAdmin"> Preferences </a></li>
 				</ul>
 			</div>
 			
