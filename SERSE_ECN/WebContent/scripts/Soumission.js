@@ -5,15 +5,26 @@
 
 function soumettre(argumentsJson){
 	$.post('SoumissionRapportServlet', argumentsJson, function(responseJson){
-	     alert(responseJson);
+	     if (responseJson==true){
+	    	 alert("Votre rapport a bien été soumis./nVous pouvez suivre la validation de votre rapport dans l'onglet 'Mes rapports'.");
+	     } else {
+	    	 alert("Un problème a été rencontré lors de la soumission du rapport. Merci de contacter votre administrateur système.");
+	     }
    });
 }
 
 function recupererArguments() {
 	var $pays = recupererValeurAvecPossibiliteAutre($('#pays'), $('#valueAutrePays'));
 	var $ville = recupererValeurAvecPossibiliteAutre($('#ville'), $('#valueAutreVille'));
-	var $universite = recupererValeurAvecPossibiliteAutre($('#universite_entreprise'), $('#valueAutreUniversite'));
-	var $entreprise = recupererValeurAvecPossibiliteAutre($('#universite_entreprise'), $('#valueAutreEntreprise'));
+	var $entreprise = '';
+	var $universite = '';
+	if ($('#typeSejour').val() =='université'){
+		$universite = recupererValeurAvecPossibiliteAutre($('#universite_entreprise'), $('#valueAutreUniversite'));
+	} else if ($('#typeSejour').val() =='entreprise'){
+		$entreprise = recupererValeurAvecPossibiliteAutre($('#universite_entreprise'), $('#valueAutreEntreprise'));
+	}
+	
+	
 	var $langue = recupererValeurAvecPossibiliteAutre($('#langue'), $('#valueAutreLangue'));
 	var $domaine = recupererValeurAvecPossibiliteAutre($('#domaine'), $('#valueAutreDomaine'));
 	//TODO : ajouter la récupération du GPS

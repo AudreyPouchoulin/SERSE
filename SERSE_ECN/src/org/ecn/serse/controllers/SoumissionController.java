@@ -5,10 +5,10 @@
  */
 package org.ecn.serse.controllers;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 import org.ecn.serse.exceptions.DatabaseException;
 
@@ -34,65 +34,45 @@ public class SoumissionController {
 			String sejour, String mobilite, String experience, 
 			String universite, String entreprise, 
 			String langue, String domaine, String adresse, String codePostal) throws DatabaseException, SQLException{
-		boolean soumissionAccomplie = true;
-		
-		// création d'un nouveau lieu de séjour
-			/* TODO: vérifier qu'un lieu de séjour similaire n'est pas déjà présent (même ville, même université => même lieu séjour) 7
-				pas besoin d'en ajouter un nouveau */
-			int villeId = getVilleId(ville);
-			creerLieu(villeId, adresse, codePostal);
-		
-		// création d'une nouvelle association entreprise-pays si nécessaire
-			if (entreprise !=""){
-				if(!isEntrepriseInPays(entreprise, pays)){
-					// TODO creerLienEntreprisePays();
+			boolean soumissionAccomplie = true;
+			try {
+				// TODO récupérer taille du fichier
+				String tailleFichier = "2 Go";
+				int utilisateurId = BddUtil.getUserId(bdd, nom, prenom);
+				int continentId = BddUtil.getContinentId(bdd, ville);
+				int paysId = BddUtil.getPaysId(bdd, pays, true, continentId);
+				int villeId = BddUtil.getVilleId(bdd, ville, true, paysId);
+				int sejourId = BddUtil.getSejourId(bdd, sejour);
+				int mobiliteId = BddUtil.getMobiliteId(bdd, sejour);
+				int experienceId = BddUtil.getExperienceId(bdd, sejour);
+				int universiteId = -1;
+				int entrepriseId = -1;
+				if (universite!=""){
+					universiteId = BddUtil.getUniversiteId(bdd, universite, true, villeId);
 				}
-			}
-			
-		// création d'un nouveau rapport
-		
-		
-		// création d'une nouvelle association rapport-langue
-		
+				if (entreprise!=""){
+					entrepriseId = BddUtil.getEntrepriseId(bdd, entreprise, true);
+					BddUtil.associateEntreprisePays(bdd, entrepriseId, paysId);
+				}
+				int langueId = BddUtil.getLangueId(bdd, langue, true);
+				int domaineId = BddUtil.getDomaineId(bdd, domaine, true);
+				int lieuId = BddUtil.insertLieu(bdd, villeId, adresse, codePostal, entrepriseId, universiteId);
+				
+				GregorianCalendar calendar = new GregorianCalendar();
+				calendar.setTime(dateDebut);
+				String annee =  Integer.toString(calendar.get(Calendar.YEAR));
+				String rapportNom = pays + "_" + mobilite + "_" + domaine + "_" + annee + "_" + prenom.substring(0,1) + nom.substring(0,7);
+				int rapportId = BddUtil.insertRapport(bdd, rapportNom, dateDebut, dateFin, tailleFichier, 
+						mobiliteId, sejourId, experienceId, lieuId, utilisateurId, 
+						universiteId, entrepriseId, domaineId);
+				BddUtil.associateRapportLangue(bdd, rapportId, langueId);
+				BddUtil.associateRapportEtat(bdd, rapportId);
+			} catch (Exception e){
+				e.printStackTrace();
+				soumissionAccomplie = false;
 				return soumissionAccomplie;
-
+			}
+			return soumissionAccomplie;
 	}
-	
-	private boolean isEntrepriseInPays(String entreprise, String pays){
-		//TODO
-		boolean lienExistant = false ;
-		return lienExistant;
-		
-	}
-	private void creerLieu(int villeId, String adresse, String codePostal) throws SQLException{
-		String requeteInsertLieu = "INSERT INTO  serse.lieuSejour "
-				+ "(ville_id, lieuSejour_adresse, lieuSejour_codePostal, "
-				+ "lieuSejour_GPSlatitude, lieuSejour_GPSlongitude) "
-				+ "VALUES (?, ?, ?, ?, ?);";
-			PreparedStatement statementInsertLieu = bdd.getConnection().prepareStatement(requeteInsertLieu);
-			statementInsertLieu.setInt(1, villeId);
-			statementInsertLieu.setString(2, adresse);
-			statementInsertLieu.setString(3, codePostal);
-			
-			//TODO: insérer les coordonnées GPS
-			statementInsertLieu.setInt(4, 0);
-			statementInsertLieu.setInt(5, 0);
-			statementInsertLieu.execute();
-	}
-	
-	private int getVilleId(String ville) throws SQLException{
-		int villeId = -1;
-		String requeteVilleId = "SELECT ville_id "
-				+ "FROM serse.ville "
-				+ "WHERE ville_nom = ?";
-		PreparedStatement statementVille = bdd.getConnection().prepareStatement(requeteVilleId);
-		statementVille.setString(1, ville);
-		if (statementVille.execute()){
-			ResultSet resultSet = statementVille.getResultSet();
-			villeId = resultSet.getInt(1);
-		}
-		return villeId;
-	}
-	
 
 }

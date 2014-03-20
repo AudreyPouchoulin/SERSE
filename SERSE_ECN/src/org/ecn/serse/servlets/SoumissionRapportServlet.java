@@ -59,7 +59,10 @@ public class SoumissionRapportServlet extends HttpServlet {
 			String langue = request.getParameter("Langue");
 			String domaine = request.getParameter("Domaine");
 			String adresse = request.getParameter("Adresse");
-			String codePostal = request.getParameter("CodePostal");
+			
+			// TODO: récupérer le code postal à partir de l'adresse
+			String codePostal = "notdone";
+			//String codePostal = request.getParameter("CodePostal");
 			
 			String fichier = request.getParameter("CheminFichier");
 			
