@@ -21,9 +21,9 @@ public class AccesRapportServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//TODO: add vÃ©rification connexion
+		//TODO: add vérification connexion
 		
-		// Connexion Ã  la base de donnÃ©es de SERSE
+		// Connexion à la base de données de SERSE
 		/*BddController bddController = new BddController();
 		UtilisateurController utilisateurController = new UtilisateurController(bddController);
 		int idUtilisateur = utilisateurController.verifierConnexion(token);*/

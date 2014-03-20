@@ -12,6 +12,10 @@ public class PreferencesAdminServlet extends HttpServlet {
 	public void doGet( HttpServletRequest request, HttpServletResponse response )   throws ServletException, IOException {
 		
 		this.getServletContext().getRequestDispatcher( "/WEB-INF/AboDesaboAdmin.jsp" ).forward( request, response );
+		
+		
+		
+		
 	}
 	
 }

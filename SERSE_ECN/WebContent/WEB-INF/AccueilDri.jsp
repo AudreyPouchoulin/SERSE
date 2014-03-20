@@ -20,12 +20,11 @@
 		<!-- Onglets du menu de navigation -->
 			<div id="menu">
 				 <ul id="onglets">
-				<li class="active"><a href="/AccueilAdmin"> Accueil </a></li>
-				<!-- Liens a completer au fur et a mesure -->
+				<li class="active"><a href="AccueilDri"> Accueil </a></li>
 				<li><a href="AccueilDri"> Acces aux rapports </a></li>
-				<li><a href="SERSE_ECN/AccueilDri"> Rapports a valider </a></li>
-				<li><a href="/AccueilAdmin"> Gerer les rapports </a></li>
-				<li><a href="/AccueilAdmin"> Preferences </a></li>
+				<li><a href="ValidationRapport"> Rapports a valider </a></li>
+				<li><a href="GestionRapport"> Gerer les rapports </a></li>
+				<li><a href="PreferenceDri"> Preferences </a></li>
 				</ul>
 			</div>
 					
