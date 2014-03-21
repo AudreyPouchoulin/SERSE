@@ -7,7 +7,7 @@
 
 /** remplissage de la liste déroulante de continents*/
 	function remplissageContinent(){
-        $.post('OptionsServlet',{nom_liste:'continent', message_defaut:$("#continent" ).text()},function(responseJson) {  
+        $.post('OptionsServlet',{nom_liste:'continent', message_defaut:$("#continent option[value='defaut']").text()},function(responseJson) {  
 	            var $select = $('#continent'); 
 	            fillOptions($select, responseJson);
         });
@@ -17,7 +17,7 @@
  * @param avecAutre : booléen vrai si il est nécessaire d'ajouter un champs "Autre", faux sinon
  */
 	function remplissagePays(avecAutre){
-		 $.post('OptionsServlet',{nom_liste:'pays', message_defaut:$("#pays" ).text()},function(responseJson) {  
+		 $.post('OptionsServlet',{nom_liste:'pays', message_defaut:$("#pays option[value='defaut']").text()},function(responseJson) {  
 	            var $select = $('#pays'); 
 	            fillOptions($select, responseJson);
 	            if (avecAutre){
@@ -30,7 +30,7 @@
  * @param avecAutre : booléen vrai si il est nécessaire d'ajouter un champs "Autre", faux sinon
  */
 	function remplissageVille(avecAutre){
-	    $.post('OptionsServlet',{nom_liste:'ville', message_defaut:$("#ville" ).text()},function(responseJson) {  
+	    $.post('OptionsServlet',{nom_liste:'ville', message_defaut:$("#ville option[value='defaut']").text()},function(responseJson) {  
 	            var $select = $('#ville'); 
 	            fillOptions($select, responseJson);
 	            if (avecAutre){
@@ -70,7 +70,7 @@
  * @param avecAutre : booléen vrai si il est nécessaire d'ajouter un champs "Autre", faux sinon
  */
 	function remplissageDomaineActivite(avecAutre){
-	        $.post('OptionsServlet',{nom_liste:'domaine', message_defaut:$("#domaine" ).text()},function(responseJson) {  
+	        $.post('OptionsServlet',{nom_liste:'domaine', message_defaut:$("#domaine option[value='defaut']").text()},function(responseJson) {  
 		            var $select = $('#domaine'); 
 		            fillOptions($select, responseJson);
 		            if (avecAutre){
@@ -84,7 +84,7 @@
  * @param avecAutre : booléen vrai si il est nécessaire d'ajouter un champs "Autre", faux sinon
  */
 	function remplissageLangue(avecAutre){
-	        $.post('OptionsServlet',{nom_liste:'langue', message_defaut:$("#langue" ).text()},function(responseJson) {  
+	        $.post('OptionsServlet',{nom_liste:'langue', message_defaut:$("#langue option[value='defaut']").text()},function(responseJson) {  
 		            var $select = $('#langue'); 
 		            fillOptions($select, responseJson);
 		            if (avecAutre){
@@ -96,7 +96,7 @@
 /** remplissage de la liste déroulante des types de séjour
  */
 	function remplissageTypeSejour(){
-	        $.post('OptionsServlet',{nom_liste:'sejour', message_defaut:$("#typeSejour" ).text()},function(responseJson) {  
+	        $.post('OptionsServlet',{nom_liste:'sejour', message_defaut:$("#typeSejour option[value='defaut']").text()},function(responseJson) {  
 		            var $select = $('#typeSejour'); 
 		            fillOptions($select, responseJson);
 	        });
@@ -105,7 +105,7 @@
 /** remplissage de la liste déroulante des types de mobilité
  */
 	function remplissageTypeMobilite(){
-	        $.post('OptionsServlet',{nom_liste:'mobilite', message_defaut:$("#typeMobilite" ).text()},function(responseJson) {  
+	        $.post('OptionsServlet',{nom_liste:'mobilite', message_defaut:$("#typeMobilite option[value='defaut']").text()},function(responseJson) {  
 		            var $select = $('#typeMobilite'); 
 		            fillOptions($select, responseJson);
 	        });
@@ -114,7 +114,7 @@
 /** remplissage de la liste déroulante des types de mobilité
  */
 	function remplissageTypeExperience(){
-	        $.post('OptionsServlet',{nom_liste:'experience', message_defaut:$("#typeExperience" ).text()},function(responseJson) {  
+	        $.post('OptionsServlet',{nom_liste:'experience', message_defaut:$("#typeExperience option[value='defaut']").text()},function(responseJson) {  
 		            var $select = $('#typeExperience'); 
 		            fillOptions($select, responseJson);
 	        });

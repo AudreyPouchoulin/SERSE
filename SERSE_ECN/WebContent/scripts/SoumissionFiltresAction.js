@@ -10,16 +10,14 @@ $(document).ready(function() {
 
 /** Géographie */
 	$('#continent').change(function() {
-		if ($('#continent').val() !='defaut'){
-			updatePaysAccordingToContinent(true);
-			updateVilleAccordingToContinent(true);
-			updateUniversiteAccordingToContinent(true);
-		}
+		updatePaysAccordingToContinent(true);
+		updateVilleAccordingToContinent(true);
+		updateUniversiteAccordingToContinent(true);
 	});
 	
 	$('#pays').change(function() {
 		gestionAutre($('#pays'), $('#autrePays'));
-		if ($('#pays').val() != 'Autre' && $('#pays').val() !='defaut'){
+		if ($('#pays').val() != 'Autre'){
 			updateVilleAccordingToPays(true);
 			updateUniversiteAccordingToPays(true);
 		}
@@ -27,7 +25,7 @@ $(document).ready(function() {
 	
 	$('#ville').change(function() {
 		gestionAutre($('#ville'), $('#autreVille'));
-		if ($('#ville').val() != 'Autre' && $('#ville').val() !='defaut'){
+		if ($('#ville').val() != 'Autre'){
 			updateUniversiteAccordingToVille(true);
 		}
 	});

@@ -43,8 +43,8 @@ $(document).ready(function() {
 		if (this.checked){
 			universiteCoche(false);
 		} else {
-				universiteDecoche();
-				if (!($('#sejourEntreprise').prop('checked'))) {
+			universiteDecoche();
+			if (!($('#sejourEntreprise').prop('checked'))) {
 				alert('Une des 2 cases au moins doit être cochée (université et/ou entreprise) pour que la recherche soit possible.');
 				entrepriseCoche(false);
 			}
