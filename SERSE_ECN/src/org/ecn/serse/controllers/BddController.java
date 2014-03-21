@@ -3,7 +3,6 @@
  * Creation date: 30 janv. 2014
  * Author: Audrey
  */
- //
 
 package org.ecn.serse.controllers;
 

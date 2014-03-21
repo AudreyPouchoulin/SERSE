@@ -15,11 +15,19 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 
 /**
+ * Classes contenant des méthodes utilitaires pour envoyer les réponses au format JSon au client
  * @author Audrey
  *
  */
 public class ServletUtil {
 	
+	/**
+	 * Envoie une liste d'options pour insérer dans un select
+	 * @param listeObjets liste d'éléments à mettre au format JSON pour envoie
+	 * @param messageDefaut message défaut pour le liste d'options
+	 * @param response réponse à envoyer au client
+	 * @throws IOException
+	 */
 	public static void sendOptions(ArrayList<String> listeObjets, String messageDefaut, HttpServletResponse response) throws IOException  {
 		Map<String, String> listeOptions = new LinkedHashMap<>();
 		if (messageDefaut!=null){
@@ -35,6 +43,13 @@ public class ServletUtil {
 	    response.getWriter().write(jsonResponse);
 	}
 	
+	/**
+	 * Envoie une liste d'options pour insérer dans un select (cas ou la liste d'options est vide, envoyer une option informant de l'absence de résultats)
+	 * @param messageNoOption message comme quoi il n'y a pas eu de résultats correspondants aux critèrespour cette liste
+	 * @param messageDefaut message défaut pour le liste d'options
+	 * @param response réponse à envoyer au client
+	 * @throws IOException
+	 */
 	public static void sendNoOption(String messageNoOption, String messageDefaut, HttpServletResponse response) throws IOException  {
 		Map<String, String> listeOptions = new LinkedHashMap<>();
 		if (messageDefaut!=null){

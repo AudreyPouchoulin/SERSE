@@ -1,3 +1,9 @@
+/**
+ * Project: SERSE_ECN
+ * Creation date: 1 fev. 2014
+ * Author: Audrey
+ */
+
 package org.ecn.serse.servlets;
 
 import java.io.IOException;
@@ -17,17 +23,21 @@ import org.ecn.serse.models.Rapport;
 
 import com.google.gson.Gson;
 /**
- * Servlet implementation class RechercheServlet
+ * Servlet de recherche de rappports 
  */
 public class RechercheServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * Méthode post de la servlet de recherche de rapports
+	 * @param request requête contenant des données au format JSON: 
+	 * {'continent':'x', 'pays':'x', 'ville':'x', 'universite':'x', 'entreprise':'x', professionnel':'x', 'academique':'x'
+	 * 'CME:'x', 'STING':'x', 'TFE':'x', 'pSemestre':'x', 'pCesure':'x', 
+	 * 'aSemestre':'x', 'aCesure':'x', 'annee':'x', 'doubleDiplome':'x', 
+	 * 'universiteNom':'x', 'entrepriseNom':'x', 'langue':'x', 'domaineActivite':'x', 'date:'x'}
+	 * @param response réponse contenant la liste de rapports correspondants aux critères
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-				
-		// Récupération des informations (critères de recherche) envoyées
 			String continentNom = request.getParameter("continent");
 			String paysNom = request.getParameter("pays");
 			String villeNom = request.getParameter("ville");
@@ -49,21 +59,9 @@ public class RechercheServlet extends HttpServlet {
 			String langueNom = request.getParameter("langue");
 			String domaineActiviteNom = request.getParameter("domaineActivite");
 			String date = request.getParameter("date");
-			
-			//DEBUG
-			/*System.out.println("Géographie: " + continentNom + paysNom + villeNom);
-			System.out.println("Université-entreprise: " + universite + entreprise);
-			System.out.println("Professionnel-académique: " + professionnel + academique);
-			System.out.println("Professionnel critères : " + CME + STING + TFE + pSemestre + pCesure);
-			System.out.println("Académique critères : " + aSemestre + aCesure + annee + doubleDiplome);
-			System.out.println("université-entreprise nom : " + universiteNom + entrepriseNom);
-			System.out.println("langue : " + langueNom);
-			System.out.println("domaine d'activité : " + domaineActiviteNom);*/
-			
-		// Recherche des rapports correspondants aux critères
-			BddController bddController;
+
 			try {
-				bddController = new BddController();
+				BddController bddController = new BddController();
 				RechercheController rechercheController = new RechercheController(bddController);
 				ArrayList<Rapport> listeRapports = rechercheController.getRapports(continentNom, paysNom, villeNom, 
 						universite, entreprise, professionnel, academique, 
@@ -74,6 +72,7 @@ public class RechercheServlet extends HttpServlet {
 				response.setContentType("application/json");
 			    response.setCharacterEncoding("UTF-8");
 			    response.getWriter().write(jsonResponse);
+			    bddController.close();
 			} catch (DatabaseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -82,5 +81,4 @@ public class RechercheServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 	}
-
 }

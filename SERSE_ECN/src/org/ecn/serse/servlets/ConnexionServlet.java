@@ -20,9 +20,7 @@ import org.ecn.serse.exceptions.IdentificationException;
 import org.ecn.serse.models.Utilisateur;
 
 /**
- * Servlet de connexion
- * 
- * @author Audrey
+ * Servlet d'accès à la page d'accueil
  */
 
 public class ConnexionServlet extends HttpServlet {
@@ -30,9 +28,9 @@ public class ConnexionServlet extends HttpServlet {
 	private static final long serialVersionUID = -4108350698688202053L;
 	
 	/**
-	 * Connexion d'un utilisateur
-	 * @param requête contenant un identifiant et un mot de passe
-	 * @param réponse contenant un message d'erreur ou une autorisation de connexion
+	 * Méthode post de la servlet de connexion d'un utilisateur
+	 * @param request requête contenant un identifiant (username) et un mot de passe (password)
+	 * @param response réponse contenant un message d'erreur ou une autorisation de connexion
 	 */
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -107,11 +105,14 @@ public class ConnexionServlet extends HttpServlet {
 	}
 	
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * Méthode get de la servlet de retour à la page d'accueil (TO COMPLETE)
+	 * @param request requête contenant la catégorie de l'utilisateur (pour ouvrir la bonne page d'accueil) 
+	 * et un token de connexion (pour vérifier que la session de connexion n'a pas expiré)
+	 * @param response réponse contenant un message d'erreur ou une autorisation d'ouveture de la page
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			String token = request.getParameter("token_connexion");
+			//String token = request.getParameter("token_connexion");
 			String categorieUtilisateur = request.getParameter("utilisateur");
 			if (categorieUtilisateur==null){
 				//TODO: erreur

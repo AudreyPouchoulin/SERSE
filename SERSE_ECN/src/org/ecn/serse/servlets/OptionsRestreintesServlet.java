@@ -1,3 +1,9 @@
+/**
+ * Project: SERSE_ECN
+ * Creation date: 20 fev. 2014
+ * Author: Audrey
+ */
+
 package org.ecn.serse.servlets;
 
 import java.io.IOException;
@@ -14,13 +20,18 @@ import org.ecn.serse.controllers.OptionsController;
 import org.ecn.serse.exceptions.DatabaseException;
 
 /**
- * Servlet implementation class OptionsRestreintesServlet
+ * Servlet pour l'actualisation des listes d'options en fonctions des valeurs choisies dans d'autres listes d'options
  */
 public class OptionsRestreintesServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * Méthode post de la servlet d'actualisation du contenu de listes en fonction de la valeur d'autres listes
+	 * @param request requête contenant des données au format JSON: 
+	 * {'nom_liste':'x', 'message_defaut':'x', 'continent':'x'}
+	 * ou {'nom_liste':'x', 'message_defaut':'x', 'pays':'x'}
+	 * ou {'nom_liste':'x', 'message_defaut':'x', 'ville':'x'}
+	 * @param response réponse les options des la liste
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// Connexion à la base de données de SERSE
@@ -41,14 +52,15 @@ public class OptionsRestreintesServlet extends HttpServlet {
 					updateVille(optionsController, pays, continent, messageDefaut, response);
 					break;
 				case "universite":
-					updateUniversite(optionsController, ville, pays, continent, messageDefaut, response);
+					updateUniversite(optionsController, ville, pays, continent, response);
 					break;
 				case "entreprise":
-					updateEntreprise(optionsController, ville, pays, continent, messageDefaut, response);
+					updateEntreprise(optionsController, ville, pays, continent, response);
 					break;
 				default:
 					ServletUtil.sendNoOption("Problem when calling for updating the lists", messageDefaut, response);
 			}
+			bddController.close();
 		} catch (DatabaseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -58,6 +70,16 @@ public class OptionsRestreintesServlet extends HttpServlet {
 		}
 	}
 	
+	/**
+	 * Envoie au client de la liste de pays en fonction du continent, liste de pays obtenue à partir d'une reqiête en base de données
+	 * @param optionsController contrôleur contenant la méthode permettant d'obtenir les pays en base de données dans ce continent
+	 * @param continent nom du continent
+	 * @param messageDefaut message défaut pour la liste de pays
+	 * @param response
+	 * @throws DatabaseException
+	 * @throws SQLException
+	 * @throws IOException
+	 */
 	private void updatePays(OptionsController optionsController, String continent, String messageDefaut, HttpServletResponse response) throws DatabaseException, SQLException, IOException{
 		ArrayList<String> listePays = optionsController.getPaysByContinent(continent);
 		if (listePays.size()==0){
@@ -67,6 +89,17 @@ public class OptionsRestreintesServlet extends HttpServlet {
 		}
 	}
 	
+	/**
+	 * Envoie au client de la liste de ville en fonction du continent ou du pays, liste de villes obtenue à partir d'une reqiête en base de données
+	 * @param optionsController contrôleur contenant la méthode permettant d'obtenir les villes en base de données présentes dans ce continent ou ce pays
+	 * @param pays	nom du pays
+	 * @param continent nom du continent
+	 * @param messageDefaut message défaut pour la liste de ville
+	 * @param response
+	 * @throws DatabaseException
+	 * @throws SQLException
+	 * @throws IOException
+	 */
 	private void updateVille(OptionsController optionsController, String pays, String continent, String messageDefaut, HttpServletResponse response) throws DatabaseException, SQLException, IOException{
 		ArrayList<String> listeVilles = new ArrayList<String>();
 		if (pays!=null){
@@ -85,7 +118,19 @@ public class OptionsRestreintesServlet extends HttpServlet {
 		}
 	}
 	
-	private void updateUniversite(OptionsController optionsController, String ville, String pays, String continent, String messageDefaut, HttpServletResponse response) throws DatabaseException, SQLException, IOException{
+	/**
+	 * Envoie au client de la liste d'universités en fonction du continent, du pays ou de la ville, 
+	 * liste d'universités obtenue à partir d'une reqiête en base de données
+	 * @param optionsController contrôleur contenant la méthode permettant d'obtenir les universités en base de données présentes dans ce continent, ce pays ou cette ville
+	 * @param ville nom de la ville
+	 * @param pays nom du pays
+	 * @param continent nom du continent
+	 * @param response
+	 * @throws DatabaseException
+	 * @throws SQLException
+	 * @throws IOException
+	 */
+	private void updateUniversite(OptionsController optionsController, String ville, String pays, String continent, HttpServletResponse response) throws DatabaseException, SQLException, IOException{
 		ArrayList<String> listeUniversites = new ArrayList<String>();
 		if (ville!=null){
 			listeUniversites = optionsController.getUniversitesByVille(ville);
@@ -107,7 +152,19 @@ public class OptionsRestreintesServlet extends HttpServlet {
 		}	
 	}
 	
-	private void updateEntreprise(OptionsController optionsController, String ville, String pays, String continent, String messageDefaut, HttpServletResponse response) throws DatabaseException, SQLException, IOException{
+	/**
+	 * Envoie au client de la liste d'entreprises en fonction du continent, du paus ou de la ville, 
+	 * liste d'entreprises obtenue à partir d'une reqiête en base de données
+	 * @param optionsController contrôleur contenant la méthode permettant d'obtenir les entreprises en base de données présentes dans ce continent ou ce pays
+	 * @param ville nom de la ville
+	 * @param pays nom du pays
+	 * @param continent nom du continent
+	 * @param response
+	 * @throws DatabaseException
+	 * @throws SQLException
+	 * @throws IOException
+	 */
+	private void updateEntreprise(OptionsController optionsController, String ville, String pays, String continent, HttpServletResponse response) throws DatabaseException, SQLException, IOException{
 		ArrayList<String> listeEntreprises = new ArrayList<String>();
 		if (ville!=null){
 			listeEntreprises = optionsController.getEntreprisesByVille(ville);
@@ -128,9 +185,4 @@ public class OptionsRestreintesServlet extends HttpServlet {
 			ServletUtil.sendOptions(listeEntreprises, null, response);
 		}	
 	}
-	
-
-	
-	
-	
 }

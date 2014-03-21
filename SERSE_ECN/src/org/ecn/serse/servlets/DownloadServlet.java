@@ -13,14 +13,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class DownloadServlet
+ * Servlet pour le téléchargement d'un rapport
  */
 public class DownloadServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final int TAILLE_TAMPON = 10240; // 10ko
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * Méthode get de la servlet de téléchargement d'un rapport
+	 * @param request requête contenant le chemin du fichier requis
+	 * @param response réponse contenant un fichier ou un message d'erreur 
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		 /* Lecture du paramètre 'chemin' passé à la servlet via la déclaration dans le web.xml */
@@ -34,20 +36,19 @@ public class DownloadServlet extends HttpServlet {
 		/* Vérifie qu'un fichier a bien été fourni */
 		if ( fichierRequis == null || "/".equals( fichierRequis ) ) {
 		    /* Si non, alors on envoie une erreur 404, qui signifie que la ressource demandée n'existe pas */
-			System.out.println("fichier null ou juste avec un slash");
 		    response.sendError(HttpServletResponse.SC_NOT_FOUND);
 		    return;
 		}
 		
 		/* Décode le nom de fichier récupéré, susceptible de contenir des espaces et autres caractères spéciaux, et prépare l'objet File */
 		fichierRequis = URLDecoder.decode(fichierRequis, "UTF-8");
-		File fichier = new File(chemin, fichierRequis );
+		File fichier = new File(chemin, fichierRequis);
 		        
 		/* Vérifie que le fichier existe bien */
 		if ( !fichier.exists() ) {
 		    /* Si non, alors on envoie une erreur 404, qui signifie que la ressource demandée n'existe pas */
 			/**DEBUG*/
-			System.out.println("le fichier n'existe pas" + fichierRequis);
+			System.out.println("le fichier n'existe pas : " + fichierRequis);
 		    response.sendError(HttpServletResponse.SC_NOT_FOUND);
 		    return;
 		}

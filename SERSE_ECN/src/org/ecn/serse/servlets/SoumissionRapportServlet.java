@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 
 import javax.servlet.ServletException;
@@ -13,27 +12,30 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.ecn.serse.controllers.BddController;
-import org.ecn.serse.controllers.RechercheController;
 import org.ecn.serse.controllers.SoumissionController;
 import org.ecn.serse.exceptions.DatabaseException;
-import org.ecn.serse.models.Rapport;
 
 import com.google.gson.Gson;
 
 /**
- * Servlet implementation class SoumissionRapportServlet
+ * Servlet de dépôt d'un rapport en base de données
  */
 public class SoumissionRapportServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * Méthode post de la servlet de dépôt d'un rapport en base de données
+	 * @param request requête contenant des données au format JSON: 
+	 * {'Nom':'x', 'Prenom':'x', 'DateDebut':'x', 'DateFin':'x',
+	 * 'Continent':'x', 'Pays':'x', 'Ville':'x', 
+	 * 'Sejour':'x', 'Mobilite':'x', 'Experience':'x',
+	 * 'Universite':'x', 'Entreprise':'x',
+	 * 'Langue':'x', 'Domaine':'x', 'Adresse'}
+	 * @param response réponse contenant la confirmation que le rapport a été enregistré ou une information sur une erreur interne au serveur
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// Récupération des informations du rapport à enregistrer
 			String nom = request.getParameter("Nom");
 			String prenom = request.getParameter("Prenom");
-			String sexe = request.getParameter("Sexe");
 			
 			Date dateDebut = new Date();
 			Date dateFin = new Date();
@@ -61,17 +63,14 @@ public class SoumissionRapportServlet extends HttpServlet {
 			String adresse = request.getParameter("Adresse");
 			
 			// TODO: récupérer le code postal à partir de l'adresse
-			String codePostal = "notdone";
 			//String codePostal = request.getParameter("CodePostal");
-			
-			String fichier = request.getParameter("CheminFichier");
-			
-			BddController bddController;
+			String codePostal = "notdone";
+
 			try {
-				bddController = new BddController();
+				BddController bddController = new BddController();
 				SoumissionController soumissionController = new SoumissionController(bddController);
 				boolean isSoumis = soumissionController.soumettreRapport(
-						nom, prenom, sexe, 
+						nom, prenom, 
 						dateDebut, dateFin, 
 						continent, pays, ville, 
 						sejour, mobilite, experience, 
@@ -81,6 +80,7 @@ public class SoumissionRapportServlet extends HttpServlet {
 				response.setContentType("application/json");
 			    response.setCharacterEncoding("UTF-8");
 			    response.getWriter().write(jsonResponse);
+			    bddController.close();
 			} catch (DatabaseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -89,5 +89,4 @@ public class SoumissionRapportServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 	}
-
 }

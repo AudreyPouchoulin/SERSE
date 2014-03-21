@@ -1,3 +1,8 @@
+/**
+ * Project: SERSE_ECN
+ * Creation date: 1 fev. 2014
+ * Author: Audrey
+ */
 
 package org.ecn.serse.servlets;
 
@@ -15,16 +20,18 @@ import org.ecn.serse.controllers.OptionsController;
 import org.ecn.serse.exceptions.DatabaseException;
 
 /**
- * Servlet implementation class ContinentServlet
+ * Servlet pour le remplissage de base des listes d'options
  */
 public class OptionsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * Méthode post de la servlet de remplissage du contenu de listes
+	 * @param request requête contenant des données au format JSON: 
+	 * {'nom_liste':'x', 'message_defaut':'x'}
+	 * @param response réponse contenant les options de la liste
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// Connexion à la base de données de SERSE
 		BddController bddController;
 		try {
 			bddController = new BddController();
@@ -75,6 +82,7 @@ public class OptionsServlet extends HttpServlet {
 				default:
 					ServletUtil.sendNoOption("Problem when calling for updating the lists", messageDefaut, response);
 			}
+			bddController.close();
 		} catch (DatabaseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -82,7 +90,5 @@ public class OptionsServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 	}
-
 }

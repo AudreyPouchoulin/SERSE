@@ -28,7 +28,7 @@ public class SoumissionController {
 		this.bdd = bdd;
 	}
 	
-	public boolean soumettreRapport(String nom, String prenom, String sexe, 
+	public boolean soumettreRapport(String nom, String prenom,
 			Date dateDebut, Date dateFin, 
 			String continent, String pays, String ville, 
 			String sejour, String mobilite, String experience, 
