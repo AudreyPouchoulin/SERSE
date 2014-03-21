@@ -222,7 +222,7 @@ function initialiserDialogFinSoumission(){
 	      modal: true,
 	      buttons: {
 	        "Ok": function() {
-	        	$.post('Soumission');
+	        	window.location.replace('/SERSE_ECN/MesRapports');
 	        	$( this ).dialog( "close" );
 	        }
 	      }
