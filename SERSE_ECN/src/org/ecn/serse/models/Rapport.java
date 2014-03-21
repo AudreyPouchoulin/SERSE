@@ -7,6 +7,8 @@ package org.ecn.serse.models;
 
 
 /**
+ * Bean utilisé pour la recherche de rapport afin d'enrgeistrer chaque rapport trouvé en base de données 
+ * avec le sinformations utiles à montrer sur l'interface utilisateur
  * @author Audrey
  *
  */
@@ -15,8 +17,13 @@ public class Rapport {
 	private String date;
 	private String pays;
 	private String ville;
+	
+	/** nom de l'université ou de l'entreprise */
 	private String lieux;
+	
 	private String domaine;
+	
+	/** type de mobilité : CME, STRING, Césure, ...*/
 	private String mobilite;
 	private String langue;
 	

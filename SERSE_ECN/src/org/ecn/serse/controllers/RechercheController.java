@@ -34,7 +34,28 @@ public class RechercheController {
 	}
 	
 	/**
-	 * Permet d'obtenir les rapports correspondants aux critères de recherche
+	 * * Permet d'obtenir les rapports correspondants aux critères de recherche
+	 * @param continentNom
+	 * @param paysNom
+	 * @param villeNom
+	 * @param universite
+	 * @param entreprise
+	 * @param professionnel
+	 * @param academique
+	 * @param CME
+	 * @param STING
+	 * @param TFE
+	 * @param pSemestre
+	 * @param pCesure
+	 * @param aSemestre
+	 * @param aCesure
+	 * @param doubleDiplome
+	 * @param annee
+	 * @param universiteNom
+	 * @param entrepriseNom
+	 * @param langueNom
+	 * @param domaineActiviteNom
+	 * @param date
 	 * @return liste de rapports
 	 * @throws DatabaseException
 	 * @throws SQLException
@@ -209,7 +230,10 @@ public class RechercheController {
 		return listeRapports;
 	}
 	
-	
+	/**
+	 * Construction de la requête de base (jonction des tables)
+	 * @return requête de base
+	 */
 	private String getRequeteDeBase(){
 		return "SELECT rapport_nom, rapport_datedebut, rapport_datefin, pays_nom, ville_nom, universite_nom, entreprise_nom, domaineActivite_libelle, typeMobilite_libelle, langue_nom "
 				+ "FROM serse.rapport "
@@ -226,6 +250,12 @@ public class RechercheController {
 				+ "INNER JOIN serse.etat ON serse.etat.etat_id = serse.rapport_etat.etat_id ";
 	}
 	
+	/**
+	 * Crée un rapport à partir d'un Result Set d'excutuion de la requête en base de données
+	 * @param resultSet résultat de l'exécution de la requête en base de données
+	 * @return un rapport
+	 * @throws SQLException
+	 */
 	private Rapport extraireRapportFromResultSet(ResultSet resultSet) throws SQLException{
 		String universiteEntreprise;
 		if (resultSet.getString(6)==null && resultSet.getString(7)==null){
@@ -247,6 +277,11 @@ public class RechercheController {
 		return rapportTrouve;
 	}
 	
+	/**
+	 * Renvoie 'Or' or 'And' en fonction du contenu de la requête précédente (vide ou non)
+	 * @param requeteCriteresOr requete à tester (vide ou non)
+	 * @return
+	 */
 	private String beginWithAndOrOr(String requeteCriteresOr){
 		String suiteRequeteCriteres ="";
 		if (requeteCriteresOr == "") {
@@ -257,6 +292,13 @@ public class RechercheController {
 		return suiteRequeteCriteres;
 	}
 	
+	/**
+	 * Crée la période à enregistrer avec le rapport à partir des daates 
+	 * contenues dans le Result Set de l'exécution de la requête en base de données
+	 * @param resultSet résultat de l'exécution de la requête en base de données
+	 * @return période de temps (entre deux année ou une seule année)
+	 * @throws SQLException
+	 */
 	private String getPeriod(ResultSet resultSet) throws SQLException{
 		String year;
 		Date date1 = resultSet.getDate(2);

@@ -28,6 +28,28 @@ public class SoumissionController {
 		this.bdd = bdd;
 	}
 	
+	/**
+	 * Enregistre un nouveau rapport en base de données
+	 * @param nom nom de l'utilisateur déposant le rapport
+	 * @param prenom prénom de l'utilisateur déposant le rapport
+	 * @param dateDebut date de début du séjour
+	 * @param dateFin date de fin du séjour
+	 * @param continent nom du continent de séjour
+	 * @param pays nom du pays de séjour
+	 * @param ville nom de la ville de séjour
+	 * @param sejour type de séjour (entreprise, université)
+	 * @param mobilite type de mobilité (STING, Césure, ...)
+	 * @param experience type d'expérience (académique, professionnelle)
+	 * @param universite nom de l'université (peut-être vide)
+	 * @param entreprise nom de l'entreprise (peut-être vide)
+	 * @param langue langue parlée pendant le séjour
+	 * @param domaine domaine d'activité du séjour
+	 * @param adresse adresse de l'netreprise ou de l'université de séjour
+	 * @param codePostal code postale de l'université ou de l'entreprise de séjour
+	 * @return true si le rapport a été soumis avec succès, false sinon
+	 * @throws DatabaseException
+	 * @throws SQLException
+	 */
 	public boolean soumettreRapport(String nom, String prenom,
 			Date dateDebut, Date dateFin, 
 			String continent, String pays, String ville, 

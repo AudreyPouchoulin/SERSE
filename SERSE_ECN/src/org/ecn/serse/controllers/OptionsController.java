@@ -69,7 +69,7 @@ public class OptionsController {
 	
 	/**
 	 * Permet d'obtenir l'ensemble des pays possibles dans un continent donné
-	 * @param nom du continent
+	 * @param continentNom nom du continent
 	 * @return liste de pays dans le continent
 	 * @throws DatabaseException
 	 * @throws SQLException
@@ -113,7 +113,7 @@ public class OptionsController {
 	
 	/**
 	 * Permet d'obtenir l'ensemble des villes dans un continent donné
-	 * @param nom du continent
+	 * @param continentNom nom du continent
 	 * @return liste de villes dans le continent
 	 * @throws DatabaseException
 	 * @throws SQLException
@@ -140,7 +140,7 @@ public class OptionsController {
 	
 	/**
 	 * Permet d'obtenir l'ensemble des villes dans un pays donné
-	 * @param nom du pays
+	 * @param PaysNom nom du pays
 	 * @return liste de villes dans le pays
 	 * @throws DatabaseException
 	 * @throws SQLException
@@ -184,7 +184,7 @@ public class OptionsController {
 	
 	/**
 	 * Permet d'obtenir l'ensemble des universités dans un continent
-	 * @param nom du continent
+	 * @param continentNom nom du continent
 	 * @return liste d'universités dans le continent
 	 * @throws DatabaseException
 	 * @throws SQLException
@@ -212,7 +212,7 @@ public class OptionsController {
 	
 	/**
 	 * Permet d'obtenir l'ensemble des universités dans un pays
-	 * @param nom du pays
+	 * @param paysNom nom du pays
 	 * @return liste d'universités dans le pays
 	 * @throws DatabaseException
 	 * @throws SQLException
@@ -239,7 +239,7 @@ public class OptionsController {
 	
 	/**
 	 * Permet d'obtenir l'ensemble des universités dans une ville
-	 * @param nom de la ville
+	 * @param villeNom nom de la ville
 	 * @return liste d'universités dans la ville
 	 * @throws DatabaseException
 	 * @throws SQLException
@@ -283,7 +283,7 @@ public class OptionsController {
 	
 	/**
 	 * Permet d'obtenir l'ensemble des entreprises dans un continent
-	 * @param nom du continent
+	 * @param continentNom nom du continent
 	 * @return liste d'entreprises dans le continent
 	 * @throws DatabaseException
 	 * @throws SQLException
@@ -311,7 +311,7 @@ public class OptionsController {
 	
 	/**
 	 * Permet d'obtenir l'ensemble des entreprises dans un pays
-	 * @param nom du pays
+	 * @param paysNom nom du pays
 	 * @return liste d'entreprises dans le pays
 	 * @throws DatabaseException
 	 * @throws SQLException
@@ -338,7 +338,7 @@ public class OptionsController {
 	
 	/**
 	 * Permet d'obtenir l'ensemble des entreprises dans une ville
-	 * @param nom de la ville
+	 * @param villeNom nom de la ville
 	 * @return liste d'entreprises dans la ville
 	 * @throws DatabaseException
 	 * @throws SQLException
