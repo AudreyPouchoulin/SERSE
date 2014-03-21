@@ -13,6 +13,10 @@
  * - ville
  */
 
+/**
+ * Actualise la liste d'options de pays en fonction du continent sélectionné
+ * @param avecAutre true si on veut un champs Autre dans les options, false sinon
+ */
 function updatePaysAccordingToContinent(avecAutre){
 	if($("#continent").val()!='defaut'){
 		var $argumentsJson = {nom_liste:'pays', message_defaut:$("#pays option[value='defaut']").text(), continent:$("#continent").val()};
@@ -23,6 +27,10 @@ function updatePaysAccordingToContinent(avecAutre){
 	}
 }
 
+/**
+ * Actualise la liste d'options de villes en fonction du continent sélectionné
+ * @param avecAutre true si on veut un champs Autre dans les options, false sinon
+ */
 function updateVilleAccordingToContinent(avecAutre){
 	if ($("#continent").val()!='defaut'){
 		var $argumentsJson = {nom_liste:'ville', message_defaut:$("#ville option[value='defaut']").text(), continent:$("#continent").val()};
@@ -33,6 +41,10 @@ function updateVilleAccordingToContinent(avecAutre){
 	}
 }
 
+/**
+ * Actualise la liste d'options de villes en fonction du pays sélectionné
+ * @param avecAutre true si on veut un champs Autre dans les options, false sinon
+ */
 function updateVilleAccordingToPays(avecAutre){
 	if ($("#pays").val()!='defaut'){
 		var $argumentsJson = {nom_liste:'ville', message_defaut:$("#ville option[value='defaut']").text(), pays:$("#pays").val()};
@@ -43,6 +55,10 @@ function updateVilleAccordingToPays(avecAutre){
 	}
 }
 
+/**
+ * Actualise la liste d'options d'universités en fonction du continent sélectionné
+ * @param avecAutre true si on veut un champs Autre dans les options, false sinon
+ */
 function updateUniversiteAccordingToContinent(avecAutre){
 	if($("#continent").val()!='defaut'){
 		var $argumentsJson = {nom_liste:'universite', message_defaut:$("#universite_entreprise option[value='defaut']").text(), continent:$("#continent").val()};
@@ -53,6 +69,10 @@ function updateUniversiteAccordingToContinent(avecAutre){
 	}
 }
 
+/**
+ * Actualise la liste d'options d'universités en fonction du pays sélectionné
+ * @param avecAutre true si on veut un champs Autre dans les options, false sinon
+ */
 function updateUniversiteAccordingToPays(avecAutre){
 	if($("#pays").val()!='defaut'){
 		var $argumentsJson = {nom_liste:'universite', message_defaut:$("#universite_entreprise option[value='defaut']").text(), pays:$("#pays").val()};
@@ -63,6 +83,10 @@ function updateUniversiteAccordingToPays(avecAutre){
 	}
 }
 
+/**
+ * Actualise la liste d'options d'universités en fonction de la ville sélectionnée
+ * @param avecAutre true si on veut un champs Autre dans les options, false sinon
+ */
 function updateUniversiteAccordingToVille(avecAutre){
 	if($("#ville").val()!='defaut'){
 		var $argumentsJson = {nom_liste:'universite', message_defaut:$("#universite_entreprise option[value='defaut']").text(), ville:$("#ville").val()};
@@ -74,6 +98,10 @@ function updateUniversiteAccordingToVille(avecAutre){
 	
 }
 
+/**
+ * Actualise la liste d'options d'entreprise en fonction du continent sélectionné
+ * @param avecAutre true si on veut un champs Autre dans les options, false sinon
+ */
 function updateEntrepriseAccordingToContinent(avecAutre){
 	if($("#continent").val()!='defaut'){
 		var $argumentsJson = {nom_liste:'entreprise', message_defaut:$("#universite_entreprise option[value='defaut']").text(), continent:$("#continent").val()};
@@ -84,6 +112,10 @@ function updateEntrepriseAccordingToContinent(avecAutre){
 	}
 }
 
+/**
+ * Actualise la liste d'options d'entreprise en fonction du pays sélectionné
+ * @param avecAutre true si on veut un champs Autre dans les options, false sinon
+ */
 function updateEntrepriseAccordingToPays(avecAutre){
 	if($("#pays").val()!='defaut'){
 		var $argumentsJson = {nom_liste:'entreprise', message_defaut:$("#universite_entreprise option[value='defaut']").text(), pays:$("#pays").val()};
@@ -94,6 +126,10 @@ function updateEntrepriseAccordingToPays(avecAutre){
 	}
 }
 
+/**
+ * Actualise la liste d'options d'entreprises en fonction de la ville sélectionnée
+ * @param avecAutre true si on veut un champs Autre dans les options, false sinon
+ */
 function updateEntrepriseAccordingToVille(avecAutre){
 	if($("#ville").val()!='defaut'){
 		var $argumentsJson = {nom_liste:'entreprise', message_defaut:$("#universite_entreprise option[value='defaut']").text(), ville:$("#ville").val()};
@@ -104,6 +140,12 @@ function updateEntrepriseAccordingToVille(avecAutre){
 	}
 }
 
+/**
+ * Actualise une liste d'options avec les options reçues au format JSON
+ * @param liste nom de la liste déroulante où il faut actualiser les options
+ * @param argumentsJson liste d'options au format JSON à ajouter dans la liste déourlante
+ * @param avecAutre true si on veut un champs Autre dans les options, false sinon
+ */
 function update(liste, argumentsJson, avecAutre){
 	$.post('OptionsRestreintesServlet',argumentsJson, function(responseJson) { 
         fillOptions(liste, responseJson);

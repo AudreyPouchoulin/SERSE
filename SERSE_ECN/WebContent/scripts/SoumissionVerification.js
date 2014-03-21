@@ -4,6 +4,10 @@
  * Author: Audrey
  */
 
+/**
+ * Vérification que tous les champs ont été bien remplis par l'utilisateur, si oui résumé des informations 
+ * pour que l'utilisateur puisse relire et confirmer, si non informe l'utilisateur sur ses erreurs de saisie
+ */
 function valider(){
 	var $messageErreur = verifierEntrees();
 	if ($messageErreur != ''){
@@ -14,6 +18,9 @@ function valider(){
 	}
 }
 
+/**
+ * Vide le formulaire
+ */
 function resetFormulaire() {
 	$('#continent').val("defaut");
 	$('#pays').val("defaut");
@@ -39,6 +46,10 @@ function resetFormulaire() {
 	$('#autreDomaine').hide();
 }
 
+/**
+ * Vérification des contenus des champs avant dépôt du rapport
+ * @returns {String} message d'erreur, vide si il n'y a pas d'erreur dans le remplissage des champs
+ */
 function verifierEntrees() {
 	var $messageListeErreurs = '';
 
@@ -119,10 +130,12 @@ function verifierEntrees() {
 	}
 
 	return $messageListeErreurs;
-
 }
 
-
+/**
+ * Test si un champs est avec sa valeur par défaut, si c'est le cas remplit un message d'erreur
+ * @return {String} message d'erreur
+ */
 function testChampsDefaut(champs, messageErreur, messageListeErreurs) {
 	if (champs.val() == 'defaut') {
 		messageListeErreurs = messageListeErreurs + messageErreur + "\n";
@@ -130,6 +143,15 @@ function testChampsDefaut(champs, messageErreur, messageListeErreurs) {
 	return messageListeErreurs;
 }
 
+/**
+ * Test si un champs est avec sa valeur par défaut ou si il vaut autre et le champs d'entrée autre n'a pas été remplit
+ * , si c'est le cas remplit un message d'erreur
+ * @param champs
+ * @param autreChamps
+ * @param messageErreur
+ * @param messageListeErreurs
+ * @returns {String}
+ */
 function testChampsDefautComplex(champs, autreChamps, messageErreur,
 		messageListeErreurs) {
 	if (champs.val() == 'defaut' || (champs.val() == 'Autre' && autreChamps.val() == '')) {
@@ -140,8 +162,8 @@ function testChampsDefautComplex(champs, autreChamps, messageErreur,
 
 /**
  * Vérifie que la date est bien saisie avec le format JJ/MM/AAAA
- * 
- * @param entreeUtilisateur
+ * @param entreeUtilisateur date rentrée par l'utilisateur
+ * @returns {Boolean} true si la date est au bon format, false sinon
  */
 function isFormatDate(entreeUtilisateur) {
 	var isGoodFormat = true;
@@ -166,6 +188,12 @@ function isFormatDate(entreeUtilisateur) {
 	return isGoodFormat;
 }
 
+/**
+ * Vérifier que la date de début est inférieure à la date de fin
+ * @param dateDebut date de début renseignée par l'utilisateur
+ * @param dateFin date de fin renseignée par l'utilisateur
+ * @returns {Boolean} true si la date de début est inférieure à la date de fin, false sinon
+ */
 function verifierOrdreDate(dateDebut, dateFin){
 	var isGoodOrder = true;
 	if (dateDebut!='' && dateFin!='' && isFormatDate($('#dateFin').val()) && isFormatDate($('#dateDebut').val())){
@@ -186,6 +214,10 @@ function verifierOrdreDate(dateDebut, dateFin){
 	return isGoodOrder;
 }
 
+/**
+ * Ecrit les informations relatives au rapport à déposer dans la boite de dialogue
+ * @param argumentsJson données à afficher
+ */
 function printinformationsRapportInDialog(argumentsJson){
 	$('#informationsDeSoumission').append("<table>");
 	$.each(argumentsJson, function(key, value) {
@@ -194,6 +226,10 @@ function printinformationsRapportInDialog(argumentsJson){
 	$('#informationsDeSoumission').append("</table>");
 }
 
+/**
+ * Affiche la boite de dialogue de confirmation de soumission de rapport
+ * @param argumentsJson donnéees à afficher
+ */
 function initialiserDialogConfirmationSoumission(argumentsJson){
 	printinformationsRapportInDialog(argumentsJson);
 	$( "#dialogConfirmation" ).dialog({
@@ -214,6 +250,9 @@ function initialiserDialogConfirmationSoumission(argumentsJson){
 	$( "#dialogConfirmation" ).show();
 }
 
+/**
+ * Affiche la boite de dialogue annonçant que le rapport a bien été déposé
+ */
 function initialiserDialogFinSoumission(){
 	$( "#dialogFinSoumission" ).dialog({
 	      resizable: false,

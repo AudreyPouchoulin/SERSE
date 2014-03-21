@@ -8,6 +8,9 @@
  * - remplissage des résultats
  */
 
+/**
+ * Lance la recherche de rapports
+ */
 function recherche(){
 	var $arguments = preparationParametresRecherche();
 	$.post('RechercheServlet', $arguments,function(responseJson){
@@ -15,6 +18,10 @@ function recherche(){
     });
 }
 
+/**
+ * Récupère les critères à envoyer au serveur pour effectuer la recherche
+ * @returns les arguments JSON à envoyer au serveur pour faire la recherche
+ */
 function preparationParametresRecherche(){
 	// tests si une option a été sélectionnée dans une liste déroulante
 		var $continent = '';
@@ -66,6 +73,10 @@ function preparationParametresRecherche(){
 	return $arguments;
 }
 
+/**
+ * Remplit la liste de rapports avec les résultats de la recherche
+ * @param responseJson réponse du serveur contenant les rapports et informationsa ssociées à ceux-ci
+ */
 function fillResults(responseJson){
 	$("#contenuTableauResultats").find('tr').remove();
 	$("#contenuTableauResultats").find('td').remove();

@@ -122,7 +122,7 @@
 	
 /** remplir les options à partir des données renvoyées par la base de données 
  *@param liste : liste déroulante à remplir
- *@param responseJson: réponse au format JSON
+ *@param responseJson: réponse au format JSON contenant les options à rajouter
  */
 	function fillOptions(liste, responseJson){
 		liste.find('option').remove();

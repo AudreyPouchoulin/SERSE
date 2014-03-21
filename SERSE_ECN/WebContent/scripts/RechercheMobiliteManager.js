@@ -38,8 +38,9 @@ function cocheDecocheCaseAcademique() {
 
 
 /**
- * si décochage de toutes les sous-cases, décochage de Professionel si cochage
- * d'une case sous professionel, cochage de Professionel
+ * si décochage de toutes les sous-cases, décochage de Professionnel
+ * si cochage d'une case sous professionnel, cochage de Professionnel
+ * @param case sur laquelle l'utilisateur a cliquée
  */
 
 function cocheDecochePro(caseClic) {
@@ -59,8 +60,9 @@ function cocheDecochePro(caseClic) {
 }
 
 /**
- * si décochage de toutes les sous-cases, décochage de Académique si cochage
- * d'une case sous académique, cochage de Académique
+ * si décochage de toutes les sous-cases, décochage de Académique 
+ * si cochage d'une case sous académique, cochage de Académique
+ * @param case sur laquelle l'utilisateur a cliquée
  */
 function cocheDecocheAca(caseClic) {
 	if (caseClic.checked) {
@@ -74,8 +76,7 @@ function cocheDecocheAca(caseClic) {
 			caseClic.checked = true;
 		} else {
 			$('#cadreAcademique').prop('checked', false);
-		}
-		
+		}	
 	}
 	;
 }

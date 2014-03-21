@@ -11,7 +11,7 @@
 <head>
 <meta charset="utf-8" />
 <title>SERSE Soumission de Rapports</title>
-<link rel="stylesheet" type="text/css" href="styles/StyleSheet1.css" />
+<link rel="stylesheet" type="text/css" href="styles/StyleSheet.css" />
 <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
 
 <script type="text/javascript" src="scripts/jquery/jquery-1.10.2.min.js"></script>

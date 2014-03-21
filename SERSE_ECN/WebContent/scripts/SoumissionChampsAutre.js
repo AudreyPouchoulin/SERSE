@@ -11,10 +11,15 @@
  * - domaine d'activité
  */
 
-function gestionAutre($champs, $autreChamps){
-	if ($champs.val() == 'Autre'){
-		$autreChamps.show();
+/**
+ * Affiche ou non le champs 'Autre' pour entrée de l'utilisateur
+ * @param champs liste d'options où l'option Autre a pu être sélectionnée
+ * @param autreChamps champs à afficher si l'option 'Autre' a été sélectionnée
+ */
+function gestionAutre(champs, autreChamps){
+	if (champs.val() == 'Autre'){
+		autreChamps.show();
 	} else {
-		$autreChamps.hide();
+		autreChamps.hide();
 	}
 }

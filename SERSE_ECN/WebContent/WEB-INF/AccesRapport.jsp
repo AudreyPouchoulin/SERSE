@@ -13,7 +13,7 @@
 		<meta charset="utf-8" />
 		<title>SERSE Recherche de Rapports</title>
 		<link rel="stylesheet" type="text/css" href="styles/jquery.dataTables.css"/>
-		<link rel="stylesheet" type="text/css" href="styles/StyleSheet1.css"/>
+		<link rel="stylesheet" type="text/css" href="styles/StyleSheet.css"/>
 		<script type="text/javascript" src="scripts/jquery/jquery-1.10.2.min.js"></script>
 		<script type="text/javascript" src="scripts/jquery/jquery.dataTables.js"></script>
 

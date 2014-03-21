@@ -1,5 +1,8 @@
 /**
- * 
+ * Project: SERSE_ECN
+ * Creation date: 15 mar. 2014
+ * Author: Audrey
+ * Pour mettre en surbrillance l'onglet adéquat en fonction de la page
  */
 
 $(document).ready(function() { 

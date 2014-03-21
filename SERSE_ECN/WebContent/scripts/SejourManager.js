@@ -6,7 +6,9 @@
  * et conséquences sur la liste de noms d'entreprises et universités pour la page de recherche
  */
 
-
+/** Remplit la liste d'universités si non déhà fait
+ * @param avecAutre true si on veut une option Autre dans la liste, false sinon
+ */
 function ajoutOptionsUniversiteSiNecessaire(avecAutre){
 	if (!($('#universiteGroup').length)){
 		$('#universite_entreprise').append("<optgroup id=\"universiteGroup\" label=\"Université\"></optgroup>");
@@ -22,6 +24,10 @@ function ajoutOptionsUniversiteSiNecessaire(avecAutre){
 	}
 }
 
+/**
+ * Remplit la liste d'entreprise si non déjà fait
+ * @param avecAutre true si on veut une option Autre dans la liste, false sinon
+ */
 function ajoutOptionsEntrepriseSiNecessaire(avecAutre){
 	if (!($('#entrepriseGroup').length)){
 		$('#universite_entreprise').append("<optgroup id=\"entrepriseGroup\" label=\"Entreprise\"></optgroup>");
@@ -37,10 +43,18 @@ function ajoutOptionsEntrepriseSiNecessaire(avecAutre){
 	}
 }
 
+/**
+ * Change le messsage par défaut de la liste
+ * @param nouveauText nouveau message défaut
+ */
 function changementTextDefaut(nouveauText){
 	$("#universite_entreprise option[value='defaut']").text(nouveauText);
 }
 
+/**
+ * Actions à faire lorsque l'utilisateur ou le programme coche la case entreprise
+ * @param avecAutre true si on veut une option Autre dans la liste, false sinon
+ */
 function entrepriseCoche(avecAutre){
 	$('#sejourEntreprise').prop('checked', true);
 	ajoutOptionsEntrepriseSiNecessaire(avecAutre);
@@ -51,6 +65,10 @@ function entrepriseCoche(avecAutre){
 	}
 }
 
+/**
+ * Actions à faire lorsque l'utilisateur ou le programme coche la case université
+ * @param avecAutre true si on veut une option Autre dans la liste, false sinon
+ */
 function universiteCoche(avecAutre){
 	$('#sejourUniversite').prop('checked', true);	
 	ajoutOptionsUniversiteSiNecessaire(avecAutre);
@@ -61,14 +79,18 @@ function universiteCoche(avecAutre){
 	}
 }
 
+/**
+ * Actions à faire lorsque l'utilisateur ou le programme décoche la case entreprise
+ */
 function entrepriseDecoche(){
-	// TODO : enlever le choix si le choix sélectionné est une entreprise
 	changementTextDefaut('Toutes les universités');
 	$('#entrepriseGroup').remove();
 }
 
+/**
+ * Actions à faire lorsque l'utilisateur ou le programme décoche la case université
+ */
 function universiteDecoche(){
-	// TODO : enlever le choix si le choix sélectionné est une université
 	changementTextDefaut('Toutes les entreprises');
 	$('#universiteGroup').remove();
 }
