@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.5" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true">  
+  <component id="1" language="java" name="src" project="SERSE_ECN" file="/SERSE_ECN/src" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="261" width="598" x="37" y="23"/>    
+    <display autosize="false" stereotype="true" accessors="true"/>  
+  </component>  
+  <package id="2" language="java" name="org.ecn.serse.controllers" project="SERSE_ECN" 
+    file="/SERSE_ECN/src/org/ecn/serse/controllers" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="50" width="168" x="95" y="87"/>    
+    <display autosize="true" stereotype="true" accessors="true"/>  
+  </package>  
+  <package id="3" language="java" name="org.ecn.serse.exceptions" project="SERSE_ECN" 
+    file="/SERSE_ECN/src/org/ecn/serse/exceptions" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="50" width="169" x="345" y="80"/>    
+    <display autosize="true" stereotype="true" accessors="true"/>  
+  </package>  
+  <package id="4" language="java" name="org.ecn.serse.models" project="SERSE_ECN" 
+    file="/SERSE_ECN/src/org/ecn/serse/models" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="50" width="148" x="108" y="187"/>    
+    <display autosize="true" stereotype="true" accessors="true"/>  
+  </package>  
+  <package id="5" language="java" name="org.ecn.serse.servlets" project="SERSE_ECN" 
+    file="/SERSE_ECN/src/org/ecn/serse/servlets" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="50" width="152" x="414" y="183"/>    
+    <display autosize="true" stereotype="true" accessors="true"/>  
+  </package>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

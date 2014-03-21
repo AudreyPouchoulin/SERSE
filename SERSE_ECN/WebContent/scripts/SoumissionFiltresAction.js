@@ -2,7 +2,7 @@
  * Project: SERSE_ECN
  * Creation date: 07 mar. 2014
  * Author: Audrey
- * Lancement de l'actualisation des listes suivantes (si nécessaires) et de la vérification du remplissage des champs précédents
+ * Lancement de l'actualisation des listes suivantes (si nécessaires) et de la vérification du remplissage des champs précédents (à faire)
  * lors de la sélection d'un des choix dans les listes déroulantes de la page de soumission d'un nouveau rapport
  */
 
