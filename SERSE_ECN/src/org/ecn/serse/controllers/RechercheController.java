@@ -167,7 +167,7 @@ public class RechercheController {
 		
 		String requeteCriteresProfessionnelEtAcadémique = "";
 		if (isTousCriteresProfessionnels){
-			requeteCriteresProfessionnelEtAcadémique = "AND (typeexperience_libelle = 'professionnelle' ";
+			requeteCriteresProfessionnelEtAcadémique = "AND (typeexperience_libelle = 'professionnelle') ";
 		} else if (listeRequeteCriteresProfessionnel.size() !=0){
 			requeteCriteresProfessionnelEtAcadémique = requeteCriteresProfessionnelEtAcadémique + "AND (typeexperience_libelle = 'professionnelle' AND (" + listeRequeteCriteresProfessionnel.get(0);
 			for (int i=1; i<listeRequeteCriteresProfessionnel.size(); i++){
@@ -177,7 +177,7 @@ public class RechercheController {
 		}
 		if (isTousCriteresAcademiques){
 			requeteCriteresProfessionnelEtAcadémique = requeteCriteresProfessionnelEtAcadémique + beginWithAndOrOr(requeteCriteresProfessionnelEtAcadémique);
-			requeteCriteresProfessionnelEtAcadémique =  requeteCriteresProfessionnelEtAcadémique + "typeexperience_libelle = 'académique' ";
+			requeteCriteresProfessionnelEtAcadémique =  requeteCriteresProfessionnelEtAcadémique + "typeexperience_libelle = 'académique') ";
 		} else if (listeRequeteCriteresAcademique.size() !=0){
 			requeteCriteresProfessionnelEtAcadémique = requeteCriteresProfessionnelEtAcadémique + beginWithAndOrOr(requeteCriteresProfessionnelEtAcadémique);
 			requeteCriteresProfessionnelEtAcadémique = requeteCriteresProfessionnelEtAcadémique + "(typeexperience_libelle = 'académique' AND (" + listeRequeteCriteresAcademique.get(0);
@@ -185,9 +185,6 @@ public class RechercheController {
 				requeteCriteresProfessionnelEtAcadémique = requeteCriteresProfessionnelEtAcadémique + "OR " + listeRequeteCriteresAcademique.get(i);
 			}
 			requeteCriteresProfessionnelEtAcadémique = requeteCriteresProfessionnelEtAcadémique + "))";
-		}
-		if (requeteCriteresProfessionnelEtAcadémique !=""){
-			requeteCriteresProfessionnelEtAcadémique = requeteCriteresProfessionnelEtAcadémique + ") ";
 		}
 		
 		String requete = requeteDeBase + requeteCriteres + requeteCriteresProfessionnelEtAcadémique +  "ORDER BY rapport_nom;";
@@ -253,7 +250,7 @@ public class RechercheController {
 	private String beginWithAndOrOr(String requeteCriteresOr){
 		String suiteRequeteCriteres ="";
 		if (requeteCriteresOr == "") {
-			suiteRequeteCriteres = "AND (";
+			suiteRequeteCriteres = "AND ";
 		} else {
 			suiteRequeteCriteres = "OR ";
 		}
