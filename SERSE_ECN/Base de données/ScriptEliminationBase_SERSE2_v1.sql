@@ -1,8 +1,8 @@
 ﻿-- BASE DONNEES serse : vidage des données et des tables de la base
 -- Auteurs : Clara Doucoure et Audrey Pouchoulin
 -- Date création : 15/04/2014
--- Date dernière modification : 15/04/2014
--- Version : 1
+-- Date dernière modification : 21/03/2014
+-- Version : 2
 
 DROP SEQUENCE IF EXISTS serse.continent_continent_id_seq CASCADE;
 DROP SEQUENCE IF EXISTS serse.entreprise_entreprise_id_seq CASCADE;
@@ -24,6 +24,7 @@ DROP SEQUENCE IF EXISTS serse.rapport_rapport_id_seq CASCADE;
 DROP SEQUENCE IF EXISTS serse.fichier_fichier_id_seq CASCADE;
 DROP SEQUENCE IF EXISTS serse.commentaire_commentaire_id_seq CASCADE;
 DROP SEQUENCE IF EXISTS serse.etat_etat_id_seq CASCADE;
+DROP SEQUENCE IF EXISTS serse.etatOption_etatOption_id_seq CASCADE;
 
 DROP TABLE IF EXISTS serse.continent CASCADE;
 DROP TABLE IF EXISTS serse.entreprise CASCADE;
@@ -47,3 +48,4 @@ DROP TABLE IF EXISTS serse.rapport_etat CASCADE;
 DROP TABLE IF EXISTS serse.fichier CASCADE;
 DROP TABLE IF EXISTS serse.commentaire CASCADE;
 DROP TABLE IF EXISTS serse.rapport_langue CASCADE;
+DROP TABLE IF EXISTS serse.etatOption CASCADE;

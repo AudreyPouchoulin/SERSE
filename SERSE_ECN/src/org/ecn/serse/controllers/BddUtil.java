@@ -371,17 +371,19 @@ public class BddUtil {
 		PreparedStatement statement = bdd.getConnection().prepareStatement(requeteCreate);
 		statement.setInt(1, rapportId);
 		statement.setInt(2, langueId);
+		statement.execute();
 	}
 	
 	public static void associateRapportEtat(BddController bdd, int rapportId) throws SQLException{
 		String requeteCreate = 
 				"INSERT INTO serse.rapport_etat "
-				+ "(etat_id, rapport_id, rapport_etat_dateheure) "
-				+ "VALUES (?, ?, ?);";
+				+ "(etat_id, dri_id, rapport_id, rapport_etat_dateheure) "
+				+ "VALUES (?, 1, ?, ?);";
 		PreparedStatement statement = bdd.getConnection().prepareStatement(requeteCreate);
 		statement.setInt(1, 1);
 		statement.setInt(2, rapportId);
 		statement.setTimestamp(3, new java.sql.Timestamp(System.currentTimeMillis()));
+		statement.execute();
 	}
 	
 	public static int insertLieu(BddController bdd, int villeId, String adresse, String codePostal, int entrepriseId, int universiteId) throws SQLException{
@@ -415,27 +417,32 @@ public class BddUtil {
 			int universiteId, int entrepriseId, int domaineId) throws SQLException{
 		int id = -1;
 		String requeteInsert = 
-			"INSERT INTO  serse.rapport "
-			+ "(rapport_nom, rapport_datedebut, rapport_datefin, rapport_numeroversion, rapport_taillefichier, "
-			+ "typemobilite_id, typesejour_id, typeexperience_id, lieusejour_id, utilisateur_id, ?, domaine_id) "
-			+ "VALUES (?, ?, ?, '1', ?, ?, ?, ?, ?, ?, ?, ?) "
-			+ "RETURNING rapport_id;";
+				"INSERT INTO  serse.rapport "
+				+ "(rapport_nom, rapport_datedebut, rapport_datefin, rapport_numeroversion, rapport_taillefichier, "
+				+ "typemobilite_id, typesejour_id, typeexperience_id, lieusejour_id, utilisateur_id, dri_id, domaineactivite_id, ";	
+		if (universiteId!=-1){
+			requeteInsert = requeteInsert + "universite_id) ";
+		} else if (entrepriseId!=-1){
+			requeteInsert = requeteInsert + "entreprise_id) ";
+		}
+		requeteInsert = requeteInsert + "VALUES (?, ?, ?, 1, ?, ?, ?, ?, ?, ?, 1, ?, ?) RETURNING rapport_id;";
 		PreparedStatement statement = bdd.getConnection().prepareStatement(requeteInsert);
 		if (universiteId!=-1){
-			statement.setString(1, "universite_id");
-		} else if (entrepriseId!=1){
-			statement.setString(1, "entreprise_id");
+			statement.setInt(11, universiteId);
+		} else if (entrepriseId!=-1){
+			statement.setInt(11, entrepriseId);
 		}
-		statement.setString(2, rapportNom);
-		statement.setDate(3, (java.sql.Date) dateDebut);
-		statement.setDate(4, (java.sql.Date) dateFin);
-		statement.setString(5, tailleFichier);
-		statement.setInt(6, mobiliteId);
-		statement.setInt(7, sejourId);
-		statement.setInt(8, experienceId);
-		statement.setInt(9, lieuId);
-		statement.setInt(10, utilisateurId);
-		statement.setInt(11, domaineId);
+		statement.setString(1, rapportNom);
+		statement.setDate(2, new java.sql.Date(dateDebut.getTime()));
+		statement.setDate(3, new java.sql.Date(dateFin.getTime()));
+		statement.setString(4, tailleFichier);
+		statement.setInt(5, mobiliteId);
+		statement.setInt(6, sejourId);
+		statement.setInt(7, experienceId);
+		statement.setInt(8, lieuId);
+		statement.setInt(9, utilisateurId);
+		statement.setInt(10, domaineId);
+		System.out.println(statement);
 		if (statement.execute()){
 			ResultSet resultSet = statement.getResultSet();
 			if(resultSet.next()){

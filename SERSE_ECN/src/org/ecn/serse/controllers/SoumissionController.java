@@ -43,8 +43,8 @@ public class SoumissionController {
 				int paysId = BddUtil.getPaysId(bdd, pays, true, continentId);
 				int villeId = BddUtil.getVilleId(bdd, ville, true, paysId);
 				int sejourId = BddUtil.getSejourId(bdd, sejour);
-				int mobiliteId = BddUtil.getMobiliteId(bdd, sejour);
-				int experienceId = BddUtil.getExperienceId(bdd, sejour);
+				int mobiliteId = BddUtil.getMobiliteId(bdd, mobilite);
+				int experienceId = BddUtil.getExperienceId(bdd, experience);
 				int universiteId = -1;
 				int entrepriseId = -1;
 				if (universite!=""){

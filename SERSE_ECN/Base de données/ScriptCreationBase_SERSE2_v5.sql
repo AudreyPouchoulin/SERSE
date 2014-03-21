@@ -1,8 +1,8 @@
--- BASE DONNEES serse : création de la base
+﻿-- BASE DONNEES serse : création de la base
 -- Auteurs : Clara Doucoure et Audrey Pouchoulin
 -- Date création : 30/01/2014
--- Date dernière modification : 15/04/2014
--- Version : 5
+-- Date dernière modification : 20/04/2014
+-- Version : 6
 
 CREATE SEQUENCE serse.continent_continent_id_seq;
 
@@ -15,11 +15,16 @@ CREATE TABLE serse.continent (
 
 ALTER SEQUENCE serse.continent_continent_id_seq OWNER TO "serse-ecn";
 
+CREATE SEQUENCE serse.etatOption_etatOption_id_seq;
+
 CREATE TABLE serse.etatOption(
-	etatOption_id INTEGER NOT NULL,
+	etatOption_id INTEGER NOT NULL DEFAULT nextval('serse.etatOption_etatOption_id_seq'),
 	etatOption_libelle VARCHAR(50),
 	CONSTRAINT etatOption_id_pk PRIMARY KEY (etatOption_id)
 );
+
+ALTER SEQUENCE serse.etatOption_etatOption_id_seq OWNER TO "serse-ecn";
+
 
 CREATE SEQUENCE serse.entreprise_entreprise_id_seq;
 

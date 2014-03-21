@@ -1,8 +1,8 @@
 ﻿-- BASE DONNEES serse : insertion de données de test
 -- Auteurs : Clara Doucoure et Audrey Pouchoulin
 -- Date création : 30/01/2014
--- Date dernière modification : 20/03/2014
--- Version : 3
+-- Date dernière modification : 21/03/2014
+-- Version : 4
 
 --  des types d'expérience
 INSERT INTO  serse.typeExperience (typeExperience_libelle) VALUES ('académique');
@@ -126,6 +126,8 @@ INSERT INTO  serse.langue (langue_nom) VALUES ('Japonais');
 
 --  des utilisateurs
 INSERT INTO  serse.utilisateur (utilisateur_nom, utilisateur_prenom, utilisateur_sexe, utilisateur_email) 
+VALUES ('DRI', 'générique', 'M', 'International@ec-nantes.fr');
+INSERT INTO  serse.utilisateur (utilisateur_nom, utilisateur_prenom, utilisateur_sexe, utilisateur_email) 
 VALUES ('Vermillard', 'Sabine', 'F', 'Sabine.Vermillard@EC-Nantes.fr');
 INSERT INTO  serse.utilisateur (utilisateur_nom, utilisateur_prenom, utilisateur_sexe, utilisateur_email) 
 VALUES ('Bennis', 'Fouad', 'M', 'Fouad.Bennis@ec-nantes.fr');
@@ -135,8 +137,10 @@ INSERT INTO  serse.utilisateur (utilisateur_nom, utilisateur_prenom, utilisateur
 VALUES ('Doucouré', 'Clara', 'F', 'Clara.Doucoure@eleves.ec-nantes.fr');
 
 --  des membres de la DRI
-INSERT INTO  serse.dri (dri_notification_assignation, dri_notification_soumission, utilisateur_id) VALUES (true, true, 1);
+INSERT INTO  serse.dri (dri_notification_assignation, dri_notification_soumission, utilisateur_id) VALUES (false, false, 1);
 INSERT INTO  serse.dri (dri_notification_assignation, dri_notification_soumission, utilisateur_id) VALUES (true, true, 2);
+INSERT INTO  serse.dri (dri_notification_assignation, dri_notification_soumission, utilisateur_id) VALUES (true, true, 3);
+
 
 --  des administrateurs
 INSERT INTO  serse.administrateur (administrateur_notification, utilisateur_id) VALUES (true, 1);
@@ -162,50 +166,50 @@ VALUES (5, '10 downing street', '11111', 0, 0);
 INSERT INTO  serse.rapport (rapport_nom, rapport_datedebut, rapport_datefin, rapport_numeroversion, rapport_taillefichier, 
 typemobilite_id, typesejour_id, typeexperience_id, utilisateur_id, dri_id, universite_id, entreprise_id, domaineactivite_id, lieuSejour_id) 
 VALUES ('Brésil_Semestre_Informatique_2012_apouchel', DATE '10/02/2012', DATE '10/08/2012', 1, '10Go',
-3, 1, 1, 3, 1, 7, null, 1, 1);
+3, 1, 1, 4, 2, 7, null, 1, 1);
 -- semestre professionnel entreprise
 INSERT INTO  serse.rapport (rapport_nom, rapport_datedebut, rapport_datefin, rapport_numeroversion, rapport_taillefichier, 
 typemobilite_id, typesejour_id, typeexperience_id, utilisateur_id, dri_id, universite_id, entreprise_id, domaineactivite_id, lieuSejour_id) 
 VALUES ('Japon_Semestre_Mécanique_2012_cdoucour', DATE '10/02/2012', DATE '10/08/2012', 1, '10Go',
-3, 2, 2, 4, 1, null, 3, 2, 2);
+3, 2, 2, 5, 2, null, 3, 2, 2);
 
 -- cesure académique université
 INSERT INTO  serse.rapport (rapport_nom, rapport_datedebut, rapport_datefin, rapport_numeroversion, rapport_taillefichier, 
 typemobilite_id, typesejour_id, typeexperience_id, utilisateur_id, dri_id, universite_id, entreprise_id, domaineactivite_id, lieuSejour_id) 
 VALUES ('Brésil_Césure_Informatique_2014_apouchel', DATE '01/09/2014', DATE '01/09/2015', 1, '10Go',
-5, 1, 1, 3, 1, 7, null, 1, 1);
+5, 1, 1, 4, 2, 7, null, 1, 1);
 -- cesure professionnel université
 INSERT INTO  serse.rapport (rapport_nom, rapport_datedebut, rapport_datefin, rapport_numeroversion, rapport_taillefichier, 
 typemobilite_id, typesejour_id, typeexperience_id, utilisateur_id, dri_id, universite_id, entreprise_id, domaineactivite_id, lieuSejour_id) 
 VALUES ('Japon_Césure_Mécanique_2014_cdoucour', DATE '01/09/2014', DATE '01/09/2015', 1, '10Go',
-5, 1, 2, 4, 1, 8, null, 2, 2);
+5, 1, 2, 5, 2, 8, null, 2, 2);
 
 -- CME professionnel entreprise
 INSERT INTO  serse.rapport (rapport_nom, rapport_datedebut, rapport_datefin, rapport_numeroversion, rapport_taillefichier, 
 typemobilite_id, typesejour_id, typeexperience_id, utilisateur_id, dri_id, universite_id, entreprise_id, domaineactivite_id, lieuSejour_id) 
 VALUES ('Espagne_CME_Informatique_2013_cdoucour', DATE '10/07/2013', DATE '10/08/2013', 1, '1Go',
-1, 2, 2, 4, 1, null, 1, 1, 3);
+1, 2, 2, 5, 2, null, 1, 1, 3);
 -- STING professionnel entreprise
 INSERT INTO  serse.rapport (rapport_nom, rapport_datedebut, rapport_datefin, rapport_numeroversion, rapport_taillefichier, 
 typemobilite_id, typesejour_id, typeexperience_id, utilisateur_id, dri_id, universite_id, entreprise_id, domaineactivite_id, lieuSejour_id) 
 VALUES ('Chine_STING_Informatique_2013_cdoucour', DATE '10/05/2013', DATE '01/09/2013', 1, '1Go',
-4, 2, 2, 4, 1, null, 2, 1, 4);
+4, 2, 2, 5, 2, null, 2, 1, 4);
 -- TFE professionnel entreprise
 INSERT INTO  serse.rapport (rapport_nom, rapport_datedebut, rapport_datefin, rapport_numeroversion, rapport_taillefichier, 
 typemobilite_id, typesejour_id, typeexperience_id, utilisateur_id, dri_id, universite_id, entreprise_id, domaineactivite_id, lieuSejour_id) 
 VALUES ('Chine_TFE_Informatique_2013_cdoucour', DATE '10/05/2013', DATE '01/09/2013', 1, '1Go',
-7, 2, 2, 4, 1, null, 2, 1, 4);
+7, 2, 2, 5, 2, null, 2, 1, 4);
 
 -- DD académique université
 INSERT INTO  serse.rapport (rapport_nom, rapport_datedebut, rapport_datefin, rapport_numeroversion, rapport_taillefichier, 
 typemobilite_id, typesejour_id, typeexperience_id, utilisateur_id, dri_id, universite_id, entreprise_id, domaineactivite_id, lieuSejour_id) 
 VALUES ('Royaume-Uni_DoubleDiplome_Informatique_2020_apouchel', DATE '01/09/2020', DATE '01/09/2021', 1, '1Go',
-6, 1, 1, 3, 1, 3, null, 1, 5);
+6, 1, 1, 4, 2, 3, null, 1, 5);
 -- Année académique université
 INSERT INTO  serse.rapport (rapport_nom, rapport_datedebut, rapport_datefin, rapport_numeroversion, rapport_taillefichier, 
 typemobilite_id, typesejour_id, typeexperience_id, utilisateur_id, dri_id, universite_id, entreprise_id, domaineactivite_id, lieuSejour_id) 
 VALUES ('Royaume-Uni_Année_Informatique_2020_cdoucour', DATE '01/09/2020', DATE '01/09/2021', 1, '1Go',
-2, 1, 1, 4, 1, 4, null, 1, 5);
+2, 1, 1, 5, 2, 4, null, 1, 5);
 
 --  d'association de langue(s) à un rapport
 INSERT INTO  serse.rapport_langue (rapport_id, langue_id) VALUES (1,6);
