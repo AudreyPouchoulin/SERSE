@@ -34,7 +34,7 @@ public class DownloadServlet extends HttpServlet {
 		/* Vérifie qu'un fichier a bien été fourni */
 		if ( fichierRequis == null || "/".equals( fichierRequis ) ) {
 		    /* Si non, alors on envoie une erreur 404, qui signifie que la ressource demandée n'existe pas */
-			System.out.println("fichier null ou ne juste avec un slash");
+			System.out.println("fichier null ou juste avec un slash");
 		    response.sendError(HttpServletResponse.SC_NOT_FOUND);
 		    return;
 		}

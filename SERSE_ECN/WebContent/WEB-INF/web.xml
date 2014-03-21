@@ -183,6 +183,10 @@
     <display-name>SoumissionRapportServlet</display-name>
     <servlet-name>SoumissionRapportServlet</servlet-name>
     <servlet-class>org.ecn.serse.servlets.SoumissionRapportServlet</servlet-class>
+    <init-param>
+		<param-name>chemin</param-name> 
+		<param-value>/files/</param-value> 
+	</init-param>
   </servlet>
   <servlet-mapping>
     <servlet-name>SoumissionRapportServlet</servlet-name>
