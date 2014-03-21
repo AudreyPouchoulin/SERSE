@@ -22,7 +22,7 @@
 		<script type="text/javascript" src="scripts/RecherchePageInitialisation.js"></script>
 		
 		<script type="text/javascript" src="scripts/GeographyManager.js"></script>
-		<script type="text/javascript" src="scripts/RechercheSejourManager.js"></script>
+		<script type="text/javascript" src="scripts/SejourManager.js"></script>
 		<script type="text/javascript" src="scripts/RechercheMobiliteManager.js"></script>
 		<script type="text/javascript" src="scripts/RechercheFiltresAction.js"></script>
 		

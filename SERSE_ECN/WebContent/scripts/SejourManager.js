@@ -7,19 +7,33 @@
  */
 
 
-function ajoutOptionsUniversiteSiNecessaire(){
+function ajoutOptionsUniversiteSiNecessaire(avecAutre){
 	if (!($('#universiteGroup').length)){
 		$('#universite_entreprise').append("<optgroup id=\"universiteGroup\" label=\"Université\"></optgroup>");
-		// TODO: prendre en compte continent, pays, ville si nécessaire
-		remplissageUniversite(false);
+		if($("#ville").val()!='defaut'){
+			updateUniversiteAccordingToVille(avecAutre);
+		} else if($("#continent").val()!='defaut'){
+			updateUniversiteAccordingToPays(avecAutre);
+		} else if($("#continent").val()!='defaut'){
+			updateUniversiteAccordingToContinent(avecAutre);
+		} else {
+			remplissageUniversite(avecAutre);
+		}
 	}
 }
 
-function ajoutOptionsEntrepriseSiNecessaire(){
+function ajoutOptionsEntrepriseSiNecessaire(avecAutre){
 	if (!($('#entrepriseGroup').length)){
 		$('#universite_entreprise').append("<optgroup id=\"entrepriseGroup\" label=\"Entreprise\"></optgroup>");
-		// TODO: prendre en compte continent, pays, ville si nécessaire
-		remplissageEntreprise(false);
+		if($("#ville").val()!='defaut'){
+			updateEntrepriseAccordingToVille(avecAutre);
+		} else if($("#continent").val()!='defaut'){
+			updateEntrepriseAccordingToPays(avecAutre);
+		} else if($("#continent").val()!='defaut'){
+			updateEntrepriseAccordingToContinent(avecAutre);
+		} else {
+			remplissageEntreprise(avecAutre);
+		}
 	}
 }
 
@@ -27,9 +41,9 @@ function changementTextDefaut(nouveauText){
 	$("#universite_entreprise option[value='defaut']").text(nouveauText);
 }
 
-function entrepriseCoche(){
+function entrepriseCoche(avecAutre){
 	$('#sejourEntreprise').prop('checked', true);
-	ajoutOptionsEntrepriseSiNecessaire();
+	ajoutOptionsEntrepriseSiNecessaire(avecAutre);
 	if ($('#sejourUniversite').prop('checked')){
 		changementTextDefaut('Toutes les universités et entreprises');
 	} else {
@@ -37,9 +51,9 @@ function entrepriseCoche(){
 	}
 }
 
-function universiteCoche(){
+function universiteCoche(avecAutre){
 	$('#sejourUniversite').prop('checked', true);	
-	ajoutOptionsUniversiteSiNecessaire();
+	ajoutOptionsUniversiteSiNecessaire(avecAutre);
 	if ($('#sejourEntreprise').prop('checked')){
 		changementTextDefaut('Toutes les universités et entreprises');	
 	} else {

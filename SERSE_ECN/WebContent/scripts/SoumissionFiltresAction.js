@@ -38,18 +38,11 @@ $(document).ready(function() {
 		if ($selection=='entreprise'){
 			$('#universiteGroup').remove();
 			$("#universite_entreprise option[value='defaut']").text('Choisissez une entreprise');
-			if (!($('#entrepriseGroup').length)){
-				$('#universite_entreprise').append("<optgroup id=\"entrepriseGroup\" label=\"Entreprise\">Entreprise</optgroup>");
-				remplissageEntreprise(true);
-			}
+			ajoutOptionsEntrepriseSiNecessaire(true);
 		} else if ($selection=='université'){
 			$('#entrepriseGroup').remove();
 			$("#universite_entreprise option[value='defaut']").text('Choisissez une université');
-			if (!($('#universiteGroup').length)){
-				$('#universite_entreprise').append("<optgroup id=\"universiteGroup\" label=\"Université\">Université</optgroup>");
-				remplissageUniversite(true);
-			}
-			
+			ajoutOptionsUniversiteSiNecessaire(true);
 		}
 	});
 	

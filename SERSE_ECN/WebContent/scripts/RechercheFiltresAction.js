@@ -41,12 +41,12 @@ $(document).ready(function() {
 /**Séjour en université ou entreprise */
 	$('#sejourUniversite').click(function() {
 		if (this.checked){
-			universiteCoche();
+			universiteCoche(false);
 		} else {
 				universiteDecoche();
 				if (!($('#sejourEntreprise').prop('checked'))) {
 				alert('Une des 2 cases au moins doit être cochée (université et/ou entreprise) pour que la recherche soit possible.');
-				entrepriseCoche();
+				entrepriseCoche(false);
 			}
 			
 		}
@@ -55,12 +55,12 @@ $(document).ready(function() {
 	
 	$('#sejourEntreprise').click(function() {
 		if (this.checked){
-			entrepriseCoche();
+			entrepriseCoche(false);
 		} else {
 			entrepriseDecoche();
 			if(!($('#sejourUniversite').prop('checked'))){
 				alert('Une des 2 cases au moins doit être cochée (université et/ou entreprise) pour que la recherche soit possible.');
-				universiteCoche();
+				universiteCoche(false);
 			}
 		}
 		recherche();

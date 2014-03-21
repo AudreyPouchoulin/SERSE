@@ -22,6 +22,7 @@
 <script type="text/javascript" src="scripts/SoumissionPageInitialisation.js"></script>
 <script type="text/javascript" src="scripts/SoumissionChampsAutre.js"></script>
 <script type="text/javascript" src="scripts/GeographyManager.js"></script>
+<script type="text/javascript" src="scripts/SejourManager.js"></script>
 <script type="text/javascript" src="scripts/SoumissionFiltresAction.js"></script>
 <script type="text/javascript" src="scripts/SoumissionVerification.js"></script>
 <script type="text/javascript" src="scripts/Soumission.js"></script>
