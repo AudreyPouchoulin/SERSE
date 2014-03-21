@@ -7,7 +7,7 @@
  */
 
 $(document).ready(function() {
-	
+
 /** Géographie */
 	$('#continent').change(function() {
 		if ($('#continent').val() !='defaut'){

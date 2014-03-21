@@ -7,7 +7,7 @@
 function valider(){
 	var $messageErreur = verifierEntrees();
 	if ($messageErreur != ''){
-		alert ($messageErreur);
+		alert ($messageErreur, 'Erreur dans le remplissage du formulaire');
 	} else {
 		var argumentsJson = recupererArguments();
 		initialiserDialogConfirmation(argumentsJson);
@@ -46,16 +46,20 @@ function verifierEntrees() {
 	if ($('#dateDebut').val() == '') {
 		$messageListeErreurs = $messageListeErreurs
 				+ "Merci d'entrer une date de début.\n";
-	} else if (!(isFormatDate($('#dateDebut')))) {
+	} else if (!(isFormatDate($('#dateDebut').val()))) {
 		$messageListeErreurs = $messageListeErreurs
 				+ "Merci d'entrer une date de début de séjour au format jj/mm/aaaa.\n";
 	}
 	if ($('#dateFin').val() == '') {
 		$messageListeErreurs = $messageListeErreurs
 				+ "Merci d'entrer une date de fin.\n";
-	} else if (!(isFormatDate($('#dateFin')))) {
+	} else if (!(isFormatDate($('#dateFin').val()))) {
 		$messageListeErreurs = $messageListeErreurs
 				+ "Merci d'entrer une date de fin de séjour au format jj/mm/aaaa.\n";
+	} 
+	if (!verifierOrdreDate($('#dateDebut').val(), $('#dateFin').val())){
+		$messageListeErreurs = $messageListeErreurs
+		+ "La date de début de séjour doit être inférieure à la date de fin de séjour.\n";
 	}
 
 	// erreur sur le champs continent, pays, ville
@@ -144,9 +148,9 @@ function isFormatDate(entreeUtilisateur) {
 	var amin = 2010; // année mini
 	var amax = 2100; // année maxi
 	var separateur = "/"; // separateur entre jour/mois/annee
-	var j = (entreeUtilisateur.val().substring(0, 2));
-	var m = (entreeUtilisateur.val().substring(3, 5));
-	var a = (entreeUtilisateur.val().substring(6));
+	var j = (entreeUtilisateur.substring(0, 2));
+	var m = (entreeUtilisateur.substring(3, 5));
+	var a = (entreeUtilisateur.substring(6));
 	if ((isNaN(j)) || (j < 1) || (j > 31)) {
 		isGoodFormat = false;
 	}
@@ -156,10 +160,30 @@ function isFormatDate(entreeUtilisateur) {
 	if ((isNaN(a)) || (a < amin) || (a > amax)) {
 		isGoodFormat = false;
 	}
-	if ((entreeUtilisateur.val().substring(2, 3) != separateur) || (entreeUtilisateur.val().substring(5, 6) != separateur)) {
+	if ((entreeUtilisateur.substring(2, 3) != separateur) || (entreeUtilisateur.substring(5, 6) != separateur)) {
 		isGoodFormat = false;
 	}
 	return isGoodFormat;
+}
+
+function verifierOrdreDate(dateDebut, dateFin){
+	var isGoodOrder = true;
+	if (dateDebut!='' && dateFin!='' && isFormatDate($('#dateFin').val()) && isFormatDate($('#dateDebut').val())){
+		var j1 = (dateDebut.substring(0, 2));
+		var m1 = (dateDebut.substring(3, 5));
+		var a1 = (dateDebut.substring(6));
+		var j2 = (dateFin.substring(0, 2));
+		var m2 = (dateFin.substring(3, 5));
+		var a2 = (dateFin.substring(6));
+		if (a1>a2){
+			isGoodOrder = false;
+		} else if (m1>m2){
+			isGoodOrder = false;
+		} else if (j1>j2){
+			isGoodOrder = false;
+		}
+	}
+	return isGoodOrder;
 }
 
 function printinformationsRapportInDialog(argumentsJson){

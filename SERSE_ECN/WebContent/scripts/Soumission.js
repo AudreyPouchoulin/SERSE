@@ -7,6 +7,7 @@ function soumettre(argumentsJson){
 	$.post('SoumissionRapportServlet', argumentsJson, function(responseJson){
 	     if (responseJson==true){
 	    	 alert("Votre rapport a bien été soumis.\nVous pouvez suivre la validation de votre rapport dans l'onglet 'Mes rapports'.");
+	    	 $.post('SoumissionFormulaireServlet', null, null);
 	     } else {
 	    	 alert("Un problème a été rencontré lors de la soumission du rapport. Merci de contacter votre administrateur système.");
 	     }
