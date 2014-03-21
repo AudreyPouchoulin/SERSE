@@ -442,7 +442,6 @@ public class BddUtil {
 		statement.setInt(8, lieuId);
 		statement.setInt(9, utilisateurId);
 		statement.setInt(10, domaineId);
-		System.out.println(statement);
 		if (statement.execute()){
 			ResultSet resultSet = statement.getResultSet();
 			if(resultSet.next()){

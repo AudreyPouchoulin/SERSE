@@ -158,31 +158,28 @@ public class RechercheController {
 			listeRequeteCriteres.add("rapport_datedebut > '01-01-" + date + "' ");
 		}
 		
-		String requeteCriteres = "";
+		String requeteCriteres = "WHERE rapport_etat.etat_id = 4 ";
 		if (listeRequeteCriteres.size()!=0){
-			requeteCriteres = "WHERE " + listeRequeteCriteres.get(0);
-			for (int i=1; i<listeRequeteCriteres.size(); i++){
+			for (int i=0; i<listeRequeteCriteres.size(); i++){
 				requeteCriteres = requeteCriteres + "AND " + listeRequeteCriteres.get(i);
 			}
 		}
 		
 		String requeteCriteresProfessionnelEtAcadémique = "";
 		if (isTousCriteresProfessionnels){
-			requeteCriteresProfessionnelEtAcadémique = beginWithWhereOrAnd(requeteCriteres);
-			requeteCriteresProfessionnelEtAcadémique = requeteCriteresProfessionnelEtAcadémique + "typeexperience_libelle = 'professionnelle' ";
+			requeteCriteresProfessionnelEtAcadémique = "AND (typeexperience_libelle = 'professionnelle' ";
 		} else if (listeRequeteCriteresProfessionnel.size() !=0){
-			requeteCriteresProfessionnelEtAcadémique = beginWithWhereOrAnd(requeteCriteres);
-			requeteCriteresProfessionnelEtAcadémique = requeteCriteresProfessionnelEtAcadémique + "(typeexperience_libelle = 'professionnelle' AND (" + listeRequeteCriteresProfessionnel.get(0);
+			requeteCriteresProfessionnelEtAcadémique = requeteCriteresProfessionnelEtAcadémique + "AND (typeexperience_libelle = 'professionnelle' AND (" + listeRequeteCriteresProfessionnel.get(0);
 			for (int i=1; i<listeRequeteCriteresProfessionnel.size(); i++){
 				requeteCriteresProfessionnelEtAcadémique = requeteCriteresProfessionnelEtAcadémique + "OR " + listeRequeteCriteresProfessionnel.get(i);
 			}
 			requeteCriteresProfessionnelEtAcadémique = requeteCriteresProfessionnelEtAcadémique + "))";
 		}
 		if (isTousCriteresAcademiques){
-			requeteCriteresProfessionnelEtAcadémique = requeteCriteresProfessionnelEtAcadémique + beginWithWhereOrAndOrOr(requeteCriteres, requeteCriteresProfessionnelEtAcadémique);
+			requeteCriteresProfessionnelEtAcadémique = requeteCriteresProfessionnelEtAcadémique + beginWithAndOrOr(requeteCriteresProfessionnelEtAcadémique);
 			requeteCriteresProfessionnelEtAcadémique =  requeteCriteresProfessionnelEtAcadémique + "typeexperience_libelle = 'académique' ";
 		} else if (listeRequeteCriteresAcademique.size() !=0){
-			requeteCriteresProfessionnelEtAcadémique = requeteCriteresProfessionnelEtAcadémique + beginWithWhereOrAndOrOr(requeteCriteres, requeteCriteresProfessionnelEtAcadémique);
+			requeteCriteresProfessionnelEtAcadémique = requeteCriteresProfessionnelEtAcadémique + beginWithAndOrOr(requeteCriteresProfessionnelEtAcadémique);
 			requeteCriteresProfessionnelEtAcadémique = requeteCriteresProfessionnelEtAcadémique + "(typeexperience_libelle = 'académique' AND (" + listeRequeteCriteresAcademique.get(0);
 			for (int i=1; i<listeRequeteCriteresAcademique.size(); i++){
 				requeteCriteresProfessionnelEtAcadémique = requeteCriteresProfessionnelEtAcadémique + "OR " + listeRequeteCriteresAcademique.get(i);
@@ -227,7 +224,9 @@ public class RechercheController {
 				+ "LEFT JOIN serse.rapport_langue ON serse.rapport.rapport_id = serse.rapport_langue.rapport_id "
 				+ "LEFT JOIN serse.langue ON serse.rapport_langue.langue_id = serse.langue.langue_id "
 				+ "LEFT JOIN serse.universite ON serse.rapport.universite_id = serse.universite.universite_id "
-				+ "LEFT JOIN serse.entreprise ON serse.rapport.entreprise_id = serse.entreprise.entreprise_id ";
+				+ "LEFT JOIN serse.entreprise ON serse.rapport.entreprise_id = serse.entreprise.entreprise_id "
+				+ "INNER JOIN serse.rapport_etat ON serse.rapport_etat.rapport_id = serse.rapport.rapport_id "
+				+ "INNER JOIN serse.etat ON serse.etat.etat_id = serse.rapport_etat.etat_id ";
 	}
 	
 	private Rapport extraireRapportFromResultSet(ResultSet resultSet) throws SQLException{
@@ -251,24 +250,10 @@ public class RechercheController {
 		return rapportTrouve;
 	}
 	
-	private String beginWithWhereOrAnd(String requeteCriteres){
-		String suiteRequeteCriteres ="";
-		if (requeteCriteres ==""){
-			suiteRequeteCriteres = "WHERE (";
-		} else {
-			suiteRequeteCriteres = "AND (";
-		}
-		return suiteRequeteCriteres;
-	}
-	
-	private String beginWithWhereOrAndOrOr(String requeteCriteres, String requeteCriteresOr){
+	private String beginWithAndOrOr(String requeteCriteresOr){
 		String suiteRequeteCriteres ="";
 		if (requeteCriteresOr == "") {
-			if (requeteCriteres == ""){
-				suiteRequeteCriteres = "WHERE (";
-			} else {
-				suiteRequeteCriteres = "AND (";
-			}
+			suiteRequeteCriteres = "AND (";
 		} else {
 			suiteRequeteCriteres = "OR ";
 		}

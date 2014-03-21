@@ -10,7 +10,7 @@ function valider(){
 		alert ($messageErreur, 'Erreur dans le remplissage du formulaire');
 	} else {
 		var argumentsJson = recupererArguments();
-		initialiserDialogConfirmation(argumentsJson);
+		initialiserDialogConfirmationSoumission(argumentsJson);
 	}
 }
 
@@ -193,12 +193,13 @@ function printinformationsRapportInDialog(argumentsJson){
 	});
 	$('#informationsDeSoumission').append("</table>");
 }
-function initialiserDialogConfirmation(argumentsJson){
+
+function initialiserDialogConfirmationSoumission(argumentsJson){
 	printinformationsRapportInDialog(argumentsJson);
 	$( "#dialogConfirmation" ).dialog({
 	      resizable: false,
 	      height:600,
-	      width:300,
+	      width:500,
 	      modal: true,
 	      buttons: {
 	        "Soumettre le rapport": function() {
@@ -211,4 +212,20 @@ function initialiserDialogConfirmation(argumentsJson){
 	      }
 	    });
 	$( "#dialogConfirmation" ).show();
+}
+
+function initialiserDialogFinSoumission(){
+	$( "#dialogFinSoumission" ).dialog({
+	      resizable: false,
+	      height:200,
+	      width:300,
+	      modal: true,
+	      buttons: {
+	        "Ok": function() {
+	        	$.post('Soumission');
+	        	$( this ).dialog( "close" );
+	        }
+	      }
+	    });
+	$( "#dialogFinSoumission" ).show();
 }

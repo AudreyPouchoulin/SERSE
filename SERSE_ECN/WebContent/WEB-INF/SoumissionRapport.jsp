@@ -212,6 +212,12 @@
 				Merci de vérifier les informations relatives à votre séjour:
 		</p>
 	</div>
+	
+	<div id="dialogFinSoumission" title="Soumission de rapport réussie" style='display: none'>
+		<p id='messageFinSoumission'>
+			Vous allez être redirigé vers la page d'accueil de 'Mes Rapports' où vous pouvez suivre la validation de votre rapport.
+		</p>
+	</div>
 </body>
 </html>
 

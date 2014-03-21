@@ -222,6 +222,17 @@ INSERT INTO  serse.rapport_langue (rapport_id, langue_id) VALUES (7,7);
 INSERT INTO  serse.rapport_langue (rapport_id, langue_id) VALUES (8,1);
 INSERT INTO  serse.rapport_langue (rapport_id, langue_id) VALUES (9,1);
 
+--  d'association d'état à un rapport
+INSERT INTO  serse.rapport_etat (rapport_id, etat_id, dri_id, rapport_etat_dateheure) VALUES (1,4,2,CURRENT_TIMESTAMP);
+INSERT INTO  serse.rapport_etat (rapport_id, etat_id, dri_id, rapport_etat_dateheure) VALUES (2,4,2,CURRENT_TIMESTAMP);
+INSERT INTO  serse.rapport_etat (rapport_id, etat_id, dri_id, rapport_etat_dateheure) VALUES (3,4,2,CURRENT_TIMESTAMP);
+INSERT INTO  serse.rapport_etat (rapport_id, etat_id, dri_id, rapport_etat_dateheure) VALUES (4,4,2,CURRENT_TIMESTAMP);
+INSERT INTO  serse.rapport_etat (rapport_id, etat_id, dri_id, rapport_etat_dateheure) VALUES (5,4,2,CURRENT_TIMESTAMP);
+INSERT INTO  serse.rapport_etat (rapport_id, etat_id, dri_id, rapport_etat_dateheure) VALUES (6,4,3,CURRENT_TIMESTAMP);
+INSERT INTO  serse.rapport_etat (rapport_id, etat_id, dri_id, rapport_etat_dateheure) VALUES (7,4,3,CURRENT_TIMESTAMP);
+INSERT INTO  serse.rapport_etat (rapport_id, etat_id, dri_id, rapport_etat_dateheure) VALUES (8,4,3,CURRENT_TIMESTAMP);
+INSERT INTO  serse.rapport_etat (rapport_id, etat_id, dri_id, rapport_etat_dateheure) VALUES (9,4,3,CURRENT_TIMESTAMP);
+
 --  d'association des entreprises à des pays
 INSERT INTO  serse.entreprise_pays (entreprise_id, pays_id) VALUES (1,26);
 INSERT INTO  serse.entreprise_pays (entreprise_id, pays_id) VALUES (1,17);
