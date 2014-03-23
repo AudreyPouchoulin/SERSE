@@ -12,7 +12,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<title>SERSE Soumission de Rapports</title>
-		<link rel="stylesheet" type="text/css" href="styles/StyleSheet1.css"/>
+		<link rel="stylesheet" type="text/css" href="styles/serse_main.css"/>
 		<script type="text/javascript" src="scripts/jquery/jquery-1.10.2.min.js"></script>
 		<script type="text/javascript" src="scripts/menu.js"></script>
 	</head>
@@ -28,8 +28,8 @@
 				<br/>
 				<br/>
 				<br/>
-				<form  id="bouttonSoumission" method="post" action="Soumission">
-					<input type="submit" class="button" type="button" VALUE=" Soumettre un nouveau rapport">
+				<form  method="post" action="Soumission">
+					<input id="button_Soumission" type="submit" class="button" type="button" VALUE=" Soumettre un nouveau rapport">
 				</form>
 				<br/>
 				<br/>

@@ -2,17 +2,15 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
-		<link rel="stylesheet" type="text/css" href="StyleSheet1.css"/>
+		<link rel="stylesheet" type="text/css" href="styles/serse_main.css"/>
 		<title>SERSE</title>
 	</head>
 	
-	<body>
+	<body id="connexion">
 		<!-- en-tête-->
-		<div id=icone>
-			<img src="images/icone_serse.png">
-		</div>
-		<p> Connexion à SERSE </p>
-		<p> Application de Soumission Electronique de Rapports de Séjours à l'Etranger </p>
+		<img src="images/icone_serse.png">
+		<h1> Connexion à SERSE </h1>
+		<h2> Application de Soumission Electronique de Rapports de Séjours à l'Etranger </h2>
 
 		<!-- formulaire: identifiant +  mot de passe + bouton connxeion-->
 		<div id="formulaire_connexion">
@@ -27,7 +25,8 @@
 									<td><input type="password" id="txt_password" name="password" size="30" placeholder="Votre mot de passe" /></td>
 								</tr>
 							</table>
-							<input type="submit" value="Connexion" id="buton_connexion" class="button" />
+							<br>
+							<input type="submit" value="Connexion" id="button_connexion" class="button" />
 					</form>
 		</div>
 		

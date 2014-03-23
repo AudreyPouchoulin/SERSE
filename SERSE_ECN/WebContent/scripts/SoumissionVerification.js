@@ -234,7 +234,7 @@ function initialiserDialogConfirmationSoumission(argumentsJson){
 	printinformationsRapportInDialog(argumentsJson);
 	$( "#dialogConfirmation" ).dialog({
 	      resizable: false,
-	      height:600,
+	      height:500,
 	      width:500,
 	      modal: true,
 	      buttons: {
@@ -256,8 +256,8 @@ function initialiserDialogConfirmationSoumission(argumentsJson){
 function initialiserDialogFinSoumission(){
 	$( "#dialogFinSoumission" ).dialog({
 	      resizable: false,
-	      height:200,
-	      width:300,
+	      height:300,
+	      width:400,
 	      modal: true,
 	      buttons: {
 	        "Ok": function() {

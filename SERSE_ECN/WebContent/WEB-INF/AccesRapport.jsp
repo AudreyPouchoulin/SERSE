@@ -13,7 +13,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>SERSE Recherche de Rapports</title>
 		<link rel="stylesheet" type="text/css" href="styles/jquery.dataTables.css"/>
-		<link rel="stylesheet" type="text/css" href="styles/StyleSheet.css"/>
+		<link rel="stylesheet" type="text/css" href="styles/serse_main.css"/>
 		<script type="text/javascript" src="scripts/jquery/jquery-1.10.2.min.js"></script>
 		<script type="text/javascript" src="scripts/jquery/jquery.dataTables.js"></script>
 
@@ -37,11 +37,10 @@
 <!-- paragraphe "Criteres de recherche"-->
 		<p>
 			<fieldset>
-				<h2> Criteres de recherche</h2>
+				<h3> Critères de recherche</h3>
 <!-- Sous-paragraphe "Continent, Pays, Ville"-->
 				<p>
 					<fieldset>
-						<img src="images/iconeInformation.jpg" height="7%" width="3%" align="right" class="imageflottante">
 						<h3> Continent, Pays, Ville</h3>
 <!-- "Continent"-->
 						<p>
@@ -73,11 +72,11 @@
 <!-- Sous-paragraphe Séjour"-->
 			<p>
 				<fieldset>
-					<h2> Séjour </h2>
-					<table id="invisibleTable">
-						<tr id="invisibleTable">
-							<td id="invisibleTable"><input type="checkbox" id="sejourUniversite" checked="checked"/> <label for="sejourUniversite">Université</label></td>
-							<td id="invisibleTable"><input type="checkbox" id="sejourEntreprise" checked="checked"/> <label for="sejourEntreprise">Entreprise</label></td>
+					<h3> Séjour </h3>
+					<table id="tableUniversiteEntreprise">
+						<tr>
+							<td><input type="checkbox" id="sejourUniversite" checked="checked"/> <label for="sejourUniversite">Université</label></td>
+							<td><input type="checkbox" id="sejourEntreprise" checked="checked"/> <label for="sejourEntreprise">Entreprise</label></td>
 						</tr>
 					</table>		
 				</fieldset>
@@ -86,10 +85,10 @@
 <!-- Sous paragraphe Cadre de mobilite"-->
 			<p>
 				<fieldset>
-					<h2>Cadre de mobilite</h2>
-					<table id="invisibleTable" >
-						<tr id="invisibleTable">
-							<td id="invisibleTable">
+					<h3>Cadre de mobilite</h3>
+					<table id="tableMobilite">
+						<tr>
+							<td>
 								<input type="checkbox" id="cadreProfessionnel" checked="checked"/><label for="cadreProfessionnel">Professionnel</label>
 								<ul id='casesCadreProfessionnel' style="list-style: none">
 								    <li><input type='checkbox' id='pCME' checked="checked"/>CME</li>
@@ -99,13 +98,14 @@
 								    <li><input type='checkbox' id='pSemestre' checked="checked"/>Semestre</li>	    
 								</ul>
 							</td>
-							<td id="invisibleTable">
+							<td>
 								<input type="checkbox" id="cadreAcademique" checked="checked"><label for="cadreAcademique">Académique</label>
 								<ul id='casesCadreAcademique' style="list-style: none">
 								    <li><input type='checkbox' id='aSemestre' checked="checked"/>Semestre</li>
 								    <li><input type='checkbox' id='aAnnee' checked="checked"/>Année</li>
 								    <li><input type='checkbox' id='aDoubleDiplome' checked="checked"/>Double Diplême</li>
-								    <li><input type='checkbox' id='aCesure' checked="checked"/>Césure</li>	    
+								    <li><input type='checkbox' id='aCesure' checked="checked"/>Césure</li>	
+								    <li style='visibility:hidden'>Space</li>	    
 								</ul>
 							</td>
 						</tr>		
@@ -116,7 +116,7 @@
 <!-- Sous paragraphe Autres-->
 			<p>
 				<fieldset>
-				<h2>Autres</h2>
+				<h3>Autres</h3>
 					<p>
 <!-- Universites/Entreprises -->
 						<select id="universite_entreprise">
@@ -161,8 +161,8 @@
 <!-- Resultats"-->
 	<p>
 		<fieldset>
-			<h2> Resultats </h2>
-			<p>
+			<h3> Résultats </h3>
+			<!--<p>
 				<select name="resultatPage" id="resultatPage">					
 					<option value="Resutalts par page" selected="selected">Resultats pas page</option>
 					<option value="10resultats">10 Résultats</option>
@@ -171,13 +171,13 @@
 					<option value="40resultats">40 Résultats</option>
 					<option value="50resultats">50 Résultats</option>
 				</select>
-			</p>
+			</p>-->
 		
 			<table id="tableauResultats">
 				<thead>
 					<tr>
-						<th>Rapport<img src="images/iconeCroissantDecroissant.png" class="imageflottante"></th>
 						<th></th> <!-- pour les icônes de téléchargement -->
+						<th>Rapport<img src="images/iconeCroissantDecroissant.png" class="imageflottante"></th>
 						<th>Dates<img src="images/iconeCroissantDecroissant.png" class="imageflottante"></th>
 						<th>Pays<img src="images/iconeCroissantDecroissant.png" class="imageflottante"></th>
 						<th>Ville<img src="images/iconeCroissantDecroissant.png"  class="imageflottante"></th>

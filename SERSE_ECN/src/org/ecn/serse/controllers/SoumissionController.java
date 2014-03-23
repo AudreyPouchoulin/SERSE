@@ -6,11 +6,11 @@
 package org.ecn.serse.controllers;
 
 import java.sql.SQLException;
+import java.text.Normalizer;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-import org.apache.commons.lang3.StringUtils;
 import org.ecn.serse.exceptions.DatabaseException;
 /**
  * Classe pour déposer un rapport dans la base de données
@@ -110,8 +110,7 @@ public class SoumissionController {
 		calendar.setTime(dateDebut);
 		String annee =  Integer.toString(calendar.get(Calendar.YEAR));
 		String nomRapport = pays + "_" + mobilite + "_" + domaine + "_" + annee + "_" + prenom.substring(0,1).toLowerCase() + nom.substring(0,7).toLowerCase();
-		StringUtils.stripAccents(nomRapport);
-		System.out.println(nomRapport);
+		nomRapport = Normalizer.normalize(nomRapport, Normalizer.Form.NFD).replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
 		return nomRapport;
 	}
 
