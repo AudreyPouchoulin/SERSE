@@ -18,7 +18,7 @@ public class AccueilDriServlet extends HttpServlet {
 	public void doGet( HttpServletRequest request, HttpServletResponse response )   throws ServletException, IOException {
 	
 		Integer nbrRapportsValider = 10; // nombre de rapports a valider
-		Integer nbrRapportsLigne = 10; // nombre de rapports à mettre en ligne
+		Integer nbrRapportsLigne = 10; // nombre de rapports  Ã  mettre en ligne
 		BddController bddController;
 		try {
 			bddController = new BddController();

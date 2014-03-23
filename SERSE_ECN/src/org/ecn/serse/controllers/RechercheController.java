@@ -17,7 +17,7 @@ import org.ecn.serse.exceptions.DatabaseException;
 import org.ecn.serse.models.Rapport;
 
 /**
- * @author Audrey
+ * Classes pour chercher les rapports en base de données
  *
  */
 public class RechercheController {
@@ -186,31 +186,31 @@ public class RechercheController {
 			}
 		}
 		
-		String requeteCriteresProfessionnelEtAcadémique = "";
+		String requeteCriteresProfessionnelEtAcademique = "";
 		if (isTousCriteresProfessionnels){
-			requeteCriteresProfessionnelEtAcadémique = "AND (typeexperience_libelle = 'professionnelle') ";
+			requeteCriteresProfessionnelEtAcademique = "AND (typeexperience_libelle = 'professionnelle') ";
 		} else if (listeRequeteCriteresProfessionnel.size() !=0){
-			requeteCriteresProfessionnelEtAcadémique = requeteCriteresProfessionnelEtAcadémique + "AND (typeexperience_libelle = 'professionnelle' AND (" + listeRequeteCriteresProfessionnel.get(0);
+			requeteCriteresProfessionnelEtAcademique = requeteCriteresProfessionnelEtAcademique + "AND (typeexperience_libelle = 'professionnelle' AND (" + listeRequeteCriteresProfessionnel.get(0);
 			for (int i=1; i<listeRequeteCriteresProfessionnel.size(); i++){
-				requeteCriteresProfessionnelEtAcadémique = requeteCriteresProfessionnelEtAcadémique + "OR " + listeRequeteCriteresProfessionnel.get(i);
+				requeteCriteresProfessionnelEtAcademique = requeteCriteresProfessionnelEtAcademique + "OR " + listeRequeteCriteresProfessionnel.get(i);
 			}
-			requeteCriteresProfessionnelEtAcadémique = requeteCriteresProfessionnelEtAcadémique + "))";
+			requeteCriteresProfessionnelEtAcademique = requeteCriteresProfessionnelEtAcademique + "))";
 		}
 		if (isTousCriteresAcademiques){
-			requeteCriteresProfessionnelEtAcadémique = requeteCriteresProfessionnelEtAcadémique + beginWithAndOrOr(requeteCriteresProfessionnelEtAcadémique);
-			requeteCriteresProfessionnelEtAcadémique =  requeteCriteresProfessionnelEtAcadémique + "typeexperience_libelle = 'académique') ";
+			requeteCriteresProfessionnelEtAcademique = requeteCriteresProfessionnelEtAcademique + beginWithAndOrOr(requeteCriteresProfessionnelEtAcademique);
+			requeteCriteresProfessionnelEtAcademique =  requeteCriteresProfessionnelEtAcademique + "typeexperience_libelle = 'académique') ";
 		} else if (listeRequeteCriteresAcademique.size() !=0){
-			requeteCriteresProfessionnelEtAcadémique = requeteCriteresProfessionnelEtAcadémique + beginWithAndOrOr(requeteCriteresProfessionnelEtAcadémique);
-			requeteCriteresProfessionnelEtAcadémique = requeteCriteresProfessionnelEtAcadémique + "(typeexperience_libelle = 'académique' AND (" + listeRequeteCriteresAcademique.get(0);
+			requeteCriteresProfessionnelEtAcademique = requeteCriteresProfessionnelEtAcademique + beginWithAndOrOr(requeteCriteresProfessionnelEtAcademique);
+			requeteCriteresProfessionnelEtAcademique = requeteCriteresProfessionnelEtAcademique + "(typeexperience_libelle = 'académique' AND (" + listeRequeteCriteresAcademique.get(0);
 			for (int i=1; i<listeRequeteCriteresAcademique.size(); i++){
-				requeteCriteresProfessionnelEtAcadémique = requeteCriteresProfessionnelEtAcadémique + "OR " + listeRequeteCriteresAcademique.get(i);
+				requeteCriteresProfessionnelEtAcademique = requeteCriteresProfessionnelEtAcademique + "OR " + listeRequeteCriteresAcademique.get(i);
 			}
-			requeteCriteresProfessionnelEtAcadémique = requeteCriteresProfessionnelEtAcadémique + "))";
+			requeteCriteresProfessionnelEtAcademique = requeteCriteresProfessionnelEtAcademique + "))";
 		}
 		
-		String requete = requeteDeBase + requeteCriteres + requeteCriteresProfessionnelEtAcadémique +  "ORDER BY rapport_nom;";
+		String requete = requeteDeBase + requeteCriteres + requeteCriteresProfessionnelEtAcademique +  "ORDER BY rapport_nom;";
 		// DEBUG
-		/*System.out.println(requeteCriteres + requeteCriteresProfessionnelEtAcadémique);*/
+		/*System.out.println(requeteCriteres + requeteCriteresProfessionnelEtAcademique);*/
 		
 		PreparedStatement statement = bdd.getConnection().prepareStatement(requete);
 		
@@ -280,7 +280,7 @@ public class RechercheController {
 	/**
 	 * Renvoie 'Or' or 'And' en fonction du contenu de la requête précédente (vide ou non)
 	 * @param requeteCriteresOr requete à tester (vide ou non)
-	 * @return
+	 * @return Début de requête avec 'Or' or 'And'
 	 */
 	private String beginWithAndOrOr(String requeteCriteresOr){
 		String suiteRequeteCriteres ="";

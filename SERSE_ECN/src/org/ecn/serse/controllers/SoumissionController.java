@@ -10,10 +10,10 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+import org.apache.commons.lang3.StringUtils;
 import org.ecn.serse.exceptions.DatabaseException;
-
 /**
- * @author Audrey
+ * Classe pour déposer un rapport dans la base de données
  *
  */
 public class SoumissionController {
@@ -80,10 +80,7 @@ public class SoumissionController {
 				int domaineId = BddUtil.getDomaineId(bdd, domaine, true);
 				int lieuId = BddUtil.insertLieu(bdd, villeId, adresse, codePostal, entrepriseId, universiteId);
 				
-				GregorianCalendar calendar = new GregorianCalendar();
-				calendar.setTime(dateDebut);
-				String annee =  Integer.toString(calendar.get(Calendar.YEAR));
-				String rapportNom = pays + "_" + mobilite + "_" + domaine + "_" + annee + "_" + prenom.substring(0,1) + nom.substring(0,7);
+				String rapportNom = makeNomRapport(pays, mobilite, domaine, dateDebut, prenom, nom);
 				int rapportId = BddUtil.insertRapport(bdd, rapportNom, dateDebut, dateFin, tailleFichier, 
 						mobiliteId, sejourId, experienceId, lieuId, utilisateurId, 
 						universiteId, entrepriseId, domaineId);
@@ -95,6 +92,27 @@ public class SoumissionController {
 				return soumissionAccomplie;
 			}
 			return soumissionAccomplie;
+	}
+	
+	/**
+	 * Crée le nom du rapport à partir des informations utiles
+	 * @param pays nom du pays
+	 * @param mobilite type de mobilité: CME, STING, ...
+	 * @param domaine domaine d'activité
+	 * @param dateDebut date de début de sjéour à l'étranger
+	 * @param prenom prénom de la personne déposant le rapport
+	 * @param nom nom de la personne déposant le rapport
+	 * @return nom du rapport sans accents
+	 */
+	private String makeNomRapport(String pays, String mobilite, String domaine, Date dateDebut, String prenom, String nom){
+		mobilite = mobilite.replace(" ", "");
+		GregorianCalendar calendar = new GregorianCalendar();
+		calendar.setTime(dateDebut);
+		String annee =  Integer.toString(calendar.get(Calendar.YEAR));
+		String nomRapport = pays + "_" + mobilite + "_" + domaine + "_" + annee + "_" + prenom.substring(0,1).toLowerCase() + nom.substring(0,7).toLowerCase();
+		StringUtils.stripAccents(nomRapport);
+		System.out.println(nomRapport);
+		return nomRapport;
 	}
 
 }

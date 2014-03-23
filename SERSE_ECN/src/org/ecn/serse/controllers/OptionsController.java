@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import org.ecn.serse.exceptions.DatabaseException;
 
 /**
- * @author Audrey
+ * Classes de fonctions pour obtenir les différentes éléments contenus dans une table
  *
  */
 public class OptionsController {
@@ -140,7 +140,7 @@ public class OptionsController {
 	
 	/**
 	 * Permet d'obtenir l'ensemble des villes dans un pays donné
-	 * @param PaysNom nom du pays
+	 * @param paysNom nom du pays
 	 * @return liste de villes dans le pays
 	 * @throws DatabaseException
 	 * @throws SQLException

@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- * Classes contenant des requêtes en base de données fréquemment utilisées
+ * Classe contenant des requêtes en base de données fréquemment utilisées
  * @author Audrey
  *
  */

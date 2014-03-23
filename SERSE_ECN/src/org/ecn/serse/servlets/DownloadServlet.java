@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang3.StringEscapeUtils;
+
 /**
  * Servlet pour le téléchargement d'un rapport
  */
@@ -30,8 +32,6 @@ public class DownloadServlet extends HttpServlet {
 		
 		/* Récupération du chemin du fichier demandé au sein de l'URL de la requête */
 		String fichierRequis = request.getPathInfo();
-		/**DEBUG*/
-		System.out.println(fichierRequis);
 		
 		/* Vérifie qu'un fichier a bien été fourni */
 		if ( fichierRequis == null || "/".equals( fichierRequis ) ) {
@@ -47,8 +47,6 @@ public class DownloadServlet extends HttpServlet {
 		/* Vérifie que le fichier existe bien */
 		if ( !fichier.exists() ) {
 		    /* Si non, alors on envoie une erreur 404, qui signifie que la ressource demandée n'existe pas */
-			/**DEBUG*/
-			System.out.println("le fichier n'existe pas : " + fichierRequis);
 		    response.sendError(HttpServletResponse.SC_NOT_FOUND);
 		    return;
 		}

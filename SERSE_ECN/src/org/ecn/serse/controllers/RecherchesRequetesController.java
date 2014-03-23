@@ -28,7 +28,7 @@ public class RecherchesRequetesController {
 	}
 	
 	/**
-	 * Permet d'obtenir le nombre de rapports venant d'êtres mis en lignes
+	 * Permet d'obtenir le nombre de rapports venant d'Ãªtre mis en lignes
 	 * @return integer
 	 * @throws DatabaseException
 	 * @throws SQLException
@@ -66,7 +66,7 @@ public class RecherchesRequetesController {
 	
 	
 	/**
-	 * Permet d'obtenir les rapports à valider
+	 * Permet d'obtenir les rapports Ã  valider
 	 * @return integer
 	 * @throws DatabaseException
 	 * @throws SQLException

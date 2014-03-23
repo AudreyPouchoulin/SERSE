@@ -1,8 +1,8 @@
 ﻿-- BASE DONNEES serse : insertion de données de test
 -- Auteurs : Clara Doucoure et Audrey Pouchoulin
 -- Date création : 30/01/2014
--- Date dernière modification : 21/03/2014
--- Version : 4
+-- Date dernière modification : 23/03/2014
+-- Version : 5
 
 --  des types d'expérience
 INSERT INTO  serse.typeExperience (typeExperience_libelle) VALUES ('académique');
@@ -165,23 +165,23 @@ VALUES (5, '10 downing street', '11111', 0, 0);
 -- semestre académique université
 INSERT INTO  serse.rapport (rapport_nom, rapport_datedebut, rapport_datefin, rapport_numeroversion, rapport_taillefichier, 
 typemobilite_id, typesejour_id, typeexperience_id, utilisateur_id, dri_id, universite_id, entreprise_id, domaineactivite_id, lieuSejour_id) 
-VALUES ('Brésil_Semestre_Informatique_2012_apouchel', DATE '10/02/2012', DATE '10/08/2012', 1, '10Go',
+VALUES ('Bresil_Semestre_Informatique_2012_apouchel', DATE '10/02/2012', DATE '10/08/2012', 1, '10Go',
 3, 1, 1, 4, 2, 7, null, 1, 1);
 -- semestre professionnel entreprise
 INSERT INTO  serse.rapport (rapport_nom, rapport_datedebut, rapport_datefin, rapport_numeroversion, rapport_taillefichier, 
 typemobilite_id, typesejour_id, typeexperience_id, utilisateur_id, dri_id, universite_id, entreprise_id, domaineactivite_id, lieuSejour_id) 
-VALUES ('Japon_Semestre_Mécanique_2012_cdoucour', DATE '10/02/2012', DATE '10/08/2012', 1, '10Go',
+VALUES ('Japon_Semestre_Mecanique_2012_cdoucour', DATE '10/02/2012', DATE '10/08/2012', 1, '10Go',
 3, 2, 2, 5, 2, null, 3, 2, 2);
 
 -- cesure académique université
 INSERT INTO  serse.rapport (rapport_nom, rapport_datedebut, rapport_datefin, rapport_numeroversion, rapport_taillefichier, 
 typemobilite_id, typesejour_id, typeexperience_id, utilisateur_id, dri_id, universite_id, entreprise_id, domaineactivite_id, lieuSejour_id) 
-VALUES ('Brésil_Césure_Informatique_2014_apouchel', DATE '01/09/2014', DATE '01/09/2015', 1, '10Go',
+VALUES ('Bresil_Cesure_Informatique_2014_apouchel', DATE '01/09/2014', DATE '01/09/2015', 1, '10Go',
 5, 1, 1, 4, 2, 7, null, 1, 1);
 -- cesure professionnel université
 INSERT INTO  serse.rapport (rapport_nom, rapport_datedebut, rapport_datefin, rapport_numeroversion, rapport_taillefichier, 
 typemobilite_id, typesejour_id, typeexperience_id, utilisateur_id, dri_id, universite_id, entreprise_id, domaineactivite_id, lieuSejour_id) 
-VALUES ('Japon_Césure_Mécanique_2014_cdoucour', DATE '01/09/2014', DATE '01/09/2015', 1, '10Go',
+VALUES ('Japon_Cesure_Mecanique_2014_cdoucour', DATE '01/09/2014', DATE '01/09/2015', 1, '10Go',
 5, 1, 2, 5, 2, 8, null, 2, 2);
 
 -- CME professionnel entreprise
@@ -208,7 +208,7 @@ VALUES ('Royaume-Uni_DoubleDiplome_Informatique_2020_apouchel', DATE '01/09/2020
 -- Année académique université
 INSERT INTO  serse.rapport (rapport_nom, rapport_datedebut, rapport_datefin, rapport_numeroversion, rapport_taillefichier, 
 typemobilite_id, typesejour_id, typeexperience_id, utilisateur_id, dri_id, universite_id, entreprise_id, domaineactivite_id, lieuSejour_id) 
-VALUES ('Royaume-Uni_Année_Informatique_2020_cdoucour', DATE '01/09/2020', DATE '01/09/2021', 1, '1Go',
+VALUES ('Royaume-Uni_Annee_Informatique_2020_cdoucour', DATE '01/09/2020', DATE '01/09/2021', 1, '1Go',
 2, 1, 1, 5, 2, 4, null, 1, 5);
 
 --  d'association de langue(s) à un rapport

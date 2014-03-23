@@ -56,7 +56,7 @@ public class UtilisateurController {
 	/**
 	 * Connexion de l'utilisateur et création d'un token de connexion (inséré en base de données)
 	 * @param login identifiant de l'utilisateur
-	 * @param pass Mot de passe
+	 * @param password Mot de passe
 	 * @return ObjetRetourMethodeConnexion qui contient le yoken de connexion créé et l'identifiant de l'utilisateur
 	 * @throws IdentificationException Identifiants invalides ou erreur de connexion à LDAP
 	 * @throws DatabaseException
@@ -279,7 +279,7 @@ public class UtilisateurController {
 	 * Récupération de l'id d'un utilisateur connu dans la base de données depuis son nom et prénom issus de LDAP.
 	 * (L'utilisateur doit déjà avoir été enregistré sur le système emploi du temps pour que le résultat soit non nul)
 	 * @param nom de l'utilisateur
-	 * @param prénom de l'utilisateur
+	 * @param prenom de l'utilisateur
 	 * @return id de l'utilisateur dans la base de données SERSE, ou null si il n'est pas présent dans la base
 	 * @throws DatabaseException
 	 */
