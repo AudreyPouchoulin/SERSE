@@ -198,7 +198,7 @@ public class RechercheController {
 		}
 		if (isTousCriteresAcademiques){
 			requeteCriteresProfessionnelEtAcademique = requeteCriteresProfessionnelEtAcademique + beginWithAndOrOr(requeteCriteresProfessionnelEtAcademique);
-			requeteCriteresProfessionnelEtAcademique =  requeteCriteresProfessionnelEtAcademique + "typeexperience_libelle = 'académique') ";
+			requeteCriteresProfessionnelEtAcademique =  requeteCriteresProfessionnelEtAcademique + "(typeexperience_libelle = 'académique') ";
 		} else if (listeRequeteCriteresAcademique.size() !=0){
 			requeteCriteresProfessionnelEtAcademique = requeteCriteresProfessionnelEtAcademique + beginWithAndOrOr(requeteCriteresProfessionnelEtAcademique);
 			requeteCriteresProfessionnelEtAcademique = requeteCriteresProfessionnelEtAcademique + "(typeexperience_libelle = 'académique' AND (" + listeRequeteCriteresAcademique.get(0);
