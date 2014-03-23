@@ -187,10 +187,13 @@ public class RechercheController {
 		}
 		
 		String requeteCriteresProfessionnelEtAcademique = "";
+		int parenthese = 0;
 		if (isTousCriteresProfessionnels){
-			requeteCriteresProfessionnelEtAcademique = "AND (typeexperience_libelle = 'professionnelle') ";
+			requeteCriteresProfessionnelEtAcademique = "AND ((typeexperience_libelle = 'professionnelle' ";
+			parenthese= parenthese+2;
 		} else if (listeRequeteCriteresProfessionnel.size() !=0){
-			requeteCriteresProfessionnelEtAcademique = requeteCriteresProfessionnelEtAcademique + "AND (typeexperience_libelle = 'professionnelle' AND (" + listeRequeteCriteresProfessionnel.get(0);
+			requeteCriteresProfessionnelEtAcademique = requeteCriteresProfessionnelEtAcademique + "AND ((typeexperience_libelle = 'professionnelle' AND (" + listeRequeteCriteresProfessionnel.get(0);
+			parenthese++;
 			for (int i=1; i<listeRequeteCriteresProfessionnel.size(); i++){
 				requeteCriteresProfessionnelEtAcademique = requeteCriteresProfessionnelEtAcademique + "OR " + listeRequeteCriteresProfessionnel.get(i);
 			}
@@ -198,7 +201,8 @@ public class RechercheController {
 		}
 		if (isTousCriteresAcademiques){
 			requeteCriteresProfessionnelEtAcademique = requeteCriteresProfessionnelEtAcademique + beginWithAndOrOr(requeteCriteresProfessionnelEtAcademique);
-			requeteCriteresProfessionnelEtAcademique =  requeteCriteresProfessionnelEtAcademique + "(typeexperience_libelle = 'académique') ";
+			requeteCriteresProfessionnelEtAcademique =  requeteCriteresProfessionnelEtAcademique + "(typeexperience_libelle = 'académique' ";
+			parenthese++;
 		} else if (listeRequeteCriteresAcademique.size() !=0){
 			requeteCriteresProfessionnelEtAcademique = requeteCriteresProfessionnelEtAcademique + beginWithAndOrOr(requeteCriteresProfessionnelEtAcademique);
 			requeteCriteresProfessionnelEtAcademique = requeteCriteresProfessionnelEtAcademique + "(typeexperience_libelle = 'académique' AND (" + listeRequeteCriteresAcademique.get(0);
@@ -207,15 +211,20 @@ public class RechercheController {
 			}
 			requeteCriteresProfessionnelEtAcademique = requeteCriteresProfessionnelEtAcademique + "))";
 		}
+		while (parenthese>0){
+			requeteCriteresProfessionnelEtAcademique = requeteCriteresProfessionnelEtAcademique + ") ";
+			parenthese--;
+		}
 		
 		String requete = requeteDeBase + requeteCriteres + requeteCriteresProfessionnelEtAcademique +  "ORDER BY rapport_nom;";
 		// DEBUG
-		/*System.out.println(requeteCriteres + requeteCriteresProfessionnelEtAcademique);*/
+		System.out.println(requeteCriteres + requeteCriteresProfessionnelEtAcademique);
 		
 		PreparedStatement statement = bdd.getConnection().prepareStatement(requete);
 		
 		for (int i=0; i<listeCriteres.size(); i++){
 			statement.setString(i+1, listeCriteres.get(i));
+			System.out.println(listeCriteres.get(i));
 		}
 		for (int j=0; j<listeCriteresProfessionnelAcademique.size(); j++){
 			statement.setString(listeCriteres.size()+1+j, listeCriteresProfessionnelAcademique.get(j));

@@ -88,7 +88,7 @@ INSERT INTO  serse.ville (ville_nom, pays_id) VALUES ('Los Angeles', 26);
 INSERT INTO  serse.ville (ville_nom, pays_id) VALUES ('Washington', 26);
 INSERT INTO  serse.ville (ville_nom, pays_id) VALUES ('Londres', 17);
 INSERT INTO  serse.ville (ville_nom, pays_id) VALUES ('São Paulo', 23);
-INSERT INTO  serse.ville (ville_nom, pays_id) VALUES ('Tokyo', 33);
+INSERT INTO  serse.ville (ville_nom, pays_id) VALUES ('Tokyo', 32);
 INSERT INTO  serse.ville (ville_nom, pays_id) VALUES ('Madrid', 6);
 INSERT INTO  serse.ville (ville_nom, pays_id) VALUES ('Pékin', 28);
 
